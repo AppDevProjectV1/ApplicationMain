@@ -35,10 +35,10 @@ public class AboutYou extends AppCompatActivity implements View.OnClickListener 
                 startActivity(intent);
                 break;
 
-            /*case R.id.faculty:
-                intent = new Intent(getApplicationContext(), FacultyReg.class);
+            case R.id.faculty:
+                intent = new Intent(getApplicationContext(), FacultyRegistration.class);
                 startActivity(intent);
-                break;*/
+                break;
 
             case R.id.others:
                 intent = new Intent(getApplicationContext(), OthersReg.class);

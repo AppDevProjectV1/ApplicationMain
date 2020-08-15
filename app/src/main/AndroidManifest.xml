@@ -16,14 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NumberRegisterActivity"></activity>
+        <activity android:name=".DepartmentClass"></activity>
+        <activity android:name=".DepartmentAdapter" />
+        <activity android:name=".FacultyRegistration" />
+        <activity android:name=".NumberRegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".GetStartActivity" />
-        <activity android:name=".OthersReg"></activity>
+        <activity android:name=".OthersReg" />
         <activity android:name=".StudentReg" />
         <activity android:name=".AboutYou" />
         <activity android:name=".OTP" />
-        <activity android:name=".secondAnime"/>
+        <activity android:name=".secondAnime" />
         <activity
             android:name=".InitialActivity"
             android:finishOnTaskLaunch="true" />
