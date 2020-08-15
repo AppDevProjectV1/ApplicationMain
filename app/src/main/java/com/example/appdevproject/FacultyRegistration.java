@@ -21,7 +21,7 @@ public class FacultyRegistration extends AppCompatActivity {
         fname = (EditText)findViewById(R.id.fname);
         femail = (EditText)findViewById(R.id.femail);
         fpass= (EditText)findViewById(R.id.fpass);
-        fcpass = (EditText)findViewById(R.id.fcpass);
+        fcpass = (EditText)findViewById(R.id.cpass);
         Spinner departspin=(Spinner)findViewById(R.id.department);
       /*  String[] departments=new String[]{"Computer Science","Electronics and Communication","Electrical","Mechanical","Production and Industrial"
                 ,"Civil","Metallurgy","Polymer Science","Engineering Physics","Chemical","Bio Technology","GPT","GT","Applied Mathematics","Physics","Chemistry"};

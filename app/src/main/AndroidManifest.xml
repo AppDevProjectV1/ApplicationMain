@@ -16,21 +16,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DepartmentClass"></activity>
-        <activity android:name=".DepartmentAdapter" />
-        <activity android:name=".FacultyRegistration" />
-        <activity android:name=".NumberRegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".GetStartActivity" />
-        <activity android:name=".OthersReg" />
-        <activity android:name=".StudentReg" />
-        <activity android:name=".AboutYou" />
-        <activity android:name=".OTP" />
-        <activity android:name=".secondAnime" />
+        <activity android:name=".FacultyRegistration"></activity>
         <activity
-            android:name=".InitialActivity"
-            android:finishOnTaskLaunch="true" />
-        <activity android:name=".Splash1Activity">
+            android:name=".NumberRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".GetStartActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".OthersReg"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".StudentReg"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".AboutYou"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".OTP"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".secondAnime"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".Splash1Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

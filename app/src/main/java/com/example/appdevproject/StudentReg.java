@@ -7,9 +7,13 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class StudentReg extends AppCompatActivity {
 
     private EditText name, email, pass, cpass;
+    private ArrayList<DepartmentClass> mCountryList,myearLists;
+    private  DepartmentAdapter mAdapter,mNewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +27,21 @@ public class StudentReg extends AppCompatActivity {
         cpass = findViewById(R.id.cpass);
 
         Spinner dropdown = findViewById(R.id.year);
-        String[] items = new String[]{"I","II","III","IV","V"};
+       /* String[] items = new String[]{"I","II","III","IV","V"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
+        dropdown.setAdapter(adapter);*/
 
-        Spinner dropdown2 = findViewById(R.id.branch);
-        String[] items2 = new String[]{"Computer Science","Electronics and Communication","Electrical","Mechanical","Production and Industrial"
-        ,"Civil","Metallurgy","Polymer Science","Engineering Physics","Chemical","Bio Technology","GPT","GT","Applied Mathematics","Physics","Chemistry"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
-        dropdown2.setAdapter(adapter2);
+        myearLists=new ArrayList<>();
+        myearLists.add(new DepartmentClass("I", R.drawable.i));
+        myearLists.add(new DepartmentClass("II", R.drawable.ii));
+        myearLists.add(new DepartmentClass("III", R.drawable.iii));
+        myearLists.add(new DepartmentClass("IV", R.drawable.iv));
+        myearLists.add(new DepartmentClass("V", R.drawable.v));
+        mNewAdapter = new DepartmentAdapter(this, myearLists);
+        dropdown.setAdapter(mNewAdapter);
+
+
+
 
 
         Spinner dropdown3 = findViewById(R.id.hostel);
@@ -51,6 +61,30 @@ public class StudentReg extends AppCompatActivity {
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
 
+        Spinner departspin=(Spinner)findViewById(R.id.dept);
+
+        mCountryList = new ArrayList<>();
+        mCountryList.add(new DepartmentClass("Computer Science", R.drawable.computer));
+        mCountryList.add(new DepartmentClass("Electronic and Communication", R.drawable.electrical));
+        mCountryList.add(new DepartmentClass("Electrical Engineering", R.drawable.electri));
+        mCountryList.add(new DepartmentClass("Civil Engineering", R.drawable.civil));
+        mCountryList.add(new DepartmentClass("mechnical Engineering", R.drawable.mechnical));
+        mCountryList.add(new DepartmentClass("Production & Industrial", R.drawable.pandi));
+        mCountryList.add(new DepartmentClass("Metallurgy", R.drawable.meta));
+        mCountryList.add(new DepartmentClass("Physics", R.drawable.physics));
+        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.physics));
+        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.electri));
+        mCountryList.add(new DepartmentClass("Chemistry", R.drawable.chemistry));
+        mCountryList.add(new DepartmentClass("Architecture", R.drawable.archti));
+        mCountryList.add(new DepartmentClass("GT", R.drawable.gt));
+        mCountryList.add(new DepartmentClass("Hydrology", R.drawable.hydrology));
+        mCountryList.add(new DepartmentClass("Chemical Engineering", R.drawable.chemical));
+        mCountryList.add(new DepartmentClass("Earth Science", R.drawable.earthscience));
+        mCountryList.add(new DepartmentClass("Polymer Science", R.drawable.polymer));
+        mCountryList.add(new DepartmentClass("Bio Techonology", R.drawable.biotech));
+        mCountryList.add(new DepartmentClass("Earhtquake Engineering", R.drawable.earthquake));
+        mAdapter = new DepartmentAdapter(this, mCountryList);
+        departspin.setAdapter(mAdapter);
 
     }
 }
