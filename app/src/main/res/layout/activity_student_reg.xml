@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegActivities.StudentReg"
+    tools:context=".StudentReg"
     android:background="@color/white">
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="60dp"
         android:id="@+id/sreghead"
-        />
+        android:layout_marginLeft="15dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username_text_input_layout"
@@ -129,11 +129,13 @@
                android:text="Year"
                android:textSize="19sp"
                ></TextView>
+
            <TextView
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Branch"
+               android:layout_height="match_parent"
                android:layout_marginStart="105dp"
+               android:layout_marginLeft="105dp"
+               android:text="Branch"
                android:textSize="19sp">
 
            </TextView>
@@ -155,7 +157,8 @@
                android:layout_marginStart="30dp"
                android:layout_height="wrap_content"
                android:background="@android:drawable/btn_dropdown"
-               android:spinnerMode="dropdown"/>
+               android:spinnerMode="dropdown"
+               android:layout_marginLeft="30dp" />
        </LinearLayout>
 
        <TextView
@@ -164,7 +167,8 @@
            android:text="Hostel"
            android:labelFor="@+id/yearbranch"
            android:layout_marginStart="9dp"
-           android:textSize="19sp">
+           android:textSize="19sp"
+           android:layout_marginLeft="9dp">
 
        </TextView>
 
