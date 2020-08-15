@@ -27,7 +27,7 @@ public class Splash1Activity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Splash1Activity.this,NumberRegisterActivity.class);
+                Intent i = new Intent(Splash1Activity.this,secondAnime.class);
                 startActivity(i);
                 finish();
             }
