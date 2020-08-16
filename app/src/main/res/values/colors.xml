@@ -3,14 +3,16 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="splashcolor">#1A237E</color>
+    <color name="splashcolor">#311B92</color>
     <color name="backgroundpurple">#F3E5F5</color>
 
+    <color name="blueviolet">#1A237E</color>
 
     <color name="secBack">#3949AB</color>
     <color name="card">#1A237E</color>
     <color name="heading">#311B92</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="inboxcolor">#FFFEF2</color>
     <color name="commonBack">#EDE7F6</color>
 </resources>

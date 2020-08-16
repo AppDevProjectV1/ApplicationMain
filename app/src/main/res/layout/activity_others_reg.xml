@@ -135,6 +135,7 @@
 
 
             <Button
+
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="Create Account"
@@ -144,7 +145,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:background="@drawable/custom_button"
-                android:id="@+id/others"/>
+                android:id="@+id/othersReg"/>
         </RelativeLayout>
     </ScrollView>
 

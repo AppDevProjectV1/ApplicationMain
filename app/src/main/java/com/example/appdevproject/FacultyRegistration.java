@@ -2,8 +2,11 @@ package com.example.appdevproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -34,9 +37,9 @@ public class FacultyRegistration extends AppCompatActivity {
         mCountryList.add(new DepartmentClass("mechnical Engineering", R.drawable.mechnical));
         mCountryList.add(new DepartmentClass("Production & Industrial", R.drawable.pandi));
         mCountryList.add(new DepartmentClass("Metallurgy", R.drawable.meta));
-        mCountryList.add(new DepartmentClass("Physics", R.drawable.physics));
-        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.physics));
-        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.electri));
+        mCountryList.add(new DepartmentClass("Physics", R.drawable.phys));
+        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.phys));
+        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.phys));
         mCountryList.add(new DepartmentClass("Chemistry", R.drawable.chemistry));
         mCountryList.add(new DepartmentClass("Architecture", R.drawable.archti));
         mCountryList.add(new DepartmentClass("GT", R.drawable.gt));
@@ -49,5 +52,13 @@ public class FacultyRegistration extends AppCompatActivity {
         mAdapter = new DepartmentAdapter(this, mCountryList);
         departspin.setAdapter(mAdapter);
 
+       Button facultyRegister=findViewById(R.id.facultyRegister);
+        facultyRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),Facultyprofile.class);
+                startActivity(intent);
+            }
+        });
     }
 }

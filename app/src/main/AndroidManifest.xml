@@ -16,7 +16,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FacultyRegistration"></activity>
+        <activity android:name=".OtherProfileActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Others Profile"
+            android:theme="@style/Other"/>
+        <activity android:name=".ChatsActivity" />
+        <activity
+            android:name=".NoticeProfActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Notices"
+            android:theme="@style/Other" />
+        <activity
+            android:name=".InboxActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label=" Users"
+            android:theme="@style/Other" />
+        <activity
+            android:name=".Facultyprofile"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Faculty Profile"
+            android:theme="@style/Other" />
+        <activity
+            android:name=".FacultyRegistration"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".NumberRegisterActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />

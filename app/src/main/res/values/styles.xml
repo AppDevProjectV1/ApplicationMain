@@ -8,8 +8,8 @@
     </style>
     <style name="Other" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark"> @color/splashcolor</item>
+        <item name="colorPrimary">@color/splashcolor</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent"> @color/splashcolor</item>
     </style>
 </resources>
