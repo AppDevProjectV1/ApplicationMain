@@ -16,10 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OtherProfileActivity"
+        <activity android:name=".StudentProfile"></activity>
+        <activity android:name=".StudentFeeds" />
+        <activity android:name=".CareerInterest" />
+        <activity
+            android:name=".OtherProfileActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Others Profile"
-            android:theme="@style/Other"/>
+            android:theme="@style/Other" />
         <activity android:name=".ChatsActivity" />
         <activity
             android:name=".NoticeProfActivity"

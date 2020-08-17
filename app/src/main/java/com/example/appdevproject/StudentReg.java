@@ -1,7 +1,10 @@
 package com.example.appdevproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -14,6 +17,7 @@ public class StudentReg extends AppCompatActivity {
     private EditText name, email, pass, cpass;
     private ArrayList<DepartmentClass> mCountryList,myearLists;
     private  DepartmentAdapter mAdapter,mNewAdapter;
+    private Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,7 @@ public class StudentReg extends AppCompatActivity {
         email = findViewById(R.id.semail);
         pass= findViewById(R.id.spass);
         cpass = findViewById(R.id.cpass);
-
+        next=findViewById(R.id.next);
         Spinner dropdown = findViewById(R.id.year);
        /* String[] items = new String[]{"I","II","III","IV","V"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -61,7 +65,7 @@ public class StudentReg extends AppCompatActivity {
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
 
-        Spinner departspin=(Spinner)findViewById(R.id.department);
+        Spinner departspin=(Spinner)findViewById(R.id.dept);
 
         mCountryList = new ArrayList<>();
         mCountryList.add(new DepartmentClass("Computer Science", R.drawable.computer));
@@ -71,9 +75,9 @@ public class StudentReg extends AppCompatActivity {
         mCountryList.add(new DepartmentClass("mechnical Engineering", R.drawable.mechnical));
         mCountryList.add(new DepartmentClass("Production & Industrial", R.drawable.pandi));
         mCountryList.add(new DepartmentClass("Metallurgy", R.drawable.meta));
-        mCountryList.add(new DepartmentClass("Physics", R.drawable.phys));
-        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.phys));
-        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.phys));
+        mCountryList.add(new DepartmentClass("Physics", R.drawable.physics));
+        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.physics));
+        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.electri));
         mCountryList.add(new DepartmentClass("Chemistry", R.drawable.chemistry));
         mCountryList.add(new DepartmentClass("Architecture", R.drawable.archti));
         mCountryList.add(new DepartmentClass("GT", R.drawable.gt));
@@ -86,5 +90,15 @@ public class StudentReg extends AppCompatActivity {
         mAdapter = new DepartmentAdapter(this, mCountryList);
         departspin.setAdapter(mAdapter);
 
+
+
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
+                startActivity(intent);
+            }
+        });
     }
 }

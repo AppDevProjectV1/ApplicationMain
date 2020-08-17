@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentProfile"
+    android:background="@color/commonBack">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            app:titleTextColor="@color/white"
+            android:background="@color/heading">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toLeftOf="@id/search"
+                    android:text="My Profile"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dp"
+                    android:layout_toLeftOf="@+id/profiletoggle"
+                    android:src="@drawable/ic_baseline_search_24"/>
+
+                <ImageView
+                    android:id="@+id/profiletoggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_baseline_menu_24"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/topnav"
+            android:id="@+id/scroll">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/info">
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_account_circle_24"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Name : Chota Chetan"
+                            android:layout_marginTop="20dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email : chotachetan420@gmail.com"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/contact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Contact : 9876543210"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/dept"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Department : Metallurgy"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Year : III"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/hostel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hostel : Baba Bhawan"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Groups"
+                    android:layout_below="@+id/info"
+                    android:id="@+id/grptitle"
+                    android:textSize="24sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/blckgreen"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/grptitle"
+                    android:background="@drawable/custom_info_tile"
+                    android:padding="5sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Paragraph On Trees: In-plant science, a tree is a lasting plant with a lengthened stem, a trunk, branches, and also leaves in many species. In certain areas, the meaning of a tree might tend to be smaller, incorporating just woody plants having auxiliary development."
+                    android:textColor="@color/white"
+                    android:id="@+id/grpinfo"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Achievements"
+                    android:layout_below="@+id/grpinfo"
+                    android:id="@+id/achivtitle"
+                    android:textSize="24sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/blckgreen"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/achivtitle"
+                    android:background="@drawable/custom_info_tile"
+                    android:padding="5sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Paragraph On Trees: In-plant science, a tree is a lasting plant with a lengthened stem, a trunk, branches, and also leaves in many species. In certain areas, the meaning of a tree might tend to be smaller, incorporating just woody plants having auxiliary development."
+                    android:textColor="@color/white"
+                    android:id="@+id/achivinfo"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hobbies"
+                    android:layout_below="@+id/achivinfo"
+                    android:id="@+id/hobtitle"
+                    android:textSize="24sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/blckgreen"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hobtitle"
+                    android:background="@drawable/custom_info_tile"
+                    android:padding="5sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Paragraph On Trees: In-plant science, a tree is a lasting plant with a lengthened stem, a trunk, branches, and also leaves in many species. In certain areas, the meaning of a tree might tend to be smaller, incorporating just woody plants having auxiliary development."
+                    android:textColor="@color/white"
+                    android:id="@+id/hobinfo"/>
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/topnav"
+            android:layout_below="@+id/toolbar">
+            <TextView
+                android:id="@+id/profiletab"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="Profile"
+                android:background="@drawable/custom_nav_tile"
+                android:textColor="@color/white"
+                android:gravity="center"
+
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/feedstab"
+                android:layout_toRightOf="@id/profiletab"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="Feeds"
+                android:background="@drawable/custom_nav_tile"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/inboxtab"
+                android:layout_toRightOf="@id/feedstab"
+
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="Inbox"
+                android:background="@drawable/custom_nav_tile"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

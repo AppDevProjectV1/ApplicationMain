@@ -15,4 +15,7 @@
     <color name="black">#000000</color>
     <color name="inboxcolor">#FFFEF2</color>
     <color name="commonBack">#EDE7F6</color>
+    <color name="blue">#00B0FF</color>
+    <color name="blckgreen">#004D40</color>
+
 </resources>
