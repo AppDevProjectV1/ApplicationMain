@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentProfile"></activity>
+        <activity android:name=".StudentProfile"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Student Profile"
+           />
         <activity android:name=".StudentFeeds" />
         <activity android:name=".CareerInterest" />
         <activity
