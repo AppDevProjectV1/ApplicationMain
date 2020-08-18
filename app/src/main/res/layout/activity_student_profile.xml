@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentProfile"
-    android:background="@color/commonBack"
-    android:layoutDirection="ltr">
+    android:background="@color/commonBack">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -23,7 +21,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -32,20 +31,17 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginStart="2dp"
                     android:layout_marginLeft="2dp"
-                    android:layout_toLeftOf="@id/search"
+                    android:layout_toLeftOf="@id/action_search"
                     android:text="My Profile"
                     android:textColor="@color/white"
+                    android:layout_centerVertical="true"
                     android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/search"
+                <androidx.appcompat.widget.SearchView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dp"
-                    android:layout_toLeftOf="@+id/profiletoggle"
-                    android:src="@drawable/ic_baseline_search_24"/>
+                    android:layout_toLeftOf="@id/profiletoggle"
+                    android:id="@+id/action_search" />
 
                 <ImageView
                     android:id="@+id/profiletoggle"
@@ -55,6 +51,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/ic_baseline_menu_24"/>
 
             </RelativeLayout>
