@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<item
-    android:id="@+id/action_search_user"
-    android:title="search"
-    android:icon="@drawable/search_icon"
-    app:actionViewClass="androidx.appcompat.widget.SearchView"
-    app:showAsAction="ifRoom|collapseActionView"/>
     <item
-        android:id="@+id/navigation"
+        android:id="@+id/action_search_user"
         android:title="search"
-        android:icon="@mipmap/navicon"
+        android:icon="@drawable/search_icon"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always"/>
 
-        app:showAsAction="ifRoom|collapseActionView"/>
+
+    <item
+        android:id="@+id/campusmap"
+        android:title="Campus Map"
+        app:showAsAction="never"
+
+        />
+    <item
+        android:id="@+id/notices"
+        android:title="Notices"
+        app:showAsAction="never"
+
+        />
+    <item
+    android:id="@+id/canteenorder"
+    android:title="Canteen Order"
+    app:showAsAction="never"
+
+    />
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        app:showAsAction="never"
+
+        />
+
 </menu>

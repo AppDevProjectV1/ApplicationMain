@@ -6,19 +6,9 @@
         android:title="search"
         android:icon="@drawable/search_icon"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView"/>
-    <item
-        android:id="@+id/co1"
-        android:title="Add to Contacts"
-        app:showAsAction="never"
-        android:icon="@mipmap/menuicon"
-        />
-    <item
-        android:id="@+id/co2"
-        android:title="Delete Contact"
-        app:showAsAction="never"
-        android:icon="@mipmap/menuicon"
-        />
+        app:showAsAction="always"/>
+
+
     <item
         android:id="@+id/co3"
         android:title="Exit Group"

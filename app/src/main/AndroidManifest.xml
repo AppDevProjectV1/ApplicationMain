@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.appdevproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -16,10 +18,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentProfile"
+        <activity android:name=".SportsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="Student Profile"
-           />
+            android:label="                   Sports"
+            android:theme="@style/Other"
+
+            />
+        <activity
+            android:name=".CampusActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="                 Activities"
+            android:theme="@style/Other" />
+        <activity android:name=".groupinfo" />
+        <activity android:name=".GroupAdapter" />
+        <activity android:name=".ModelClass" />
+        <activity
+            android:name=".CampusGroupActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="            About Groups"
+            android:theme="@style/Other" />
+        <activity
+            android:name=".StudentProfile"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Student Profile" />
         <activity android:name=".StudentFeeds" />
         <activity android:name=".CareerInterest" />
         <activity
