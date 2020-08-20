@@ -90,8 +90,6 @@ public class InboxActivity extends AppCompatActivity implements InboxAdapter.Lis
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.inbox_menu,menu);
-
-
         return super.onCreateOptionsMenu(menu);
     }
 

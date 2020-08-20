@@ -63,7 +63,7 @@
         android:layout_height="45dp"
         >
       <EditText
-          android:id="@+id/entermess"
+          android:id="@+id/messageEdit"
           android:layout_width="match_parent"
           android:padding="10dp"
           android:layout_height="45dp"
@@ -75,7 +75,7 @@
           />
 
       <Button
-          android:id="@+id/send"
+          android:id="@+id/sendBtn"
           android:layout_width="30dp"
           android:layout_height="30dp"
           android:layout_centerVertical="true"
@@ -85,7 +85,7 @@
           android:layout_marginRight="10dp" />
     </RelativeLayout>
     <Button
-        android:id="@+id/addimage"
+        android:id="@+id/pickImgBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/add_button"

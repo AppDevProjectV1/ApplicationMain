@@ -18,12 +18,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SportsActivity"
+        <activity android:name=".nav2activities.Thomson"></activity>
+        <activity android:name=".nav2activities.Library" />
+        <activity android:name=".nav2activities.Hostels" />
+        <activity android:name=".nav2activities.FestsList" />
+        <activity android:name=".nav2activities.Departments" />
+        <activity android:name=".nav2activities.Clubs" />
+        <activity android:name=".nav2activities.AboutIITR" />
+        <activity
+            android:name=".SportsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="                   Sports"
-            android:theme="@style/Other"
-
-            />
+            android:theme="@style/Other" />
         <activity
             android:name=".CampusActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

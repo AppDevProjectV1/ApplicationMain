@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -20,6 +21,11 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.appdevproject.nav2activities.AboutIITR;
+import com.example.appdevproject.nav2activities.FestsList;
+
+import java.util.Locale;
 
 public class StudentProfile extends AppCompatActivity {
 
@@ -148,18 +154,33 @@ public class StudentProfile extends AppCompatActivity {
                                     int position, long id) {
                 Intent intent;
                 switch (position) {
+                    case 0:
+                        intent=new Intent(getApplicationContext(), AboutIITR.class);
+                        startActivity(intent);
+                        break;
                     case 1:
                        intent=new Intent(getApplicationContext(),CampusGroupActivity.class);
                        startActivity(intent);
                         break;
-                    case 5:
-                        intent=new Intent(getApplicationContext(),CampusActivity.class);
+                    case 2:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(Locale.ENGLISH,"geo:%f,%f",29.8649,77.8965))));
+                        break;
+
+                    case 3:
+                        intent=new Intent(getApplicationContext(), FestsList.class);
                         startActivity(intent);
                         break;
+
                     case 4:
                         intent=new Intent(getApplicationContext(),SportsActivity.class);
                         startActivity(intent);
                         break;
+
+                    case 5:
+                        intent=new Intent(getApplicationContext(),CampusActivity.class);
+                        startActivity(intent);
+                        break;
+
                     default:
                         break;
                 }
