@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Privacy"
+    android:background="@color/commonBack">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/heading"
+        android:id="@+id/depttoolbar">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification Settings"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/depttoolbar"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:id="@+id/profilectrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/profilecontrol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile Picture"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/heading"
+                />
+            <TextView
+                android:id="@+id/selectedcontrol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profilecontrol"
+                android:text="ctrl"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:textColor="#757575"
+                tools:ignore="NotSibling" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/aboutctrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/aboutcontrol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About me"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/heading"
+                />
+            <TextView
+                android:id="@+id/aselectedcontrol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutcontrol"
+                android:text="ctrl"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:textColor="#757575"
+                tools:ignore="NotSibling" />
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

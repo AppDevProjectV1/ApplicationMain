@@ -155,6 +155,10 @@ noticetext.setText("Feeds");
                         return false;
                     }
                 });
+
+
+            case R.id.co4:
+                startActivity(new Intent(getApplicationContext(),Privacy.class));
         }
         return super.onOptionsItemSelected(item);
     }

@@ -184,6 +184,9 @@ public class StudentProfile extends AppCompatActivity {
                         startActivity(intent);
                         break;
 
+                    case 7:
+                        startActivity(new Intent(getApplicationContext(),CanteenList.class));
+
                     default:
                         break;
                 }
