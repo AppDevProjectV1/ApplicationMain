@@ -8,12 +8,15 @@ import androidx.core.content.ContextCompat;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class OtherProfileActivity extends AppCompatActivity {
     private  SearchView searchView;
@@ -38,6 +41,8 @@ public class OtherProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),NoticeProfActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT,"other");
+
                 startActivity(intent);
 
                 finish();
@@ -49,6 +54,7 @@ public class OtherProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(OtherProfileActivity.this,InboxActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT,"other");
                 startActivity(intent);
                 finish();
             }
@@ -81,6 +87,10 @@ public class OtherProfileActivity extends AppCompatActivity {
                         return false;
                     }
                 });
+            case R.id.campusmap:
+                String uri=String.format(Locale.ENGLISH,"geo:%f,%f",29.8649,77.8965);
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
+
         }
         return super.onOptionsItemSelected(item);
     }

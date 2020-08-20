@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class StudentFeeds extends AppCompatActivity {
@@ -28,6 +29,14 @@ public class StudentFeeds extends AppCompatActivity {
             inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
         }
 
+     profiletab.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+             startActivity(intent);
+             finish();
+         }
+     });
 
 
     }

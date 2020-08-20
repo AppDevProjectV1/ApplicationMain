@@ -35,6 +35,9 @@ public class InboxActivity extends AppCompatActivity implements InboxAdapter.Lis
         final TextView profiletext=(TextView)findViewById(R.id.profiletext);
         final TextView noticetext=(TextView)findViewById(R.id.noticestext);
         final TextView inboxtext=(TextView)findViewById(R.id.inboxtext);
+        Intent intentget=getIntent();
+        String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
+
         int color1= ContextCompat.getColor(this,R.color.blueviolet);
         int color2= ContextCompat.getColor(this,R.color.white);
         inboxtext.setBackgroundColor(color1);
@@ -43,22 +46,62 @@ public class InboxActivity extends AppCompatActivity implements InboxAdapter.Lis
         profiletext.setBackgroundColor(color2);
         noticetext.setTextColor(Color.parseColor("#1A237E"));
          noticetext.setBackgroundColor(color2);
+        if(s.equals("student")){
+noticetext.setText("Feeds");
+
+        }
         profiletext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(InboxActivity.this,Facultyprofile.class);
-                startActivity(intent);
+                Intent intent;
+                Intent intentget=getIntent();
+                String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
 
-              finish();
+                switch (s){
+                    case "faculty":
+                         intent=new Intent(InboxActivity.this,Facultyprofile.class);
+                        startActivity(intent);
+                        break;
+
+                    case "student":
+                        intent=new Intent(InboxActivity.this,StudentProfile.class);
+                        startActivity(intent);
+                        break;
+                    case "other":
+                        intent=new Intent(InboxActivity.this,OtherProfileActivity.class);
+                        startActivity(intent);
+                         break;
+                }
+
+                finish();
+
+
             }
         });
         noticetext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(InboxActivity.this,NoticeProfActivity.class);
-                startActivity(intent);
+                Intent intent;
+                Intent intentget=getIntent();
+                String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
+                switch (s){
+                    case "faculty":
+                        intent=new Intent(InboxActivity.this,NoticeProfActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case "student":
+                        intent=new Intent(InboxActivity.this,StudentFeeds.class);
+                        startActivity(intent);
+                        break;
+                    case "other":
+                        intent=new Intent(InboxActivity.this,NoticeProfActivity.class);
+                        startActivity(intent);
+                        break;
+                }
 
                 finish();
+
             }
         });
 

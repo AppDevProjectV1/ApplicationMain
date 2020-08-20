@@ -80,8 +80,9 @@ public class StudentProfile extends AppCompatActivity {
                     inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
 
                     Intent intent=new Intent(getApplicationContext(),InboxActivity.class);
+                    intent.putExtra(Intent.EXTRA_TEXT,"student");
                     startActivity(intent);
-
+                    finish();
                 }
             }
         });
@@ -93,6 +94,8 @@ public class StudentProfile extends AppCompatActivity {
                     feedstab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
                     profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
                     inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+
+
                 }
             }
         });
@@ -108,7 +111,7 @@ public class StudentProfile extends AppCompatActivity {
 
                     Intent intent=new Intent(getApplicationContext(),StudentFeeds.class);
                     startActivity(intent);
-
+                       finish();
                 }
             }
         });

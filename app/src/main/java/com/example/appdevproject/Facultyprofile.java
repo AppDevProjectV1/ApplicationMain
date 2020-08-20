@@ -48,6 +48,7 @@ public class Facultyprofile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),NoticeProfActivity.class);
                 startActivity(intent);
+                intent.putExtra(Intent.EXTRA_TEXT,"faculty");
 
                 finish();
             }
@@ -58,6 +59,8 @@ public class Facultyprofile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Facultyprofile.this,InboxActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT,"faculty");
+
                 startActivity(intent);
                 finish();
             }

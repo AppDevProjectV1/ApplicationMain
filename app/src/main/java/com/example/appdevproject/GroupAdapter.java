@@ -41,12 +41,14 @@ public class GroupAdapter extends ArrayAdapter<ModelClass> {
 
         ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.groupimage);
         TextView textViewName = (TextView) listItem.findViewById(R.id.groupname);
+        TextView textViewinfo = (TextView) listItem.findViewById(R.id.groupinfo);
 
          ModelClass folder = getItem(position);
 
 
         imageViewIcon.setImageResource(folder.getMimage());
         textViewName.setText(folder.getMname());
+        textViewinfo.setText(folder.getMinfo());
 
         return listItem;
     }
