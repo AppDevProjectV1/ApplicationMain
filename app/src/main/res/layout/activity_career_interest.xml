@@ -57,9 +57,10 @@
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/careerlist"
                     android:layout_width="match_parent"
@@ -71,14 +72,13 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Create account"
-                    android:layout_below="@id/careerlist"
-                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:background="@drawable/custom_button"
                     android:id="@+id/createacc"/>
-            </RelativeLayout>
+            </LinearLayout>
         </ScrollView>
     </RelativeLayout>
 

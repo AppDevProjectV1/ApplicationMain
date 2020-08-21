@@ -38,6 +38,15 @@ public class StudentFeeds extends AppCompatActivity {
          }
      });
 
+        inboxtab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),InboxActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
     }
 

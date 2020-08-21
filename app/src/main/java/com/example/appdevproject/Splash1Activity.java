@@ -29,6 +29,7 @@ public class Splash1Activity extends AppCompatActivity {
             public void run() {
                 Intent i = new Intent(getApplicationContext(),secondAnime.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 finish();
             }
         },splashTimeOut);

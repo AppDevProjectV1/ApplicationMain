@@ -14,13 +14,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Privacy extends AppCompatActivity implements View.OnClickListener {
+public class Privacy extends AppCompatActivity {
 
 
     private RelativeLayout profilectrl;
     private RelativeLayout aboutctrl;
     private TextView selectedControl;
-    private TextView aSelectedControll;
+    private TextView aSelectedControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,20 @@ public class Privacy extends AppCompatActivity implements View.OnClickListener {
         profilectrl=findViewById(R.id.profilectrl);
         aboutctrl=findViewById(R.id.aboutctrl);
         selectedControl=findViewById(R.id.selectedcontrol);
-        aSelectedControll=findViewById(R.id.aselectedcontrol);
+        aSelectedControl=findViewById(R.id.aselectedcontrol);
 
-        profilectrl.setOnClickListener(this);
-        aboutctrl.setOnClickListener(this);
+        profilectrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRadioButtonDialog();
+            }
+        });
+        aboutctrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRadioButtonDialog1();
+            }
+        });
     }
 
 
@@ -69,9 +79,40 @@ public class Privacy extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        showRadioButtonDialog();
+
+
+
+    private void showRadioButtonDialog1() {
+
+        // custom dialog
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialogradios);
+
+        List<String> stringList=new ArrayList<>();  // here is list
+        stringList.add("Everyone");
+        stringList.add("My contacts");
+        stringList.add("Nobody");
+
+        RadioGroup rg = (RadioGroup) dialog.findViewById(R.id.radio_group);
+
+        for(int i=0;i<stringList.size();i++){
+            RadioButton rb=new RadioButton(this);// dynamically creating RadioButton and adding to RadioGroup.
+            rb.setTextSize(20);
+            rb.setText(stringList.get(i));
+            rb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    aSelectedControl.setText(rb.getText());
+                }
+            });
+            rg.addView(rb);
+
+            dialog.show();
+        }
     }
+
+
 }
 

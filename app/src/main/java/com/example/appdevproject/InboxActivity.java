@@ -46,16 +46,17 @@ public class InboxActivity extends AppCompatActivity implements InboxAdapter.Lis
         profiletext.setBackgroundColor(color2);
         noticetext.setTextColor(Color.parseColor("#1A237E"));
          noticetext.setBackgroundColor(color2);
-        if(s.equals("student")){
-noticetext.setText("Feeds");
 
-        }
         profiletext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
                 Intent intentget=getIntent();
                 String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
+                if(s.equals("student")){
+                    noticetext.setText("Feeds");
+
+                }
 
                 switch (s){
                     case "faculty":
