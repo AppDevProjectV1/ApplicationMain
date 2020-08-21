@@ -1,101 +1,46 @@
 package com.example.appdevproject;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
 
 
-import org.w3c.dom.Text;
-
-import java.text.BreakIterator;
-
-public class CanteenAdapter extends RecyclerView.Adapter<CanteenAdapter.CantViewHolder>{
+public class CanteenAdapter extends ArrayAdapter<CanteenClass> {
+    //define these variable customadapter constructor
 
 
-    private String[] canteens;
-
-    final private ListItemClickListener mOnClickListener;
-
-
-
-    public CanteenAdapter(ListItemClickListener listener,String[] canteens) {
-        mOnClickListener = listener;
-        this.canteens=canteens;
+    public CanteenAdapter(@NonNull Context context, ArrayList<CanteenClass> data) {
+        super(context,0,data);
     }
 
+    //this method is used to set the value to listview item wih the corrosponding position and return the listviewitem
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-    public interface ListItemClickListener {
-        void onListItemClick(String username);
-    }
+        View listItem = convertView;
 
 
-
-    public class CantViewHolder extends RecyclerView.ViewHolder
-            implements OnClickListener {
-
-        public final TextView canteen;
-
-        public CantViewHolder(View view) {
-            super(view);
-
-            canteen=(TextView) view.findViewById(R.id.canteenname);
-
-            view.setOnClickListener(this);
+        if(listItem==null){
+            listItem= LayoutInflater.from(getContext()).inflate(R.layout.canteen_list_item, parent, false);
         }
 
+        ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.canteenimage);
+        TextView textViewName = (TextView) listItem.findViewById(R.id.canteentext);
 
-
-        @Override
-        public void onClick(View v) {
-            int adapterPosition = getAdapterPosition();
-            String canteen=canteens[adapterPosition];
-            mOnClickListener.onListItemClick(canteen);
-        }
-
-
+       CanteenClass folder = getItem(position);
+        imageViewIcon.setImageResource(folder.getMimagecanteen());
+        textViewName.setText(folder.getMnamecanteen());
+        return listItem;
     }
-
-    @Override
-    public CantViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-
-        Context context = viewGroup.getContext();
-        int layoutIdForListItem = R.layout.canteen_list_item;
-        LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
-
-        View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        CantViewHolder viewHolder = new CantViewHolder(view);
-
-        return viewHolder;
-
-
-        /*viewHolderCount++;
-        Log.d(TAG, "onCreateViewHolder: number of ViewHolders created: "
-                + viewHolderCount);
-        return viewHolder;*/
-
-    }
-
-    @Override
-    public void onBindViewHolder(CantViewHolder ViewHolder, int position) {
-        String name= canteens[position];
-        ViewHolder.canteen.setText(name);
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return canteens.length;
-    }
-
-
 }

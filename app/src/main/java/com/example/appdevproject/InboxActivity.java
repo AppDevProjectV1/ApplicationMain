@@ -158,7 +158,9 @@ noticetext.setText("Feeds");
 
 
             case R.id.co4:
-                startActivity(new Intent(getApplicationContext(),Privacy.class));
+                Intent intent=new Intent( InboxActivity.this,ProfileSettingsActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

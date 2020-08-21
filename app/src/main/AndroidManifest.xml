@@ -3,7 +3,7 @@
     package="com.example.appdevproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -18,7 +18,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CanteenList"></activity>
+        <activity android:name=".ProfileSettingsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="                 Settings"
+            android:theme="@style/Other" />
+        <activity android:name=".CanteenAdapter" />
+        <activity android:name=".CanteenClass" />
+        <activity
+            android:name=".CanteenOrderActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="           Canteen Order"
+            android:theme="@style/Other" />
         <activity android:name=".AboutApp" />
         <activity android:name=".Privacy" />
         <activity android:name=".Notifications" />

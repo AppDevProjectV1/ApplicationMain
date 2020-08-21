@@ -1,5 +1,4 @@
 package com.example.appdevproject;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
@@ -13,6 +12,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,17 +24,20 @@ import android.widget.TextView;
 
 import com.example.appdevproject.nav2activities.AboutIITR;
 import com.example.appdevproject.nav2activities.FestsList;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.Locale;
 
 public class StudentProfile extends AppCompatActivity {
-
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
     androidx.appcompat.widget.SearchView searchView;
     private TextView profiletab,feedstab,inboxtab;
     private ImageView img;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private CircularImageView profileImageView;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     androidx.appcompat.app.ActionBarDrawerToggle mDrawerToggle;
@@ -47,7 +50,14 @@ public class StudentProfile extends AppCompatActivity {
         feedstab=findViewById(R.id.feedstab);
         inboxtab=findViewById(R.id.inboxtab);
         searchView=findViewById(R.id.action_search);
+        profileImageView = findViewById(R.id.profileimageview);
 
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
         searchView.setQueryHint(Html.fromHtml("<font color = #ffffff>" +"Search users" + "</font>"));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -111,7 +121,7 @@ public class StudentProfile extends AppCompatActivity {
 
                     Intent intent=new Intent(getApplicationContext(),StudentFeeds.class);
                     startActivity(intent);
-                       finish();
+                    finish();
                 }
             }
         });
@@ -162,8 +172,8 @@ public class StudentProfile extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 1:
-                       intent=new Intent(getApplicationContext(),CampusGroupActivity.class);
-                       startActivity(intent);
+                        intent=new Intent(getApplicationContext(),CampusGroupActivity.class);
+                        startActivity(intent);
                         break;
                     case 2:
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(Locale.ENGLISH,"geo:%f,%f",29.8649,77.8965))));
@@ -185,7 +195,9 @@ public class StudentProfile extends AppCompatActivity {
                         break;
 
                     case 7:
-                        startActivity(new Intent(getApplicationContext(),CanteenList.class));
+                        intent=new Intent(getApplicationContext(), CanteenOrderActivity.class);
+                        startActivity(intent);
+                        break;
 
                     default:
                         break;
@@ -264,5 +276,18 @@ public class StudentProfile extends AppCompatActivity {
         mDrawerToggle = new androidx.appcompat.app.ActionBarDrawerToggle(this,mDrawerLayout,R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
+    }
+    private void openGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            profileImageView.setImageURI(imageUri);
+
+        }
     }
 }
