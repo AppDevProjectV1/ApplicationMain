@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/contact_us"
+        android:title="Contact us"
+        app:showAsAction="always"
+        android:icon="@mipmap/contact"
+        />
+    <item
+        android:id="@+id/reset_menu"
+        android:title="Reset Order"
+        app:showAsAction="never"
+        />
+
+
+
+</menu>

@@ -22,13 +22,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter Your Number"
-            android:textColor="@color/splashcolor"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
-            android:textSize="40sp"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Your Number"
+        android:textColor="@color/splashcolor"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:textSize="40sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

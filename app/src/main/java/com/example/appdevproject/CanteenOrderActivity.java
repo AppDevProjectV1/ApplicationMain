@@ -3,8 +3,11 @@ package com.example.appdevproject;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -26,23 +29,31 @@ public class CanteenOrderActivity extends AppCompatActivity {
 
 ArrayList<CanteenClass> mcanteenlist= new ArrayList<CanteenClass>();
 
-        mcanteenlist.add(new CanteenClass("Azad Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass( "Cautley Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass( "Ganga Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass( "Govind Bhawan Canteen" , R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass("Indra Bahwan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass( "Jawahar Bhawan Canteen" , R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass("Kasturba Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass("Radhakrishnan Bhawan Canteen" , R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass(  "Rajendra Bhawan Canteen" , R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass("Rajiv Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass( "Ravindra Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass(  "Malviya Bhawan Canteen", R.mipmap.canteen));
-        mcanteenlist.add(new CanteenClass( "Sarojini Bhawan Canteen", R.mipmap.canteen));
+        mcanteenlist.add(new CanteenClass("Azad Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass( "Cautley Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass( "Ganga Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass( "Govind Bhawan Canteen" , R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass("Indra Bahwan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass( "Jawahar Bhawan Canteen" , R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass("Kasturba Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass("Radhakrishnan Bhawan Canteen" , R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass(  "Rajendra Bhawan Canteen" , R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass("Rajiv Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass( "Ravindra Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass(  "Malviya Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass( "Sarojini Bhawan Canteen", R.mipmap.menureso));
 
 
        CanteenAdapter adapter= new CanteenAdapter(this,mcanteenlist);
+
        canteenbahwan.setAdapter(adapter);
+       canteenbahwan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               Intent intent=new Intent (getApplicationContext(),OrderCanteen.class);
+               startActivity(intent);
+           }
+       });
 
     }
     public boolean onOptionsItemSelected(MenuItem item){

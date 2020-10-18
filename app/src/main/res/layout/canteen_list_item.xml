@@ -15,7 +15,7 @@
             android:id="@+id/canteenimage"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@mipmap/canteen"
+            android:src="@mipmap/menureso"
 
             />
         <TextView
