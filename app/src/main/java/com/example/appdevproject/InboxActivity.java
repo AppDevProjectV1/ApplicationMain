@@ -28,85 +28,77 @@ public class InboxActivity extends AppCompatActivity implements InboxAdapter.Lis
     private  SearchView searchView;
     private   boolean isSearch=true;
     private RecyclerView inboxList;
+    private TextView profiletab,feedstab,inboxtab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
-        final TextView profiletext=(TextView)findViewById(R.id.profiletext);
-        final TextView noticetext=(TextView)findViewById(R.id.noticestext);
-        final TextView inboxtext=(TextView)findViewById(R.id.inboxtext);
+
+
+        profiletab=findViewById(R.id.profiletab);
+        feedstab=findViewById(R.id.feedstab);
+        inboxtab=findViewById(R.id.inboxtab);
         Intent intentget=getIntent();
         String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
 
-        int color1= ContextCompat.getColor(this,R.color.blueviolet);
-        int color2= ContextCompat.getColor(this,R.color.white);
-        inboxtext.setBackgroundColor(color1);
-        inboxtext.setTextColor(color2);
-        profiletext.setTextColor(Color.parseColor("#1A237E"));
-        profiletext.setBackgroundColor(color2);
-        noticetext.setTextColor(Color.parseColor("#1A237E"));
-         noticetext.setBackgroundColor(color2);
 
-        profiletext.setOnClickListener(new View.OnClickListener() {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            feedstab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+            profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+            inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile));
+        }
+
+
+        inboxtab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent;
-                Intent intentget=getIntent();
-                String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
-                if(s.equals("student")){
-                    noticetext.setText("Feeds");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    feedstab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+                    profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+                    inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
+
 
                 }
-
-                switch (s){
-                    case "faculty":
-                         intent=new Intent(InboxActivity.this,Facultyprofile.class);
-                        startActivity(intent);
-                        break;
-
-                    case "student":
-                        intent=new Intent(InboxActivity.this,StudentProfile.class);
-                        startActivity(intent);
-                        break;
-                    case "other":
-                        intent=new Intent(InboxActivity.this,OtherProfileActivity.class);
-                        startActivity(intent);
-                         break;
-                }
-
-                finish();
-
-
-            }
-        });
-        noticetext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent;
-                Intent intentget=getIntent();
-                String s=intentget.getStringExtra(Intent.EXTRA_TEXT);
-                switch (s){
-                    case "faculty":
-                        intent=new Intent(InboxActivity.this,NoticeProfActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    case "student":
-                        intent=new Intent(InboxActivity.this,StudentFeeds.class);
-                        startActivity(intent);
-                        break;
-                    case "other":
-                        intent=new Intent(InboxActivity.this,NoticeProfActivity.class);
-                        startActivity(intent);
-                        break;
-                }
-
-                finish();
-
             }
         });
 
-    inboxList = (RecyclerView) findViewById(R.id.inbox_recycle);
+        profiletab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    feedstab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+                    profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
+                    inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+                    Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+                    intent.putExtra(Intent.EXTRA_TEXT,"student");
+                    startActivity(intent);
+                    finish();
+
+                }
+            }
+        });
+
+        feedstab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    feedstab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
+                    profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+                    inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
+
+
+                    Intent intent=new Intent(getApplicationContext(),StudentFeeds.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+
+
+
+        inboxList = (RecyclerView) findViewById(R.id.inbox_recycle);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         inboxList.setLayoutManager(layoutManager);
         inboxList.setHasFixedSize(true);

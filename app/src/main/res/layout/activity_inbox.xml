@@ -25,37 +25,37 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:scrollbars="none">
-
                     <TextView
-                        android:id="@+id/profiletext"
+                        android:id="@+id/profiletab"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:textSize="22sp"
+                        android:layout_height="30dp"
                         android:text="Profile"
-                        android:textColor= "@color/backgroundpurple"
-                        android:background="@color/blueviolet"/>
+                        android:background="@drawable/custom_nav_tile"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+
+                        android:layout_weight="1"/>
                     <TextView
-                        android:id="@+id/noticestext"
+                        android:id="@+id/feedstab"
+                        android:layout_toRightOf="@id/profiletab"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:textSize="22sp"
-                        android:text="Notices"
-                        android:background="@color/backgroundpurple"
-                        android:textColor= "@color/splashcolor"/>
+                        android:layout_height="30dp"
+                        android:text="Feeds"
+                        android:background="@drawable/custom_nav_tile"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
                     <TextView
-                        android:id="@+id/inboxtext"
+                        android:id="@+id/inboxtab"
+                        android:layout_toRightOf="@id/feedstab"
+
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:textSize="22sp"
+                        android:layout_height="30dp"
                         android:text="Inbox"
-                        android:background="@color/backgroundpurple"
-                        android:textColor= "@color/splashcolor"/>
+                        android:background="@drawable/custom_nav_tile"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

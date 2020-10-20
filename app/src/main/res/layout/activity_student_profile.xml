@@ -222,30 +222,32 @@
             android:orientation="horizontal"
             android:id="@+id/topnav"
             android:layout_below="@+id/toolbar">
-            <TextView
+            <ImageView
                 android:id="@+id/profiletab"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:text="Profile"
+                android:src="@drawable/admi"
                 android:background="@drawable/custom_nav_tile"
                 android:textColor="@color/white"
                 android:gravity="center"
 
                 android:layout_weight="1"/>
-            <TextView
+            <ImageView
                 android:id="@+id/feedstab"
                 android:layout_toRightOf="@id/profiletab"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:text="Feeds"
+                android:src="@drawable/intersts"
                 android:background="@drawable/custom_nav_tile"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_weight="1"/>
-            <TextView
+            <ImageView
                 android:id="@+id/inboxtab"
                 android:layout_toRightOf="@id/feedstab"
-
+                android:src="@drawable/chat1"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:text="Inbox"

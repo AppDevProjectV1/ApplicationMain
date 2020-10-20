@@ -33,7 +33,7 @@ public class StudentProfile extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     androidx.appcompat.widget.SearchView searchView;
-    private TextView profiletab,feedstab,inboxtab;
+    private  ImageView profiletab,feedstab,inboxtab;
     private ImageView img;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
