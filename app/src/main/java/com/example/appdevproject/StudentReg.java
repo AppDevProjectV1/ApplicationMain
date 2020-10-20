@@ -79,7 +79,9 @@ public class StudentReg extends AppCompatActivity {
                                  public void onComplete(@NonNull Task<AuthResult> task) {
                                     // progressBar.setVisibility(View.GONE);
                                      if (task.isSuccessful()) {
+
                                          Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
+                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                          startActivity(intent);
                                          Toast.makeText(StudentReg.this, "Select Your Interest", Toast.LENGTH_SHORT).show();
 
@@ -157,4 +159,5 @@ public class StudentReg extends AppCompatActivity {
 
 
     }
+
 }

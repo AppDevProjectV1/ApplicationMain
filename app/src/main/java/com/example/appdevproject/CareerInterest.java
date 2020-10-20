@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.appdevproject.nav2activities.AboutIITR;
 import com.example.appdevproject.nav2activities.FestsList;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,13 +165,19 @@ public class CareerInterest extends AppCompatActivity implements CareerAdapter.O
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+
                 saveData();
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+
                 startActivity(intent);
             }
         });
 
 
     }
+ 
 
 
     @Override

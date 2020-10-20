@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.example.appdevproject.nav2activities.AboutIITR;
 import com.example.appdevproject.nav2activities.FestsList;
+import com.google.firebase.auth.FirebaseAuth;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class StudentProfile extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     androidx.appcompat.widget.SearchView searchView;
-    private TextView profiletab,feedstab,inboxtab;
+    private  ImageView profiletab,feedstab,inboxtab;
     private ImageView img;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
@@ -212,14 +213,25 @@ public class StudentProfile extends AppCompatActivity {
                         startActivity(intent);
                         break;
 
+                    case 8:
+                        intent=new Intent(getApplicationContext(), CampusVideos.class);
+                        startActivity(intent);
+                        break;
+                    case 9:
+                       if(FirebaseAuth.getInstance().getCurrentUser() != null){
+                        intent=new Intent(getApplicationContext(),RegisterActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);}
+                        break;
+
                     case 7:
                         intent=new Intent(getApplicationContext(), CanteenOrderActivity.class);
                         startActivity(intent);
                         break;
 
-                    case 9:
-                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                        saveData();
+//                    case 9:
+//                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+//                        saveData();
 
                     default:
                         break;
