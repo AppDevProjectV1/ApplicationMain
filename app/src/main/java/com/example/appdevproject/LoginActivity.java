@@ -59,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                                     startActivity(intent);
                                     Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
 
@@ -73,4 +75,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

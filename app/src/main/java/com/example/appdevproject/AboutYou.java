@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class AboutYou extends AppCompatActivity implements View.OnClickListener {
 
     private Button student,faculty,others;
@@ -48,4 +50,5 @@ public class AboutYou extends AppCompatActivity implements View.OnClickListener 
         }
 
     }
+
 }
