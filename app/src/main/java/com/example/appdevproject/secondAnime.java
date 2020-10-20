@@ -1,6 +1,7 @@
 package com.example.appdevproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,11 @@ public class secondAnime extends AppCompatActivity {
 
 
     private Timer timer;
+    public static final String SHARED_PREFS="sharedPrefs";
+    public static final String loggedin="loggedin";
+
+    public boolean isLogged;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +28,33 @@ public class secondAnime extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent=new Intent(getApplicationContext(),GetStartActivity.class);
-                startActivity(intent);
+                if(isLogin()){
+                    startActivity(new Intent(getApplicationContext(),StudentProfile.class));
+                }
+
+               else{
+                    Intent intent=new Intent(getApplicationContext(),GetStartActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
         },1500);
+
+
+    }
+
+
+
+    public boolean isLogin(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        isLogged=sharedPreferences.getBoolean(loggedin,false);
+
+        if(isLogged){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

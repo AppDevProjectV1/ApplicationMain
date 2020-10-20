@@ -1,50 +1,70 @@
 package com.example.appdevproject;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CareerAdapter extends RecyclerView.Adapter<CareerAdapter.CareerViewHolder> {
+public class CareerAdapter extends ArrayAdapter<DrawerModel> {
 
 
-    private String[] options;
-    public CareerAdapter(String[] options)
+    Context mContext;
+    int layoutResourceId;
+    DrawerModel[] data=null;
+    private OnItemClickListener onItemClickListener;
+
+    public interface OnItemClickListener{
+        void OnItemClick(String name);
+    }
+
+
+    public CareerAdapter(Context mContext, int layoutResourceId, DrawerModel[] data,OnItemClickListener onItemClickListener)
     {
-        this.options=options;
+        super(mContext, layoutResourceId, data);
+        this.layoutResourceId = layoutResourceId;
+        this.mContext = mContext;
+        this.data=data;
+        this.onItemClickListener=onItemClickListener;
     }
 
-    @NonNull
-    @Override
-    public CareerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater=LayoutInflater.from(parent.getContext());
-        View view=inflater.inflate(R.layout.career_list_item,parent,false);
-        return new CareerViewHolder(view);
-    }
+
 
     @Override
-    public void onBindViewHolder(@NonNull CareerViewHolder holder, int position) {
-        String option=options[position];
-        holder.checkBox.setText(option);
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        View listItem = convertView;
+
+        LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
+        listItem = inflater.inflate(layoutResourceId, parent, false);
+
+        ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
+        TextView textViewName =  listItem.findViewById(R.id.textViewName);
+
+        DrawerModel folder = data[position];
+
+
+        imageViewIcon.setImageResource(folder.icon);
+        textViewName.setText(folder.name);
+
+        listItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.OnItemClick(folder.name);
+                v.setBackgroundColor(Color.parseColor("#311B92"));
+                textViewName.setTextColor(Color.parseColor("#FFFFFF"));
+            }
+        });
+
+        return listItem;
     }
-
-    @Override
-    public int getItemCount() {
-        return options.length;
-    }
-
-    public class CareerViewHolder extends RecyclerView.ViewHolder{
-
-        private CheckBox checkBox;
-        public CareerViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            checkBox=itemView.findViewById(R.id.careercheck);
-        }
-    }
-
 }

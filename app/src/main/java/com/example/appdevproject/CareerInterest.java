@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -15,14 +16,17 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.appdevproject.nav2activities.AboutIITR;
 import com.example.appdevproject.nav2activities.FestsList;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-public class CareerInterest extends AppCompatActivity {
+public class CareerInterest extends AppCompatActivity implements CareerAdapter.OnItemClickListener {
 
 
     private Button createAcc;
@@ -33,22 +37,66 @@ public class CareerInterest extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     ListView navlist;
-    private RecyclerView careerList;
+    private ListView careerList;
+
+    public ArrayList<String> selectedOpts;
+
+    public static final String SHARED_PREFS="sharedPrefs2";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_career_interest);
 
-        String[] options={"Software developement","Competitive Programming","Artificial Intelligence","Data science","Machine Learning",
-                "Web Developement","Mobile App Developement","Game Developement","Finance","Enterpreneurship","Dramatics","Civil Services","Writing"
-                ,"Poetry","Dancing","Standup Comedy","Debate","Music","Singing","Video Production","Video Editing","CGI Creating","Virtual Reality"
-                ,"2D Animation","Desinging"};
+        selectedOpts=new ArrayList<>();
+
+
+        DrawerModel[] options={
+                new DrawerModel(R.drawable.aboutiitrr,"Software Developement"),
+                new DrawerModel(R.drawable.aboutiitrr,"Competitive Programming"),
+                new DrawerModel(R.drawable.aboutiitrr,"Artificial Intelligence"),
+                new DrawerModel(R.drawable.aboutiitrr,"Data science"),
+                new DrawerModel(R.drawable.aboutiitrr,"Machine Learning"),
+                new DrawerModel(R.drawable.aboutiitrr,"Web Developement"),
+                new DrawerModel(R.drawable.aboutiitrr,"Mobile App Developement"),
+                new DrawerModel(R.drawable.aboutiitrr,"Game Developement"),
+                new DrawerModel(R.drawable.aboutiitrr,"Finance"),
+                new DrawerModel(R.drawable.aboutiitrr,"Enterpreneurship"),
+                new DrawerModel(R.drawable.aboutiitrr,"Dramatics"),
+                new DrawerModel(R.drawable.aboutiitrr,"Civil Services"),
+                new DrawerModel(R.drawable.aboutiitrr,"Writing"),
+                new DrawerModel(R.drawable.aboutiitrr,"Poetry"),
+                new DrawerModel(R.drawable.aboutiitrr,"Dancing"),
+                new DrawerModel(R.drawable.aboutiitrr,"Standup Comedy"),
+                new DrawerModel(R.drawable.aboutiitrr,"Debate"),
+                new DrawerModel(R.drawable.aboutiitrr,"Music"),
+                new DrawerModel(R.drawable.aboutiitrr,"Singing"),
+                new DrawerModel(R.drawable.aboutiitrr,"Video Production"),
+                new DrawerModel(R.drawable.aboutiitrr,"Video Editing"),
+                new DrawerModel(R.drawable.aboutiitrr,"CGI Creating"),
+                new DrawerModel(R.drawable.aboutiitrr,"Virtual Reality"),
+                new DrawerModel(R.drawable.aboutiitrr,"2D Animation"),
+                new DrawerModel(R.drawable.aboutiitrr,"Desinging"),
+
+        };
 
 
         careerList=findViewById(R.id.careerlist);
-        careerList.setLayoutManager(new LinearLayoutManager(this));
-        careerList.setAdapter(new CareerAdapter(options));
+        CareerAdapter careerAdapter=new CareerAdapter(this,R.layout.opt_list_tems,options,this);
+        careerList.setAdapter(careerAdapter);
+
+//
+//        careerList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                String str=careerList.getItemAtPosition(position).toString();
+//                Toast.makeText(CareerInterest.this, str, Toast.LENGTH_SHORT).show();
+//                selectedOpts.add(str);
+//                return true;
+//            }
+//        });
+
 
 
         Toolbar toolbar=findViewById(R.id.toolbar);
@@ -68,7 +116,8 @@ public class CareerInterest extends AppCompatActivity {
         });
 
 
-        DrawerModel[] data={new DrawerModel(R.drawable.aboutiitrr,"About IITR"),
+        DrawerModel[] data={
+                new DrawerModel(R.drawable.aboutiitrr,"About IITR"),
                 new DrawerModel(R.drawable.group,"Campus Groups"),
                 new DrawerModel(R.drawable.map,"Campus Maps"),
                 new DrawerModel(R.drawable.fests,"Campus Fests"),
@@ -115,6 +164,7 @@ public class CareerInterest extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+                saveData();
                 startActivity(intent);
             }
         });
@@ -122,4 +172,21 @@ public class CareerInterest extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void OnItemClick(String name) {
+        Toast.makeText(CareerInterest.this, name, Toast.LENGTH_SHORT).show();
+        selectedOpts.add(name);
+    }
+
+
+    public void saveData(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        for(String opt : selectedOpts){
+            editor.putString(opt,opt);
+        }
+
+        editor.apply();
+    }
 }

@@ -23,7 +23,8 @@
         android:id="@+id/editTextCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/enterotp"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="232dp"
         android:ems="10"
@@ -37,9 +38,8 @@
         android:id="@+id/buttonSignIn"
         android:layout_width="227dp"
         android:layout_height="47dp"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp"
+        android:layout_below="@+id/editTextCode"
         android:background="@drawable/custom_button"
         android:text="Verify"
         android:textColor="#ffffff"
@@ -56,6 +56,7 @@
         android:layout_below="@+id/editTextCode"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-214dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>
