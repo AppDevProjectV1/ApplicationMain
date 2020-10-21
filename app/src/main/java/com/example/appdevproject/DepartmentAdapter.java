@@ -16,6 +16,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class DepartmentAdapter extends ArrayAdapter<DepartmentClass> {
+
+
         public DepartmentAdapter(Context context, ArrayList<DepartmentClass> countryList) {
             super(context, 0, countryList);
         }
@@ -35,12 +37,15 @@ public class DepartmentAdapter extends ArrayAdapter<DepartmentClass> {
                 );
             }
             ImageView imageViewFlag = convertView.findViewById(R.id.image_view_flag);
-            TextView textViewName = convertView.findViewById(R.id.text_view_name);
+            TextView  textViewName = convertView.findViewById(R.id.text_view_name);
             DepartmentClass currentItem = getItem(position);
+
             if (currentItem != null) {
                 imageViewFlag.setImageResource(currentItem.getFlagImage());
                 textViewName.setText(currentItem.getCountryName());
+
             }
             return convertView;
         }
-    }
+
+}

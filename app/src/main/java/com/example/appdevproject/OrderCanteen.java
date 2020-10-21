@@ -174,7 +174,7 @@ public class  OrderCanteen extends AppCompatActivity {
                     aa= "";
                     Ordercomplete=aa+bb+cc+dd+ee+ff+gg+hh+ii+jj+kk+ll+mm+nn+oo;
                 }
-
+                System.out.println(Text1);
 
             }
 

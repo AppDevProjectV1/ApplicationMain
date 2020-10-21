@@ -31,7 +31,7 @@ public class CareerInterest extends AppCompatActivity implements CareerAdapter.O
 
 
     private Button createAcc;
-
+  private int c=1;
 
     NavigationView nav2;
     private ImageView toggle;
@@ -165,7 +165,7 @@ public class CareerInterest extends AppCompatActivity implements CareerAdapter.O
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
-
+                c++;
                 saveData();
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -195,5 +195,8 @@ public class CareerInterest extends AppCompatActivity implements CareerAdapter.O
         }
 
         editor.apply();
+    }
+    public int getC(){
+        return c;
     }
 }

@@ -44,7 +44,7 @@ public class StudentProfile extends AppCompatActivity {
     private CircularImageView profileImageView;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-
+    public int b=1;
     public ArrayList<String> selections;
 
     public static final String SHARED_PREFS="sharedPrefs";

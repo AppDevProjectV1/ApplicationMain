@@ -1,13 +1,17 @@
 package com.example.appdevproject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,35 +24,53 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 
 public class StudentReg extends AppCompatActivity {
 
     private EditText name, email, pass, cpass;
+    private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,imagesid;
+    public int b=1,c;
     private ArrayList<DepartmentClass> mCountryList,myearLists;
     private  DepartmentAdapter mAdapter,mNewAdapter;
     private Button next;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
+      private CircularImageView addprofileImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_reg);
 
-              firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
         name =(EditText) findViewById(R.id.sname);
         email = (EditText)findViewById(R.id.semail);
         pass= (EditText)findViewById(R.id.spass);
         cpass = (EditText)findViewById(R.id.cpass);
-       // progressBar=(ProgressBar)findViewById(R.id.studentprogress);
+        addprofileImageView = findViewById(R.id.addprofilephotoid);
+        Name =name.getText().toString().trim();
+        Email=email.getText().toString().trim();
+        mobilenumber= getIntent().getStringExtra("mobile_number");
+         progressBar=(ProgressBar)findViewById(R.id.studentprogress);
         next=findViewById(R.id.next);
-
+        addprofileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openmyGallery();
+            }
+        });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Name=name.getText().toString().trim();
-                String Email=email.getText().toString().trim();
+               c= b++;
+                Name=name.getText().toString().trim();
+                Email=email.getText().toString().trim();
                 String Pass=pass.getText().toString().trim();
                 String Cpass=cpass.getText().toString().trim();
                 if(TextUtils.isEmpty(Name)){
@@ -63,36 +85,37 @@ public class StudentReg extends AppCompatActivity {
                     Toast.makeText(StudentReg.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-              if(TextUtils.isEmpty(Cpass)){
-                 Toast.makeText(StudentReg.this, "Please Enter Confirm Password", Toast.LENGTH_SHORT).show();
-                  return;
-              }
-              if(Pass.length()<8 ){
-                  Toast.makeText(StudentReg.this, "Password contain atleast 8 characters", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(Cpass)){
+                    Toast.makeText(StudentReg.this, "Please Enter Confirm Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(Pass.length()<8 ){
+                    Toast.makeText(StudentReg.this, "Password contain atleast 8 characters", Toast.LENGTH_SHORT).show();
 
-              }
+                }
 //                  progressBar.setVisibility(View.VISIBLE);
-                 if(Pass.equals(Cpass)){
-                     firebaseAuth.createUserWithEmailAndPassword(Email,Pass)
-                             .addOnCompleteListener(StudentReg.this, new OnCompleteListener<AuthResult>() {
-                                 @Override
-                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                if(Pass.equals(Cpass)){
+                    firebaseAuth.createUserWithEmailAndPassword(Email,Pass)
+                            .addOnCompleteListener(StudentReg.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
                                     // progressBar.setVisibility(View.GONE);
-                                     if (task.isSuccessful()) {
+                                    if (task.isSuccessful()) {
+                                        Storeuserdata();
 
-                                         Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
-                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                         startActivity(intent);
-                                         Toast.makeText(StudentReg.this, "Select Your Interest", Toast.LENGTH_SHORT).show();
+                                        Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        Toast.makeText(StudentReg.this, "Select Your Interest", Toast.LENGTH_SHORT).show();
 
-                                     } else {
-                                         Toast.makeText(StudentReg.this, "Email Already Exist or wrong", Toast.LENGTH_SHORT).show();
-                                     }
+                                    } else {
+                                        Toast.makeText(StudentReg.this, "Email Already Exist or wrong", Toast.LENGTH_SHORT).show();
+                                    }
 
-                                     // ...
-                                 }
-                             });
-               }
+                                    // ...
+                                }
+                            });
+                }
             }
         });
         Spinner dropdown = findViewById(R.id.year);
@@ -111,7 +134,23 @@ public class StudentReg extends AppCompatActivity {
 
 
 
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                DepartmentClass year= myearLists.get(position);
+                        Studentyear= year.getCountryName();
+               System.out.println(Studentyear);
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         Spinner dropdown3 = findViewById(R.id.hostel);
         String[] items3 = new String[]{"Azad Bhawan",
@@ -155,9 +194,46 @@ public class StudentReg extends AppCompatActivity {
         mAdapter = new DepartmentAdapter(this, mCountryList);
         departspin.setAdapter(mAdapter);
 
+        departspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                DepartmentClass depart= mCountryList.get(position);
+                      StudentDepartment  = depart.getCountryName();
+
+                    System.out.println(StudentDepartment);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
     }
+    private void openmyGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            addprofileImageView.setImageURI(imageUri);
+           imagesid=imageUri.toString();
+        }
+    }
+    private void Storeuserdata() {
 
+        FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
+        DatabaseReference reference=rootNode.getReference("Usersdata");
+        UserHelperClass userHelperClass=new UserHelperClass(Name, mobilenumber,Email,Studentyear,StudentDepartment,imagesid);
+        reference.child(mobilenumber).setValue(userHelperClass);
+    }
+ public int getB(){
+        return b;
+}
 }
