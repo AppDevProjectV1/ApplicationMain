@@ -13,8 +13,12 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Splash1Activity extends AppCompatActivity {
 
+    private Timer timer;
     private ImageView logo;
     private static int splashTimeOut=1200;
 
@@ -24,7 +28,9 @@ public class Splash1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_splash1);
 
 
-        new Handler().postDelayed(new Runnable() {
+
+        timer=new Timer();
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Intent i = new Intent(getApplicationContext(),secondAnime.class);

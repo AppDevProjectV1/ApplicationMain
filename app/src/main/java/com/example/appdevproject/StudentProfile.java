@@ -49,7 +49,7 @@ public class StudentProfile extends AppCompatActivity {
 
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String loggedin="loggedin";
-
+    public static final String  Registered="registered";
 
     androidx.appcompat.app.ActionBarDrawerToggle mDrawerToggle;
     @Override
@@ -217,22 +217,18 @@ public class StudentProfile extends AppCompatActivity {
                         intent=new Intent(getApplicationContext(), CampusVideos.class);
                         startActivity(intent);
                         break;
-                    case 9:
-                       if(FirebaseAuth.getInstance().getCurrentUser() != null){
-                        intent=new Intent(getApplicationContext(),RegisterActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);}
-                        break;
+
 
                     case 7:
                         intent=new Intent(getApplicationContext(), CanteenOrderActivity.class);
                         startActivity(intent);
                         break;
 
-//                    case 9:
-//                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-//                        saveData();
-
+                    case 9:
+                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                        saveData();
+                        saveData2();
+                        break;
                     default:
                         break;
                 }
@@ -325,7 +321,12 @@ public class StudentProfile extends AppCompatActivity {
         }
     }
 
-
+    public void saveData2(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean(Registered,false);
+        editor.apply();
+    }
     public void saveData(){
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();

@@ -70,15 +70,16 @@
 
         <Button
             android:id="@+id/createacc"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:background="@drawable/custom_button"
             android:layout_centerHorizontal="true"
-            android:text="Create account"
+            android:text="Save Your Interest"
             android:layout_marginBottom="30px"
             android:textColor="@color/white"
+            android:padding="5dp"
             android:textSize="20sp" />
 
 

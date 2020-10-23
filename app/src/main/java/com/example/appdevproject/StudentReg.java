@@ -1,6 +1,9 @@
 package com.example.appdevproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -31,7 +34,9 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import java.util.ArrayList;
 
 public class StudentReg extends AppCompatActivity {
-
+    public static final String SHARED_PREFS="sharedPrefs";
+    public static final String  Registered="registered";
+    public static final String  Phoneno="phone";
     private EditText name, email, pass, cpass;
     private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,imagesid;
     public int b=1,c;
@@ -57,6 +62,11 @@ public class StudentReg extends AppCompatActivity {
         Name =name.getText().toString().trim();
         Email=email.getText().toString().trim();
         mobilenumber= getIntent().getStringExtra("mobile_number");
+        final SharedPreferences prefs =  getSharedPreferences(SHARED_PREFS,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(Phoneno ,mobilenumber );
+        editor.apply();
          progressBar=(ProgressBar)findViewById(R.id.studentprogress);
         next=findViewById(R.id.next);
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +104,7 @@ public class StudentReg extends AppCompatActivity {
 
                 }
 //                  progressBar.setVisibility(View.VISIBLE);
-                if(Pass.equals(Cpass)){
+                if(Pass.equals(Cpass) && isNetworkAvailable(getApplicationContext())){
                     firebaseAuth.createUserWithEmailAndPassword(Email,Pass)
                             .addOnCompleteListener(StudentReg.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -102,7 +112,7 @@ public class StudentReg extends AppCompatActivity {
                                     // progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         Storeuserdata();
-
+                                        saveData();
                                         Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
@@ -116,6 +126,11 @@ public class StudentReg extends AppCompatActivity {
                                 }
                             });
                 }
+                else{
+                    Toast.makeText(StudentReg.this, "no internet connection", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
         Spinner dropdown = findViewById(R.id.year);
@@ -226,14 +241,25 @@ public class StudentReg extends AppCompatActivity {
            imagesid=imageUri.toString();
         }
     }
+    public void saveData(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean(Registered,true);
+        editor.apply();
+    }
+
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
     private void Storeuserdata() {
 
         FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
         DatabaseReference reference=rootNode.getReference("Usersdata");
-        UserHelperClass userHelperClass=new UserHelperClass(Name, mobilenumber,Email,Studentyear,StudentDepartment,imagesid);
-        reference.child(mobilenumber).setValue(userHelperClass);
+        UserHelperClass userHelperClass=new UserHelperClass(Name,Phoneno,Email,Studentyear,StudentDepartment,imagesid);
+        reference.child(Phoneno).setValue(userHelperClass);
     }
  public int getB(){
-        return b;
+        return c;
 }
 }

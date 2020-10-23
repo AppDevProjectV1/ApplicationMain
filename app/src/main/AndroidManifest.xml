@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserHelperClass"></activity>
+        <activity android:name=".UserHelperClass"/>
         <activity android:name=".CampusVideoAdapter" />
         <activity android:name=".CampusVideoClass" />
         <activity
@@ -86,7 +86,7 @@
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
         <!-- android:label="Others Profile" -->
         <!-- android:theme="@style/Other" /> -->
-        <!-- <activity android:name=".ChatsActivity" /> -->
+          <activity android:name=".ChatsActivity" />
         <!-- <activity -->
         <!-- android:name=".NoticeProfActivity" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
@@ -104,9 +104,7 @@
         <!-- <activity -->
         <!-- android:name=".FacultyRegistration" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" /> -->
-        <activity
-            android:name=".NumberRegisterActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <activity
             android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
@@ -121,12 +119,8 @@
         <activity
             android:name=".MyInterests"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".AboutYou"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".OTP"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+
+
         <activity
             android:name=".secondAnime"
             android:configChanges="keyboardHidden|orientation|screenSize" />

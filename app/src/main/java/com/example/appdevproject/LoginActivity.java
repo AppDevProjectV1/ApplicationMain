@@ -3,8 +3,10 @@ package com.example.appdevproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String loggedin="loggedin";
-
+    public static final String  Registered="";
   //  private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +73,14 @@ public class LoginActivity extends AppCompatActivity {
                                     saveData();
                                     Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
 
-                                } else {
+                                }
+                                else if(isNetworkAvailable(getApplicationContext())){
                                     Toast.makeText(LoginActivity.this, "Wrong Email or Password",
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
+                                else{
+                                    Toast.makeText(LoginActivity.this, "no Internet Connection",
                                             Toast.LENGTH_SHORT).show();
                                 }
 
@@ -82,12 +90,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
 
     public void saveData(){
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putBoolean(loggedin,true);
+
+        editor.apply();
+    }
+    public void saveData2(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean(Registered,true);
 
         editor.apply();
     }

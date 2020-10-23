@@ -2,9 +2,11 @@ package com.example.appdevproject;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 
 
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -46,9 +48,13 @@ public class OtpActivity extends AppCompatActivity {
         editText = findViewById(R.id.editTextCode);
 
         phonenumber = getIntent().getStringExtra("phonenumber");
-
-        sendVerificationCode(phonenumber);
-
+        if (isNetworkAvailable(getApplicationContext())) {
+            sendVerificationCode(phonenumber);
+           }
+        else{
+            Toast.makeText(getApplicationContext(), "no Internet Connection",
+                    Toast.LENGTH_SHORT).show();
+        }
         findViewById(R.id.buttonSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +108,10 @@ public class OtpActivity extends AppCompatActivity {
                 mCallBack
         );
     }
-
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 

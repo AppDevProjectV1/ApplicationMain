@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentReg"
-    android:background="@color/commonBack"
+    android:background="#ffffff"
     >
     <ScrollView
         android:layout_width="match_parent"
@@ -212,14 +212,16 @@
 
 
             <Button
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Next"
+                android:text="Create Account"
                 android:layout_below="@id/yearbranch"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:padding="5dp"
+                android:textStyle="bold"
                 android:background="@drawable/custom_button"
                 android:id="@+id/next"/>
         </RelativeLayout>
