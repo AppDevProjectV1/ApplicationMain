@@ -54,37 +54,37 @@ public class CareerInterest extends AppCompatActivity implements CareerAdapter.O
 
 
         DrawerModel[] options={
-                new DrawerModel(R.drawable.aboutiitrr,"Software Developement"),
-                new DrawerModel(R.drawable.aboutiitrr,"Competitive Programming"),
-                new DrawerModel(R.drawable.aboutiitrr,"Artificial Intelligence"),
-                new DrawerModel(R.drawable.aboutiitrr,"Data science"),
-                new DrawerModel(R.drawable.aboutiitrr,"Machine Learning"),
-                new DrawerModel(R.drawable.aboutiitrr,"Web Developement"),
-                new DrawerModel(R.drawable.aboutiitrr,"Mobile App Developement"),
-                new DrawerModel(R.drawable.aboutiitrr,"Game Developement"),
-                new DrawerModel(R.drawable.aboutiitrr,"Finance"),
-                new DrawerModel(R.drawable.aboutiitrr,"Enterpreneurship"),
-                new DrawerModel(R.drawable.aboutiitrr,"Dramatics"),
-                new DrawerModel(R.drawable.aboutiitrr,"Civil Services"),
-                new DrawerModel(R.drawable.aboutiitrr,"Writing"),
-                new DrawerModel(R.drawable.aboutiitrr,"Poetry"),
-                new DrawerModel(R.drawable.aboutiitrr,"Dancing"),
-                new DrawerModel(R.drawable.aboutiitrr,"Standup Comedy"),
-                new DrawerModel(R.drawable.aboutiitrr,"Debate"),
-                new DrawerModel(R.drawable.aboutiitrr,"Music"),
-                new DrawerModel(R.drawable.aboutiitrr,"Singing"),
-                new DrawerModel(R.drawable.aboutiitrr,"Video Production"),
-                new DrawerModel(R.drawable.aboutiitrr,"Video Editing"),
-                new DrawerModel(R.drawable.aboutiitrr,"CGI Creating"),
-                new DrawerModel(R.drawable.aboutiitrr,"Virtual Reality"),
-                new DrawerModel(R.drawable.aboutiitrr,"2D Animation"),
-                new DrawerModel(R.drawable.aboutiitrr,"Desinging"),
+                new DrawerModel("Software Developement"),
+                new DrawerModel("Competitive Programming"),
+                new DrawerModel("Artificial Intelligence"),
+                new DrawerModel("Data science"),
+                new DrawerModel("Machine Learning"),
+                new DrawerModel("Web Developement"),
+                new DrawerModel("Mobile App Developement"),
+                new DrawerModel("Game Developement"),
+                new DrawerModel("Finance"),
+                new DrawerModel("Enterpreneurship"),
+                new DrawerModel("Dramatics"),
+                new DrawerModel("Civil Services"),
+                new DrawerModel("Writing"),
+                new DrawerModel("Poetry"),
+                new DrawerModel("Dancing"),
+                new DrawerModel("Standup Comedy"),
+                new DrawerModel("Debate"),
+                new DrawerModel("Music"),
+                new DrawerModel("Singing"),
+                new DrawerModel("Video Production"),
+                new DrawerModel("Video Editing"),
+                new DrawerModel("CGI Creating"),
+                new DrawerModel("Virtual Reality"),
+                new DrawerModel("2D Animation"),
+                new DrawerModel("Desinging"),
 
         };
 
 
         careerList=findViewById(R.id.careerlist);
-        CareerAdapter careerAdapter=new CareerAdapter(this,R.layout.opt_list_tems,options,this);
+        CareerAdapter careerAdapter=new CareerAdapter(this,R.layout.all_interest_item,options,this);
         careerList.setAdapter(careerAdapter);
 
 //

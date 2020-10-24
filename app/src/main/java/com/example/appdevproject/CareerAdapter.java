@@ -47,13 +47,11 @@ public class CareerAdapter extends ArrayAdapter<DrawerModel> {
         LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
         listItem = inflater.inflate(layoutResourceId, parent, false);
 
-        ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
+
         TextView textViewName =  listItem.findViewById(R.id.textViewName);
 
         DrawerModel folder = data[position];
 
-
-        imageViewIcon.setImageResource(folder.icon);
         textViewName.setText(folder.name);
 
         listItem.setOnClickListener(new View.OnClickListener() {
