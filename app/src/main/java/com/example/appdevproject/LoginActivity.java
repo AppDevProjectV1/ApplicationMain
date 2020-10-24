@@ -102,12 +102,5 @@ public class LoginActivity extends AppCompatActivity {
 
         editor.apply();
     }
-    public void saveData2(){
-        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putBoolean(Registered,true);
-
-        editor.apply();
-    }
 
 }

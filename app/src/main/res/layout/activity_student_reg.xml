@@ -222,6 +222,7 @@
                 android:textSize="20sp"
                 android:padding="5dp"
                 android:textStyle="bold"
+                android:layout_marginBottom="15px"
                 android:background="@drawable/custom_button"
                 android:id="@+id/next"/>
         </RelativeLayout>

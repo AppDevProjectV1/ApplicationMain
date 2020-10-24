@@ -36,7 +36,10 @@ import java.util.ArrayList;
 public class StudentReg extends AppCompatActivity {
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String  Registered="registered";
-    public static final String  Phoneno="phone";
+    public static final String  GetStart="getstart";
+    public static final String  mobno="phono";
+    public  String isMobile;
+
     private EditText name, email, pass, cpass;
     private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,imagesid;
     public int b=1,c;
@@ -62,11 +65,8 @@ public class StudentReg extends AppCompatActivity {
         Name =name.getText().toString().trim();
         Email=email.getText().toString().trim();
         mobilenumber= getIntent().getStringExtra("mobile_number");
-        final SharedPreferences prefs =  getSharedPreferences(SHARED_PREFS,
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(Phoneno ,mobilenumber );
-        editor.apply();
+        SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        isMobile = sharedPreferences.getString(mobno,"mobilenumber");
          progressBar=(ProgressBar)findViewById(R.id.studentprogress);
         next=findViewById(R.id.next);
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +113,7 @@ public class StudentReg extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Storeuserdata();
                                         saveData();
+                                        saveData2();
                                         Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
@@ -247,7 +248,12 @@ public class StudentReg extends AppCompatActivity {
         editor.putBoolean(Registered,true);
         editor.apply();
     }
-
+    public void saveData2(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean(GetStart,true);
+        editor.apply();
+    }
     public boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
@@ -256,10 +262,11 @@ public class StudentReg extends AppCompatActivity {
 
         FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
         DatabaseReference reference=rootNode.getReference("Usersdata");
-        UserHelperClass userHelperClass=new UserHelperClass(Name,Phoneno,Email,Studentyear,StudentDepartment,imagesid);
-        reference.child(Phoneno).setValue(userHelperClass);
+        UserHelperClass userHelperClass=new UserHelperClass(Name,isMobile,Email,Studentyear,StudentDepartment,imagesid);
+        reference.child(isMobile).setValue(userHelperClass);
     }
  public int getB(){
         return c;
 }
+
 }

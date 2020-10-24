@@ -2,6 +2,7 @@ package com.example.appdevproject;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,9 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    public static final String SHARED_PREFS="sharedPrefs";
     private Spinner spinner;
     private EditText editText;
+    public static final String  mobno="phono";
+    String phonenumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                String phonenumber = "+" + code + number;
-
+              phonenumber = "+" + code + number;
+                  savePhone();
                 Intent intent = new Intent(RegisterActivity.this, OtpActivity.class);
                 intent.putExtra("phonenumber", phonenumber);
                 startActivity(intent);
@@ -49,6 +52,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void savePhone(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString(mobno,phonenumber);
+
+        editor.apply();
     }
 
     @Override
