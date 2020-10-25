@@ -7,22 +7,26 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import java.net.URI;
+import java.util.Map;
 
 public class UserHelperClass {
 
-    String musername,memail,mMobilenumber,year,dept;
-    String mimageuri;
-
-    public UserHelperClass( ){}
+    String musername,memail,mMobilenumber,year,dept,imageurl;
 
 
-    public UserHelperClass(String username,String mobilenumber,String email,String Studentyear,String StudentDepartment,String imageuri) {
-        this.musername = username;
+
+  UserHelperClass(){}
+
+
+
+
+    public UserHelperClass(String name, String isMobile, String email, String studentyear, String studentDepartment, String data) {
+        this.musername = name;
         this.memail = email;
-        this.mMobilenumber=mobilenumber;
-        this.year=Studentyear;
-        this.dept=StudentDepartment;
-        this.mimageuri=imageuri;
+        this.mMobilenumber=isMobile;
+        this.year=studentyear;
+        this.dept=studentDepartment;
+        this.imageurl=data;
     }
 
 
@@ -44,16 +48,16 @@ public class UserHelperClass {
         return memail;
     }
 
-    public  String getImageUri() {
-        return mimageuri;
+    public String getImageUrl() {
+        return imageurl;
     }
 
     public  void  setUsername(String username) {
         this.musername = username;
     }
 
-    public  void  setMimageuri(String imageuri) {
-        this.mimageuri=imageuri;
+    public  void setImageUrl( String data) {
+        this.imageurl=data;
     }
 
     public  void setEmail(String email ) {

@@ -35,9 +35,9 @@ import java.util.Locale;
 public class StudentProfile extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
-    androidx.appcompat.widget.SearchView searchView;
+
     private  ImageView profiletab,feedstab,inboxtab;
-    private ImageView img;
+    private ImageView img,imagesearchView;
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -63,26 +63,20 @@ public class StudentProfile extends AppCompatActivity {
         profiletab=findViewById(R.id.profiletab);
         feedstab=findViewById(R.id.feedstab);
         inboxtab=findViewById(R.id.inboxtab);
-        searchView=findViewById(R.id.action_search);
+         imagesearchView=findViewById(R.id.action_hamara_users);
         profileImageView = findViewById(R.id.profileimageview);
+        imagesearchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),SearchUsersActivity.class);
+                startActivity(intent);
 
+            }
+        });
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openGallery();
-            }
-        });
-        searchView.setQueryHint(Html.fromHtml("<font color = #ffffff>" +"Search users" + "</font>"));
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
             }
         });
 

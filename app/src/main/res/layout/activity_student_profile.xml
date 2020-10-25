@@ -32,17 +32,19 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginStart="2dp"
                     android:layout_marginLeft="2dp"
-                    android:layout_toLeftOf="@id/action_search"
+                    android:layout_toLeftOf="@id/action_hamara_users"
                     android:text="My Profile"
                     android:textColor="@color/white"
                     android:layout_centerVertical="true"
                     android:textSize="20sp" />
 
-                <androidx.appcompat.widget.SearchView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@id/profiletoggle"
-                    android:id="@+id/action_search" />
+                    android:src="@mipmap/searchusersimages"
+                    android:id="@+id/action_hamara_users"
+                    android:layout_marginRight="20dp"/>
 
                 <ImageView
                     android:id="@+id/profiletoggle"

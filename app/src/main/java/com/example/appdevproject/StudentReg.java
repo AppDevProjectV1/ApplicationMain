@@ -1,8 +1,16 @@
 package com.example.appdevproject;
 
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +18,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,20 +27,34 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.google.firebase.storage.UploadTask;
+import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StudentReg extends AppCompatActivity {
     public static final String SHARED_PREFS="sharedPrefs";
@@ -39,18 +62,26 @@ public class StudentReg extends AppCompatActivity {
     public static final String  GetStart="getstart";
     public static final String  mobno="phono";
     public  String isMobile;
+    UserHelperClass userHelperClass;
+    private int uploads = 0;
+    private FirebaseStorage storage;
 
+    private StorageReference storageReference;
     private EditText name, email, pass, cpass;
-    private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,imagesid;
+    private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,profileImageUrl;
     public int b=1,c;
     private ArrayList<DepartmentClass> mCountryList,myearLists;
     private  DepartmentAdapter mAdapter,mNewAdapter;
     private Button next;
+    public String newUri;
+    private DatabaseReference reference;
     private static final int PICK_IMAGE = 100;
+
+    private static final int MY_CAMERA_PERMISSION_CODE = 100;
     Uri imageUri;
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
-      private CircularImageView addprofileImageView;
+    private CircularImageView addprofileImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,21 +95,25 @@ public class StudentReg extends AppCompatActivity {
         addprofileImageView = findViewById(R.id.addprofilephotoid);
         Name =name.getText().toString().trim();
         Email=email.getText().toString().trim();
+
+
         mobilenumber= getIntent().getStringExtra("mobile_number");
         SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         isMobile = sharedPreferences.getString(mobno,"mobilenumber");
-         progressBar=(ProgressBar)findViewById(R.id.studentprogress);
+        storageReference=FirebaseStorage.getInstance().getReference().child(isMobile);
+        reference=FirebaseDatabase.getInstance().getReference("Usersdata").child(isMobile);
+        progressBar=(ProgressBar)findViewById(R.id.studentprogress);
         next=findViewById(R.id.next);
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openmyGallery();
+                openfilechooser();
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               c= b++;
+                c= b++;
                 Name=name.getText().toString().trim();
                 Email=email.getText().toString().trim();
                 String Pass=pass.getText().toString().trim();
@@ -114,6 +149,7 @@ public class StudentReg extends AppCompatActivity {
                                         Storeuserdata();
                                         saveData();
                                         saveData2();
+
                                         Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
@@ -155,8 +191,8 @@ public class StudentReg extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 DepartmentClass year= myearLists.get(position);
-                        Studentyear= year.getCountryName();
-               System.out.println(Studentyear);
+                Studentyear= year.getCountryName();
+                System.out.println(Studentyear);
 
 
 
@@ -216,9 +252,9 @@ public class StudentReg extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 DepartmentClass depart= mCountryList.get(position);
-                      StudentDepartment  = depart.getCountryName();
+                StudentDepartment  = depart.getCountryName();
 
-                    System.out.println(StudentDepartment);
+                System.out.println(StudentDepartment);
             }
 
             @Override
@@ -229,25 +265,131 @@ public class StudentReg extends AppCompatActivity {
 
 
     }
-    private void openmyGallery() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-            addprofileImageView.setImageURI(imageUri);
-           imagesid=imageUri.toString();
-        }
-    }
+    //    private void openmyGallery() {
+//        Intent  gallerycam=new Intent();
+//        gallerycam.setType("image/*");
+//        gallerycam.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(gallerycam,"Select Image"),PICK_IMAGE);
+//
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE&& data.getData()!=null&&data!=null){
+//            imageUri = data.getData();
+//            try{
+//                Bitmap bitmap =MediaStore.Images.Media.getBitmap(getContentResolver(),imageUri);
+//                addprofileImageView.setImageBitmap(bitmap);
+//            }
+//            catch (IOException e){
+//                     e.printStackTrace();
+//                }
+//
+//        }
+//    }
     public void saveData(){
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putBoolean(Registered,true);
         editor.apply();
     }
+    /**/
+
+
+//    private void uploadfile() {
+//        final ProgressDialog progressDialog = new ProgressDialog(this);
+//        progressDialog.setTitle("Uploading");
+//        progressDialog.show();
+//
+//       // final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
+//
+//        if (imageUri != null) {
+//            File file = new File(String.valueOf(imageUri));
+//            FirebaseStorage storage = FirebaseStorage.getInstance();
+//            StorageReference storageRef = storage.getReference().child("images");
+//
+//            storageRef.child(file.getName()).putFile(imageUri)
+//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//
+//                            Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
+//
+//                            if(downloadUri.isSuccessful()){
+//                                profileImageUrl = downloadUri.getResult().toString();
+//                                System.out.println("## Stored path is "+profileImageUrl);
+//                            }}
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//
+//                        }
+//                    });
+//
+//        }
+//        else
+//            Toast.makeText(this, "Please Select a Image", Toast.LENGTH_SHORT).show();
+//
+//
+//
+//
+//
+//    }
+
+    private void openfilechooser() {
+        Intent gallery =new Intent();
+        gallery.setType("image/*");
+        gallery.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(gallery,PICK_IMAGE);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE  && resultCode == RESULT_OK && data !=null &&
+                data.getData()!=null){
+            imageUri = data.getData();
+            // start cropping activity for pre-acquired image saved on the device
+            CropImage.activity(imageUri)
+                    .start(this);
+
+
+
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                Picasso.get().load(resultUri).into(addprofileImageView);
+                storageReference.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>(){
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        task.getResult().getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+
+                                newUri=uri.toString();
+
+
+
+
+                            }
+                        });
+                    }
+                });
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+
+    }
+
+    /* */
     public void saveData2(){
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
@@ -260,13 +402,13 @@ public class StudentReg extends AppCompatActivity {
     }
     private void Storeuserdata() {
 
-        FirebaseDatabase rootNode=FirebaseDatabase.getInstance();
-        DatabaseReference reference=rootNode.getReference("Usersdata");
-        UserHelperClass userHelperClass=new UserHelperClass(Name,isMobile,Email,Studentyear,StudentDepartment,imagesid);
-        reference.child(isMobile).setValue(userHelperClass);
+        userHelperClass=new UserHelperClass(Name,isMobile,Email,Studentyear,StudentDepartment,newUri);
+
+
+        reference.setValue(userHelperClass);
     }
- public int getB(){
+    public int getB(){
         return c;
-}
+    }
 
 }

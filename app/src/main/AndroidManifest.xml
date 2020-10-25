@@ -20,7 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserHelperClass"/>
+        <activity android:name=".SearchuserAdapter"></activity>
+        <activity android:name=".SearchUsersActivity"
+            android:label="       Search"
+            android:theme="@style/Other"/>
+        <activity android:name=".UserHelperClass" />
         <activity android:name=".CampusVideoAdapter" />
         <activity android:name=".CampusVideoClass" />
         <activity
@@ -86,8 +90,7 @@
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
         <!-- android:label="Others Profile" -->
         <!-- android:theme="@style/Other" /> -->
-          <activity android:name=".ChatsActivity" />
-        <!-- <activity -->
+        <activity android:name=".ChatsActivity" /> <!-- <activity -->
         <!-- android:name=".NoticeProfActivity" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
         <!-- android:label="Notices" -->
@@ -104,7 +107,6 @@
         <!-- <activity -->
         <!-- android:name=".FacultyRegistration" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" /> -->
-
         <activity
             android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
@@ -119,8 +121,9 @@
         <activity
             android:name=".MyInterests"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-
-
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".secondAnime"
             android:configChanges="keyboardHidden|orientation|screenSize" />
