@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="5dp"
     android:elevation="5dp"
+    android:id="@+id/cardmaiuser"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -15,7 +17,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:src="@mipmap/addphoto"
+            android:src="@mipmap/iitrstudentprofile"
             android:layout_centerVertical="true"
             android:id="@+id/userppp"
             app:civ_border_width="2dp"

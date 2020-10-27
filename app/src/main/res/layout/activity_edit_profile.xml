@@ -15,51 +15,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Student Account"
-                android:textSize="40sp"
-                android:layout_marginStart="15dp"
-                android:textStyle="bold"
-                android:textColor="@color/heading"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="60dp"
-                android:id="@+id/sreghead"
-                android:layout_marginLeft="15dp" />
+
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:src="@mipmap/iitrstudentprofile"
-                android:id="@+id/addprofilephotoid"
-                android:layout_below="@id/sreghead"
+                android:id="@+id/addprofilephotoid1"
+
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add  Profile Photo"
+                android:text="Edit Profile Photo"
                 android:textSize="20sp"
                 android:layout_marginStart="15dp"
                 android:textStyle="bold"
-                android:layout_below="@id/addprofilephotoid"
+                android:layout_below="@id/addprofilephotoid1"
                 android:textColor="@color/heading"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/ppp"
+                android:id="@+id/ppp1"
 
                 android:layout_marginLeft="15dp" />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/username_text_input_layout"
+                android:id="@+id/username_text_input_layout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ppp"
+                android:layout_below="@id/ppp1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp">
 
                 <EditText
-                    android:id="@+id/sname"
+                    android:id="@+id/sname1"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -70,84 +58,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_text_input_layout"
+                android:id="@+id/email_text_input_layout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/username_text_input_layout"
+                android:layout_below="@id/username_text_input_layout1"
                 android:layout_centerHorizontal="true"
                 android:inputType="textEmailAddress"
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/semail"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:ems="10"
-                    android:hint="Email" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_text_input_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/email_text_input_layout"
-                android:layout_centerHorizontal="true"
-                app:passwordToggleEnabled="true"
-                app:counterEnabled="true"
-                app:counterMaxLength="12"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/spass"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:ems="10"
-                    android:inputType="textPassword"
-                    android:hint="Password" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/cpassword_text_input_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/password_text_input_layout"
-                android:layout_centerHorizontal="true"
-                app:passwordToggleEnabled="true"
-                app:counterEnabled="true"
-                app:counterMaxLength="12"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/cpass"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:ems="10"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"/>
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_text_input_layout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cpassword_text_input_layout"
-                android:layout_centerHorizontal="true"
-                android:inputType="textEmailAddress"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/sachieve2"
+                    android:id="@+id/sachieve"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -159,10 +79,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_text_input_layout2"
+                android:id="@+id/password_text_input_layout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/email_text_input_layout2"
+                android:layout_below="@id/email_text_input_layout1"
                 android:layout_centerHorizontal="true"
 
 
@@ -170,7 +90,7 @@
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/groupsji2"
+                    android:id="@+id/groupsji"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -182,10 +102,10 @@
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/cpassword_text_input_layout2"
+                android:id="@+id/cpassword_text_input_layout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/password_text_input_layout2"
+                android:layout_below="@id/password_text_input_layout1"
                 android:layout_centerHorizontal="true"
 
 
@@ -194,96 +114,97 @@
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/skills2"
+                    android:id="@+id/skills"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
 
                     android:hint="Skills"
+                  />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/year_text_input_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cpassword_text_input_layout1"
+                android:layout_centerHorizontal="true"
+
+
+
+
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/yearedit"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+
+                    android:hint="Year"
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dept_text_input_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/year_text_input_layout1"
+                android:layout_centerHorizontal="true"
+
+
+
+
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/deptedit"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+
+                    android:hint="Department"
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/host_text_input_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dept_text_input_layout1"
+                android:layout_centerHorizontal="true"
+
+
+
+
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/bhawanedit"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+
+                    android:hint="Hostal"
                     />
 
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/cpassword_text_input_layout2"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/yearbranch"
-                android:layout_marginTop="10dp">
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_centerHorizontal="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Year"
-                        android:textSize="19sp"
-                        ></TextView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="100dp"
-                        android:layout_marginLeft="100dp"
-                        android:text="Hostel"
-                        android:textSize="19sp">
-
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_centerHorizontal="true">
-                    <Spinner
-                        android:id="@+id/year"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:spinnerMode="dropdown"/>
-                    <Spinner
-                        android:id="@+id/hostel"
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:spinnerMode="dropdown"
-                        android:layout_marginLeft="30dp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Department"
-                    android:labelFor="@+id/yearbranch"
-                    android:layout_marginStart="9dp"
-                    android:textSize="19sp"
-                    android:layout_marginLeft="9dp">
-
-                </TextView>
-
-                <Spinner
-                    android:id="@+id/dept"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@android:drawable/btn_dropdown"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
 
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Account"
-                android:layout_below="@id/yearbranch"
+                android:text="Save Changes"
+                android:layout_below="@id/host_text_input_layout1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:textColor="@color/white"
@@ -292,13 +213,13 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="15px"
                 android:background="@drawable/custom_button"
-                android:id="@+id/next"/>
+                android:id="@+id/saveeditbtn"/>
         </RelativeLayout>
     </ScrollView>
 
 
     <ProgressBar
-        android:id="@+id/studentprogress"
+        android:id="@+id/studentprogress1"
         style="?android:attr/progressBarStyle"
         android:layout_width="55dp"
         android:layout_height="55dp"

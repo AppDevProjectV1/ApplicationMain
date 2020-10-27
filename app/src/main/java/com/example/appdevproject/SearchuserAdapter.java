@@ -40,6 +40,8 @@ class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,Search
         holder.year.setText(userHelperClass.getYear()+" year");
       //  holder.img.setImageResource(R.mipmap.addphoto);
         Glide.with(holder.img.getContext()).load(userHelperClass.getImageUrl()).into(holder.img);
+
+
     }
 
     @NonNull
@@ -53,6 +55,7 @@ class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,Search
     class myviewholder extends RecyclerView.ViewHolder
     {
         CircleImageView img;
+        View loadingindicator;
         TextView name,course,email,year;
         public myviewholder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +63,7 @@ class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,Search
             name = (TextView) itemView.findViewById(R.id.nametext);
             course = (TextView) itemView.findViewById(R.id.coursetext);
             year = (TextView) itemView.findViewById(R.id.yeartext);
+
             //  email=(TextView)itemView.findViewById(R.id.emailtext);
         }
 

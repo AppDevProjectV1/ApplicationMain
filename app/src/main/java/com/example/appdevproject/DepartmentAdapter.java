@@ -48,4 +48,5 @@ public class DepartmentAdapter extends ArrayAdapter<DepartmentClass> {
             return convertView;
         }
 
+
 }

@@ -20,10 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchuserAdapter"></activity>
-        <activity android:name=".SearchUsersActivity"
-            android:label="       Search"
-            android:theme="@style/Other"/>
+        <activity android:name=".ProfileAdapter"></activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:label="Edit Profile"
+            android:theme="@style/Other" />
+        <activity android:name=".SearchuserAdapter" />
+        <activity
+            android:name=".SearchUsersActivity"
+            android:label="           Search Users"
+            android:theme="@style/Other" />
         <activity android:name=".UserHelperClass" />
         <activity android:name=".CampusVideoAdapter" />
         <activity android:name=".CampusVideoClass" />

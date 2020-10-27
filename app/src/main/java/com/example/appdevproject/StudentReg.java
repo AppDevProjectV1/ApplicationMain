@@ -61,14 +61,15 @@ public class StudentReg extends AppCompatActivity {
     public static final String  Registered="registered";
     public static final String  GetStart="getstart";
     public static final String  mobno="phono";
+    public static final String emailjio="emailuser";
     public  String isMobile;
     UserHelperClass userHelperClass;
     private int uploads = 0;
     private FirebaseStorage storage;
 
     private StorageReference storageReference;
-    private EditText name, email, pass, cpass;
-    private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,profileImageUrl;
+    private EditText name, email, pass, cpass, achieve ,groups,skills;
+    private  String  Name ,Email,mobilenumber,Studentyear,StudentDepartment,profileImageUrl,Groups,Skills ,Achievements, Bahawan;
     public int b=1,c;
     private ArrayList<DepartmentClass> mCountryList,myearLists;
     private  DepartmentAdapter mAdapter,mNewAdapter;
@@ -93,10 +94,16 @@ public class StudentReg extends AppCompatActivity {
         pass= (EditText)findViewById(R.id.spass);
         cpass = (EditText)findViewById(R.id.cpass);
         addprofileImageView = findViewById(R.id.addprofilephotoid);
+
+        achieve = (EditText)findViewById(R.id.sachieve2);
+        groups= (EditText)findViewById(R.id.groupsji2);
+        skills = (EditText)findViewById(R.id.skills2);
+
         Name =name.getText().toString().trim();
         Email=email.getText().toString().trim();
-
-
+        Achievements=achieve.getText().toString().trim();
+        Groups =groups.getText().toString().trim();
+        Skills=skills.getText().toString().trim();
         mobilenumber= getIntent().getStringExtra("mobile_number");
         SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         isMobile = sharedPreferences.getString(mobno,"mobilenumber");
@@ -113,9 +120,12 @@ public class StudentReg extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c= b++;
+
                 Name=name.getText().toString().trim();
                 Email=email.getText().toString().trim();
+                Achievements=achieve.getText().toString().trim();
+                Groups =groups.getText().toString().trim();
+                Skills=skills.getText().toString().trim();
                 String Pass=pass.getText().toString().trim();
                 String Cpass=cpass.getText().toString().trim();
                 if(TextUtils.isEmpty(Name)){
@@ -136,7 +146,21 @@ public class StudentReg extends AppCompatActivity {
                 }
                 if(Pass.length()<8 ){
                     Toast.makeText(StudentReg.this, "Password contain atleast 8 characters", Toast.LENGTH_SHORT).show();
-
+                     return;
+                }
+                if(TextUtils.isEmpty(Achievements)){
+                    Toast.makeText(StudentReg.this, "Please Enter Achievements or No", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(Groups)){
+                    Toast.makeText(
+                            StudentReg.this, "Please Enter Groups or No", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(Skills)){
+                    Toast.makeText(
+                            StudentReg.this, "Please Enter Skills or No", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 //                  progressBar.setVisibility(View.VISIBLE);
                 if(Pass.equals(Cpass) && isNetworkAvailable(getApplicationContext())){
@@ -149,7 +173,7 @@ public class StudentReg extends AppCompatActivity {
                                         Storeuserdata();
                                         saveData();
                                         saveData2();
-
+                                        saveEmail();
                                         Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
@@ -220,7 +244,22 @@ public class StudentReg extends AppCompatActivity {
                 "Indira Bhawan"};
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
+        dropdown3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+
+               Bahawan = parent.getItemAtPosition(position).toString();
+               System.out.println(Bahawan);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         Spinner departspin=(Spinner)findViewById(R.id.dept);
 
         mCountryList = new ArrayList<>();
@@ -291,6 +330,13 @@ public class StudentReg extends AppCompatActivity {
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putBoolean(Registered,true);
+        editor.apply();
+    }
+    public void saveEmail(){
+        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString(emailjio,Email);
+
         editor.apply();
     }
     /**/
@@ -402,7 +448,7 @@ public class StudentReg extends AppCompatActivity {
     }
     private void Storeuserdata() {
 
-        userHelperClass=new UserHelperClass(Name,isMobile,Email,Studentyear,StudentDepartment,newUri);
+        userHelperClass=new UserHelperClass(Name,isMobile,Email,Achievements,Groups,Skills,Studentyear,StudentDepartment,Bahawan,newUri);
 
 
         reference.setValue(userHelperClass);
