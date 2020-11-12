@@ -151,6 +151,7 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
             intent.putExtra("skills" ,skillji );
           intent.putExtra("imageurl",imageji);
             startActivity(intent);
+            finish();
         });
         imagesearchView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,12 +161,12 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
 
             }
         });
-        profileImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
+//        profileImageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openGallery();
+//            }
+//        });
 
 
 
@@ -184,7 +185,7 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
                     profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
                     inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
 
-                    Intent intent=new Intent(getApplicationContext(),InboxActivity.class);
+                    Intent intent=new Intent(getApplicationContext(),ChatsActivity.class);
                     intent.putExtra(Intent.EXTRA_TEXT,"student");
                     startActivity(intent);
                     finish();
@@ -388,19 +389,19 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
     }
-    private void openGallery() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-            profileImageView.setImageURI(imageUri);
-
-        }
-    }
+//    private void openGallery() {
+//        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+//        startActivityForResult(gallery, PICK_IMAGE);
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+//            imageUri = data.getData();
+//            profileImageView.setImageURI(imageUri);
+//
+//        }
+//    }
 
     public void saveData2(){
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);

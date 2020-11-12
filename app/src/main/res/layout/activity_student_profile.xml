@@ -91,11 +91,11 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:src="@mipmap/iitrstudentprofile"
-                        app:civ_border_color="@color/splashcolor"
-                        app:civ_border_width="4dp"
+                        app:civ_border_color="#000000"
+                        app:civ_border_width="2dp"
                         android:layout_margin ="10dp"
                         app:civ_shadow_radius="10dp"
-                        app:civ_shadow_color="#3f51b5"
+                        app:civ_shadow_color="#FFFEF2"
                       android:layout_marginTop="100dp"
                         android:id="@+id/profileimageview"/>
 
@@ -387,7 +387,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:text="Feeds"
-                android:src="@drawable/intersts"
+                android:src="@mipmap/interestsicon"
                 android:background="@drawable/custom_nav_tile"
                 android:textColor="@color/white"
                 android:gravity="center"
@@ -395,7 +395,7 @@
             <ImageView
                 android:id="@+id/inboxtab"
                 android:layout_toRightOf="@id/feedstab"
-                android:src="@drawable/chat1"
+                android:src="@mipmap/groupchats"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:text="Inbox"

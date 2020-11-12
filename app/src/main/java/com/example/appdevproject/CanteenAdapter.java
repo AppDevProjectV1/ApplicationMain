@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
+
 import java.util.ArrayList;
 
 
@@ -35,7 +37,7 @@ public class CanteenAdapter extends ArrayAdapter<CanteenClass> {
             listItem= LayoutInflater.from(getContext()).inflate(R.layout.canteen_list_item, parent, false);
         }
 
-        ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.canteenimage);
+       CircularImageView imageViewIcon = (CircularImageView) listItem.findViewById(R.id.canteenimage);
         TextView textViewName = (TextView) listItem.findViewById(R.id.canteentext);
 
        CanteenClass folder = getItem(position);

@@ -29,19 +29,19 @@ public class CanteenOrderActivity extends AppCompatActivity {
 
 ArrayList<CanteenClass> mcanteenlist= new ArrayList<CanteenClass>();
 
-        mcanteenlist.add(new CanteenClass("Azad Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass( "Cautley Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass( "Ganga Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass( "Govind Bhawan Canteen" , R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass("Indra Bahwan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass( "Jawahar Bhawan Canteen" , R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass("Kasturba Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass("Radhakrishnan Bhawan Canteen" , R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass(  "Rajendra Bhawan Canteen" , R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass("Rajiv Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass( "Ravindra Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass(  "Malviya Bhawan Canteen", R.mipmap.menureso));
-        mcanteenlist.add(new CanteenClass( "Sarojini Bhawan Canteen", R.mipmap.menureso));
+        mcanteenlist.add(new CanteenClass("Azad Bhawan Canteen",  R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass( "Cautley Bhawan Canteen",  R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass( "Ganga Bhawan Canteen",  R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass( "Govind Bhawan Canteen" , R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass("Indra Bahwan Canteen", R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass( "Jawahar Bhawan Canteen" ,  R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass("Kasturba Bhawan Canteen", R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass("Radhakrishnan Bhawan Canteen" , R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass(  "Rajendra Bhawan Canteen" , R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass("Rajiv Bhawan Canteen",  R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass( "Ravindra Bhawan Canteen",  R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass(  "Malviya Bhawan Canteen", R.drawable.canteenimg));
+        mcanteenlist.add(new CanteenClass( "Sarojini Bhawan Canteen", R.drawable.canteenimg));
 
 
        CanteenAdapter adapter= new CanteenAdapter(this,mcanteenlist);

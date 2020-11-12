@@ -22,16 +22,27 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
 class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,SearchUsersAdapter.myviewholder>
-{
-    public  SearchUsersAdapter(@NonNull FirebaseRecyclerOptions<UserHelperClass> options) {
+{    FirebaseRecyclerOptions<UserHelperClass> moptions;
+    String mobilenumber;
+    final private ListItemClickListener mOnClickListener;
+    public  SearchUsersAdapter(ListItemClickListener listener,@NonNull FirebaseRecyclerOptions<UserHelperClass> options) {
         super(options);
+
+        mOnClickListener = listener;
+        moptions=options;
     }
 
+    public interface ListItemClickListener {
+
+
+        void onListItemClick(String mobilenumber);
+    }
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull  UserHelperClass userHelperClass)
     {
@@ -40,7 +51,7 @@ class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,Search
         holder.year.setText(userHelperClass.getYear()+" year");
       //  holder.img.setImageResource(R.mipmap.addphoto);
         Glide.with(holder.img.getContext()).load(userHelperClass.getImageUrl()).into(holder.img);
-
+          mobilenumber= userHelperClass.getMobilenumber();
 
     }
 
@@ -52,7 +63,7 @@ class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,Search
         return new myviewholder(view);
     }
 
-    class myviewholder extends RecyclerView.ViewHolder
+    class myviewholder extends RecyclerView.ViewHolder  implements View.OnClickListener
     {
         CircleImageView img;
         View loadingindicator;
@@ -66,7 +77,12 @@ class  SearchUsersAdapter extends FirebaseRecyclerAdapter<UserHelperClass,Search
 
             //  email=(TextView)itemView.findViewById(R.id.emailtext);
         }
+        @Override
+        public void onClick(View v) {
+            int adapterPosition = getAdapterPosition();
 
-    }
+            mOnClickListener.onListItemClick(mobilenumber);
+
+        }    }
 
 }

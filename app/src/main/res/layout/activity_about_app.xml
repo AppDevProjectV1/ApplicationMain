@@ -25,6 +25,7 @@
             android:textSize="30sp"
             android:textColor="@color/white"/>
         <TextView
+            android:id="@+id/version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Version 1.0.0"
@@ -37,6 +38,7 @@
 
 
     <ImageView
+        android:layout_below="@+id/appinfo"
         android:layout_width="210dp"
         android:layout_height="210dp"
         android:src="@drawable/add_button"

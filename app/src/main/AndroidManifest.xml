@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileAdapter"></activity>
+        <activity android:name=".IndividualUserProfile"/>
+        <activity android:name=".FriendlyMessage" />
+        <activity android:name=".ProfileAdapter" />
         <activity
             android:name=".EditProfileActivity"
             android:label="Edit Profile"
@@ -96,7 +98,10 @@
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
         <!-- android:label="Others Profile" -->
         <!-- android:theme="@style/Other" /> -->
-        <activity android:name=".ChatsActivity" /> <!-- <activity -->
+        <activity
+            android:name=".ChatsActivity"
+            android:label=" Student Query Section"
+            android:theme="@style/Other" /> <!-- <activity -->
         <!-- android:name=".NoticeProfActivity" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
         <!-- android:label="Notices" -->

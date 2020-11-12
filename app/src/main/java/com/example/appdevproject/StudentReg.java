@@ -74,7 +74,7 @@ public class StudentReg extends AppCompatActivity {
     private ArrayList<DepartmentClass> mCountryList,myearLists;
     private  DepartmentAdapter mAdapter,mNewAdapter;
     private Button next;
-    public String newUri;
+    public String newUri="https://firebasestorage.googleapis.com/v0/b/appdevproject-76786.appspot.com/o/common?alt=media&token=d2995571-abe0-4c42-afb2-63d4b2cdf957";
     private DatabaseReference reference;
     private static final int PICK_IMAGE = 100;
 

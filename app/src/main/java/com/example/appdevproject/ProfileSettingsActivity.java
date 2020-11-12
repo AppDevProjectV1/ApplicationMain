@@ -37,71 +37,20 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-     circularImageView = findViewById(R.id.circularimageview);
 
-       circularImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
-        ImageView  imageprivacy=(ImageView) findViewById(R.id.privacy);
-         ImageView imagenotification=(ImageView) findViewById(R.id.notification );
-         ImageView  imagehelp=(ImageView) findViewById(R.id.help);
-        ImageView  imagedatause=(ImageView) findViewById(R.id.datause);
+//        ImageView  imageprivacy=(ImageView) findViewById(R.id.privacy);
+//         ImageView imagenotification=(ImageView) findViewById(R.id.notification );
+//         ImageView  imagehelp=(ImageView) findViewById(R.id.help);
+
         ImageView  imageshare=(ImageView) findViewById(R.id.shareapp);
-        TextView textprivacy=(TextView)findViewById(R.id.privacysetting);
-        TextView textnotification=(TextView)findViewById(R.id.notificationsetting);
-        TextView texthelp=(TextView)findViewById(R.id.helpsetting);
-        TextView textdatause=(TextView)findViewById(R.id.datauseagesetting);
-        textprivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( ProfileSettingsActivity.this, Privacy.class);
-                startActivity(intent);
+//        TextView textprivacy=(TextView)findViewById(R.id.privacysetting);
+//        TextView textnotification=(TextView)findViewById(R.id.notificationsetting);
+//        TextView texthelp=(TextView)findViewById(R.id.helpsetting);
+//        TextView textdatause=(TextView)findViewById(R.id.datauseagesetting);
 
-            }
-        });
-        textnotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( ProfileSettingsActivity.this,Notifications.class);
-                startActivity(intent);
 
-            }
-        });
-        texthelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( ProfileSettingsActivity.this, AboutApp.class);
-                startActivity(intent);
 
-            }
-        });
-        imageprivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( ProfileSettingsActivity.this, Privacy.class);
-                startActivity(intent);
 
-            }
-        });
-      imagenotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( ProfileSettingsActivity.this,Notifications.class);
-                startActivity(intent);
-
-            }
-        });
-        imagehelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( ProfileSettingsActivity.this, AboutApp.class);
-                startActivity(intent);
-
-            }
-        });
         imageshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,18 +78,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     }
 
 
-    private void openGallery() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-             circularImageView.setImageURI(imageUri);
 
-        }
-    }
 
 }

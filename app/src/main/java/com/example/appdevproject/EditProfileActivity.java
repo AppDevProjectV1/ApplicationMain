@@ -29,6 +29,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -82,7 +83,7 @@ public class EditProfileActivity extends AppCompatActivity {
     public String newUri;
     private DatabaseReference reference;
     private static final int PICK_IMAGE = 100;
-   public String imgji;
+    public String imgji;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     Uri imageUri;
     private FirebaseAuth firebaseAuth;
@@ -100,28 +101,28 @@ public class EditProfileActivity extends AppCompatActivity {
 
         firebaseAuth= FirebaseAuth.getInstance();
         name =(EditText) findViewById(R.id.sname1);
-     achieve = (EditText)findViewById(R.id.sachieve);
-       groups= (EditText)findViewById(R.id.groupsji);
-      skills = (EditText)findViewById(R.id.skills);
-      stubhawan = (EditText)findViewById(R.id.bhawanedit);
-       studept= (EditText)findViewById(R.id.deptedit);
-         stuyear = (EditText)findViewById(R.id.yearedit);
+        achieve = (EditText)findViewById(R.id.sachieve);
+        groups= (EditText)findViewById(R.id.groupsji);
+        skills = (EditText)findViewById(R.id.skills);
+        stubhawan = (EditText)findViewById(R.id.bhawanedit);
+        studept= (EditText)findViewById(R.id.deptedit);
+        stuyear = (EditText)findViewById(R.id.yearedit);
 
-      name.setText(getIntent().getStringExtra("name"));
-      achieve.setText(getIntent().getStringExtra("achi"));
-       groups.setText(getIntent().getStringExtra("groups"));
+        name.setText(getIntent().getStringExtra("name"));
+        achieve.setText(getIntent().getStringExtra("achi"));
+        groups.setText(getIntent().getStringExtra("groups"));
         skills.setText(getIntent().getStringExtra("skills"));
         stubhawan.setText(getIntent().getStringExtra("hostal"));
-       stuyear.setText(getIntent().getStringExtra("year"));
-       studept.setText(getIntent().getStringExtra("dept"));
+        stuyear.setText(getIntent().getStringExtra("year"));
+        studept.setText(getIntent().getStringExtra("dept"));
         addprofileImageView = findViewById(R.id.addprofilephotoid1);
-      imgji=getIntent().getStringExtra("imageurl");
-
+        imgji=getIntent().getStringExtra("imageurl");
+        Glide.with(getApplicationContext()).load(imgji).into(addprofileImageView);
         Name =name.getText().toString().trim();
-       Achievements=achieve.getText().toString().trim();
+        Achievements=achieve.getText().toString().trim();
 
         Groups =groups.getText().toString().trim();
-      Skills=skills.getText().toString().trim();
+        Skills=skills.getText().toString().trim();
 
         mobilenumber= getIntent().getStringExtra("mobile_number");
         SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
@@ -129,7 +130,7 @@ public class EditProfileActivity extends AppCompatActivity {
         isEmail = sharedPreferences.getString(Email,"mayankjatindonokaapp@gmail.com");
         storageReference= FirebaseStorage.getInstance().getReference().child(isMobile);
         reference= FirebaseDatabase.getInstance().getReference("Usersdata").child(isMobile);
-       // progressBar=(ProgressBar)findViewById(R.id.studentprogress);
+        // progressBar=(ProgressBar)findViewById(R.id.studentprogress);
         next=findViewById(R.id.saveeditbtn);
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +143,7 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Name=name.getText().toString().trim();
-              Achievements=achieve.getText().toString().trim();
+                Achievements=achieve.getText().toString().trim();
 
                 Groups =groups.getText().toString().trim();
                 Skills=skills.getText().toString().trim();
@@ -170,13 +171,13 @@ public class EditProfileActivity extends AppCompatActivity {
 //                }
 
 //                  progressBar.setVisibility(View.VISIBLE);
-              if(isNetworkAvailable(getApplicationContext())){
-                  Storeuserdata();
+                if(isNetworkAvailable(getApplicationContext())){
+                    Storeuserdata();
 
-                  Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
-                  startActivity(intent);
-                  Toast.makeText(EditProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
-              }
+                    Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+                    startActivity(intent);
+                    Toast.makeText(EditProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     Toast.makeText(EditProfileActivity.this, "no internet connection", Toast.LENGTH_SHORT).show();
                 }
@@ -220,7 +221,7 @@ public class EditProfileActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
-                Picasso.get().load(resultUri).into(addprofileImageView);
+                Glide.with(getApplicationContext()).load(resultUri).into(addprofileImageView);
                 storageReference.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>(){
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -256,11 +257,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void Storeuserdata() {
-
-
-        userHelperClass=new UserHelperClass(Name,isMobile,isEmail,Achievements,Groups,Skills,Studentyear,StudentDepartment,Bahawan,newUri);
-
-
+        userHelperClass=new UserHelperClass(Name,isMobile,isEmail,Achievements,Groups,Skills,Studentyear,StudentDepartment,Bahawan,imgji);
         reference.setValue(userHelperClass);
     }
 }

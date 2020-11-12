@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SearchUsersActivity extends AppCompatActivity {
+public class SearchUsersActivity extends AppCompatActivity implements  SearchUsersAdapter.ListItemClickListener {
  private  SearchUsersAdapter searchUsersAdapter;
  private  RecyclerView usersrecview;
  private TextView mEmptyStateTextView;
@@ -59,7 +59,7 @@ public class SearchUsersActivity extends AppCompatActivity {
                             .setQuery(FirebaseDatabase.getInstance().getReference("Usersdata"), UserHelperClass.class)
                             .build();
 
-            searchUsersAdapter = new SearchUsersAdapter(options);
+            searchUsersAdapter = new SearchUsersAdapter(this,options);
             usersrecview.setAdapter(searchUsersAdapter);
 
 
@@ -148,8 +148,17 @@ public class SearchUsersActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<UserHelperClass>()
                         .setQuery(FirebaseDatabase.getInstance().getReference("Usersdata").orderByChild("username").startAt(query).endAt(query+"utf8ff/"),UserHelperClass.class)
                         .build();
-        searchUsersAdapter=new SearchUsersAdapter(options);
+        searchUsersAdapter=new SearchUsersAdapter(this,options);
         searchUsersAdapter.startListening();
         usersrecview.setAdapter(searchUsersAdapter);
+    }
+
+
+    @Override
+    public void onListItemClick(String mobilenumber) {
+        Intent intentToStartChat =new Intent(getApplicationContext(), IndividualUserProfile.class);
+        intentToStartChat.putExtra("apkamobile",mobilenumber);
+        startActivity(intentToStartChat);
+
     }
 }
