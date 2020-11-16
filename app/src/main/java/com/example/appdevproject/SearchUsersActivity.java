@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SearchUsersActivity extends AppCompatActivity implements  SearchUsersAdapter.ListItemClickListener {
+public class SearchUsersActivity extends AppCompatActivity  {
  private  SearchUsersAdapter searchUsersAdapter;
  private  RecyclerView usersrecview;
  private TextView mEmptyStateTextView;
@@ -61,7 +61,7 @@ public class SearchUsersActivity extends AppCompatActivity implements  SearchUse
 
             searchUsersAdapter = new SearchUsersAdapter(this,options);
             usersrecview.setAdapter(searchUsersAdapter);
-
+         searchUsersAdapter.notifyDataSetChanged();
 
   if(!isNetworkAvailable(getApplicationContext())){
     mEmptyStateTextView.setText("No Internet Connection");
@@ -154,11 +154,5 @@ public class SearchUsersActivity extends AppCompatActivity implements  SearchUse
     }
 
 
-    @Override
-    public void onListItemClick(String mobilenumber) {
-        Intent intentToStartChat =new Intent(getApplicationContext(), IndividualUserProfile.class);
-        intentToStartChat.putExtra("apkamobile",mobilenumber);
-        startActivity(intentToStartChat);
 
-    }
 }

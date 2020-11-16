@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appdevproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,13 +21,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IndividualUserProfile"/>
+        <activity android:name=".InterestsClass"></activity>
+        <activity android:name=".StudentFeedsAdapter" />
+        <activity android:name=".IndividualUserProfile" />
         <activity android:name=".FriendlyMessage" />
         <activity android:name=".ProfileAdapter" />
         <activity
             android:name=".EditProfileActivity"
-            android:label="Edit Profile"
-            android:theme="@style/Other" />
+             />
         <activity android:name=".SearchuserAdapter" />
         <activity
             android:name=".SearchUsersActivity"
@@ -55,6 +57,11 @@
             android:theme="@style/Other" />
         <activity android:name=".CanteenAdapter" />
         <activity android:name=".CanteenClass" />
+        <activity android:name=".nav2activities.FestsList"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="      Fests And Exhibitions"
+            android:theme="@style/Other"
+            />
         <activity
             android:name=".CanteenOrderActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -63,13 +70,25 @@
         <activity android:name=".AboutApp" />
         <activity android:name=".Privacy" />
         <activity android:name=".Notifications" />
-        <activity android:name=".nav2activities.Thomson" />
-        <activity android:name=".nav2activities.Library" />
-        <activity android:name=".nav2activities.Hostels" />
-        <activity android:name=".nav2activities.FestsList" />
-        <activity android:name=".nav2activities.Departments" />
-        <activity android:name=".nav2activities.Clubs" />
-        <activity android:name=".nav2activities.AboutIITR" />
+        <activity android:name=".nav2activities.Thomson"
+            android:label="      James Thomson Building"
+            android:theme="@style/Other"/>
+        <activity android:name=".nav2activities.Library"
+            android:label="                Library"
+            android:theme="@style/Other"/>
+        <activity android:name=".nav2activities.Hostels"
+            android:label="                 Hostels"
+            android:theme="@style/Other"/>
+
+        <activity android:name=".nav2activities.Departments"
+            android:label="            Departments"
+            android:theme="@style/Other"/>
+        <activity android:name=".nav2activities.Clubs"
+            android:label="             Activity Clubs"
+            android:theme="@style/Other"/>
+        <activity android:name=".nav2activities.AboutIITR"
+            android:label="          About IITR"
+            android:theme="@style/Other"/>
         <activity
             android:name=".SportsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -92,7 +111,7 @@
             android:name=".StudentProfile"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Student Profile" />
-        <activity android:name=".StudentFeeds" />
+
         <activity android:name=".CareerInterest" /> <!-- <activity -->
         <!-- android:name=".OtherProfileActivity" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
@@ -119,6 +138,12 @@
         <!-- android:name=".FacultyRegistration" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" /> -->
         <activity
+            android:name=".StudentFeeds"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="  Interests Sources"
+            android:theme="@style/Other"
+            />
+        <activity
             android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
@@ -131,7 +156,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".MyInterests"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+
+            android:label="         My Interests"
+            android:theme="@style/Other"/>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

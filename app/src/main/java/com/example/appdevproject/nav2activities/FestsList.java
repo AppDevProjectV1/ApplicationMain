@@ -1,5 +1,6 @@
 package com.example.appdevproject.nav2activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.appdevproject.R;
 
@@ -20,23 +22,28 @@ public class FestsList extends AppCompatActivity implements FestAdapter.linkClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fests_list);
 
+        //  use the actionbar here for go to previous activity
+        ActionBar actionBar = getSupportActionBar();
 
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         String[] festnames={
                 "Thomso",
                 "Cognizance",
                 "Shrishti",
                 "National Social Summit",
-                "E Summit",
-                "Sangram"};
+                "E Summit"
+               };
 
 
         Integer[] festimages={ R.drawable.thomsonew,
                 R.drawable.cogni,
                 R.drawable.shrishti,
                 R.drawable.ss,
-                R.drawable.es,
-                R.drawable.sangram};
+                R.drawable.es
+               };
 
 
         String[] festinfo={"Thomso is the annual cultural festival of IIT Roorkee, widely proclaimed to be one of the largest college festivals of the nation.\n" +
@@ -62,21 +69,16 @@ public class FestsList extends AppCompatActivity implements FestAdapter.linkClic
                 "E-Summit being the flagship event of ECell, is held annually brings together the academic community, venture capitalists, new age entrepreneurs and all those passionate about entrepreneurship to common grounds. It provides an avenue to exhibit the entrepreneurial talent and creativity through many events like business ventures, product design competition, and social entrepreneurial idea competition.\n" +
                         "THEME\n" +
                         "\n" +
-                        "Create impact and keep on innovating. In a startup journey there are three major stages: 0, 1 and n. At 0, you are just beginning and your idea is all you have. At 1, you have your startup established. At n, your startup is expanding and scaling-up. In the journey from 0 to 1, we hope to create something that would impact the society in a huge way. We want to disrupt the usual flow of the way things work. In the journey from 1 to n, every startup while scaling-up faces a lots of disruptions. With these constant disruptions it becomes difficult to keep on innovating. This year, we explore the ways to deal with these Dilemmas of Disruption. Join us as we try to inspire and to prepare the next wave of Indian Entrepreneurs who know how to create impact and keep on innovating!",
+                        "Create impact and keep on innovating. In a startup journey there are three major stages: 0, 1 and n. At 0, you are just beginning and your idea is all you have. At 1, you have your startup established. At n, your startup is expanding and scaling-up. In the journey from 0 to 1, we hope to create something that would impact the society in a huge way. We want to disrupt the usual flow of the way things work. In the journey from 1 to n, every startup while scaling-up faces a lots of disruptions. With these constant disruptions it becomes difficult to keep on innovating. This year, we explore the ways to deal with these Dilemmas of Disruption. Join us as we try to inspire and to prepare the next wave of Indian Entrepreneurs who know how to create impact and keep on innovating!"
 
 
 
 
-                "Sangram, the Annual Sports Festival of IIT Roorkee, brings together sportsmen from all around the country to a common ground to compete for victory and excellence in sports. Sangram encompasses a wide range of sports from action filled athletics to strength driven powerlifting and peaceful yoga. The fest attracts an annual footfall of more than 1500 participants. Plethoras of events are hosted, accompanied by informal events like sports quiz, marathon. Sangram is the celebration of the union of mind, body and soul."
+                 };
 
 
-
-
-        };
-
-
-        String[] links={"https://www.thomso.in/","https://www.cognizance.org.in/","https://srishti.iitr.ac.in/",
-                "https://nationalsocialsummit.org/","https://www.esummit.in/"," https://sangramiitr.in/"};
+        String[] links={"https://www.facebook.com/thomsoiitroorkee/","https://www.facebook.com/cogni.iitr/","https://srishti.iitr.ac.in/",
+                "https://nationalsocialsummit.org/","https://www.esummit.in/"};
 
 
 
@@ -94,4 +96,13 @@ public class FestsList extends AppCompatActivity implements FestAdapter.linkClic
 
         startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(link)));
     }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -174,7 +174,7 @@ public class StudentReg extends AppCompatActivity {
                                         saveData();
                                         saveData2();
                                         saveEmail();
-                                        Intent intent=new Intent(getApplicationContext(),CareerInterest.class);
+                                        Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         Toast.makeText(StudentReg.this, "Select Your Interest", Toast.LENGTH_SHORT).show();
@@ -270,9 +270,9 @@ public class StudentReg extends AppCompatActivity {
         mCountryList.add(new DepartmentClass("mechnical Engineering", R.drawable.mechnical));
         mCountryList.add(new DepartmentClass("Production & Industrial", R.drawable.pandi));
         mCountryList.add(new DepartmentClass("Metallurgy", R.drawable.meta));
-        mCountryList.add(new DepartmentClass("Physics", R.drawable.physics));
-        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.physics));
-        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.electri));
+        mCountryList.add(new DepartmentClass("Physics", R.drawable.phys ));
+        mCountryList.add(new DepartmentClass("Engneering physics", R.drawable.phys));
+        mCountryList.add(new DepartmentClass("Applied Mathematics", R.drawable.phys));
         mCountryList.add(new DepartmentClass("Chemistry", R.drawable.chemistry));
         mCountryList.add(new DepartmentClass("Architecture", R.drawable.archti));
         mCountryList.add(new DepartmentClass("GT", R.drawable.gt));

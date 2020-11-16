@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -43,6 +44,8 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 //         ImageView  imagehelp=(ImageView) findViewById(R.id.help);
 
         ImageView  imageshare=(ImageView) findViewById(R.id.shareapp);
+
+        ImageView deleteacc=(ImageView) findViewById(R.id.deleteaccount);
 //        TextView textprivacy=(TextView)findViewById(R.id.privacysetting);
 //        TextView textnotification=(TextView)findViewById(R.id.notificationsetting);
 //        TextView texthelp=(TextView)findViewById(R.id.helpsetting);
@@ -64,6 +67,12 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                 if (shareIntent.resolveActivity(getPackageManager()) != null){
                     startActivity(shareIntent);
                 }
+            }
+        });
+     deleteacc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "It will be updated soon.", Toast.LENGTH_LONG).show();
             }
         });
 

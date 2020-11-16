@@ -93,7 +93,7 @@ public class  IndividualUserProfile extends AppCompatActivity {
 //        ismobile = sharedPreferences.getString(mobnore, "mobilenumber");
 
          Intent intentji=getIntent();
-       ismobile=intentji.getStringExtra("apkamobile");
+       ismobile=intentji.getStringExtra("apkmobile");
         profileImageView = findViewById(R.id.profileimageview);
         userterenaam = findViewById(R.id.name);
         useremail = findViewById(R.id.email);

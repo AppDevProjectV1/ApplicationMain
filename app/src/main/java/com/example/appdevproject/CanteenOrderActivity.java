@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -51,6 +52,7 @@ ArrayList<CanteenClass> mcanteenlist= new ArrayList<CanteenClass>();
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                Intent intent=new Intent (getApplicationContext(),OrderCanteen.class);
+               Toast.makeText(getApplicationContext(), "Select Order", Toast.LENGTH_LONG).show();
                startActivity(intent);
            }
        });

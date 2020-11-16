@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@layout/intersetround">
+
+    <TextView
+        android:id="@+id/textinterests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#311B92"
+        android:textSize="34sp"
+        android:text="adde"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="RtlCompat"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="6dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textinterests"
+        android:text="Basic Knowledge"
+        android:id="@+id/basicknow"
+        android:layout_margin="10dp"
+
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        />
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/basicknow"
+      android:text="InterestName"
+      android:id="@+id/basicknowinfo"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:textSize="20sp"
+      android:textColor="#000000"
+      />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/basicknowinfo"
+        android:text="Sources"
+        android:layout_margin ="10dp"
+        android:id="@+id/sourcestext"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        />
+
+
+
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_below="@+id/sourcestext"
+        android:id="@+id/cardmaiuserji"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@mipmap/iitrstudentprofile"
+                android:layout_centerVertical="true"
+                android:id="@+id/src1img"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#ffffff"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/src1link"
+                android:text="Unknown User"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#0E75D3"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/src1img"
+                android:layout_marginLeft="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_below="@+id/cardmaiuserji"
+        android:id="@+id/cardmaiuser2"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@mipmap/iitrstudentprofile"
+                android:layout_centerVertical="true"
+                android:id="@+id/src2img"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#ffffff"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/src2link"
+                android:text="Unknown User"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#0E75D3"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/src2img"
+                android:layout_marginLeft="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_below="@+id/cardmaiuser2"
+        android:id="@+id/cardmaiuser3"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@mipmap/iitrstudentprofile"
+                android:layout_centerVertical="true"
+                android:id="@+id/src3img"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#ffffff"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/src3link"
+                android:text="Unknown User"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#0E75D3"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/src3img"
+                android:layout_marginLeft="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_below="@+id/cardmaiuser3"
+        android:id="@+id/cardmaiuser4"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@mipmap/iitrstudentprofile"
+                android:layout_centerVertical="true"
+                android:id="@+id/src4img"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#ffffff"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/src4link"
+                android:text="Unknown User"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#0E75D3"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/src4img"
+                android:layout_marginLeft="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>

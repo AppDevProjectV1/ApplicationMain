@@ -93,11 +93,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        ActionBar actionBar = getSupportActionBar();
 
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         firebaseAuth= FirebaseAuth.getInstance();
         name =(EditText) findViewById(R.id.sname1);
@@ -135,13 +131,14 @@ public class EditProfileActivity extends AppCompatActivity {
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openfilechooser();
+//                openfilechooser();
+                Toast.makeText(getApplicationContext(), "It will be updated soon.", Toast.LENGTH_LONG).show();
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+              finish();
                 Name=name.getText().toString().trim();
                 Achievements=achieve.getText().toString().trim();
 
@@ -187,14 +184,7 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
     }
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
     private void openfilechooser() {
         Intent gallery =new Intent();
         gallery.setType("image/*");

@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteCursor;
 import android.net.Uri;
@@ -37,10 +38,11 @@ import java.util.Map;
 
 public class  OrderCanteen extends AppCompatActivity {
     private static final int REQUEST_CODE_ASK_PERMISSIONS =1 ;
+    public static final String SHARED_PREFS="sharedPrefs";
     Map<Integer, String> myMap = new HashMap<>();
     String aa="",bb="",cc="", dd="", ee="", ff="", gg="", hh="", ii="", jj="", kk="", ll="", mm="", nn="", oo="";
-
-
+    public static final String  mobno="phono";
+    private String isMobile;
     ArrayList<String> mSpinnerData;
     String Text1, Text2, Text3, Text4, Text5, Text6, Text7, Text8, Text9, Text10, Text11, Text12, Text13, Text14, Text15, Text16, Text17, Text18, Text19, Text20;
     boolean check1, check2, check3, check4, check5, check6, check7, check8, check9, check10, check11, check12, check13, check14, check15;
@@ -53,7 +55,8 @@ public class  OrderCanteen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_canteen);
-
+        SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        isMobile = sharedPreferences.getString(mobno,"mobilenumber");
         //  use the actionbar here for go to previous activity
         ActionBar actionBar = getSupportActionBar();
 
@@ -657,24 +660,12 @@ public class  OrderCanteen extends AppCompatActivity {
     }
 
     public void Submitorder(View view) {
-//        String mimeType = "text/plain";
-//        String title = "Example title";
-//
-//        Intent shareIntent =   ShareCompat.IntentBuilder.from(OrderActivity.this)
-//                .setType(mimeType)
-//                .setText(title)
-//                .getIntent();
-//       shareIntent.putExtra(Intent.EXTRA_EMAIL, "jattidihattimkp@gmail.com");
-//        shareIntent.putExtra(Intent.EXTRA_SUBJECT,"DRINK ORDER");
-//         shareIntent.putExtra(Intent.EXTRA_TEXT, Order());
-//        if (shareIntent.resolveActivity(getPackageManager()) != null){
-//            startActivity(shareIntent);
-//        }
-//
+
+        Toast.makeText(getApplicationContext(), "Order to Canteen Whatsapp no.", Toast.LENGTH_SHORT).show();
         Intent sendIntent = new Intent("android.intent.action.MAIN");
         sendIntent.setAction(Intent.ACTION_VIEW);
         sendIntent.setPackage("com.whatsapp");
-        String url = "https://api.whatsapp.com/send?phone=" + "+91 85030 86929" + "&text=" + Order();
+        String url = "https://api.whatsapp.com/send?phone=" +isMobile + "&text=" + Order();
         sendIntent.setData(Uri.parse(url));
         if (sendIntent.resolveActivity(getApplicationContext().getPackageManager()) != null) {
             startActivity(sendIntent);
@@ -696,6 +687,8 @@ public class  OrderCanteen extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.contact_us) {
+            Toast.makeText(getApplicationContext(), "Call to Canteen", Toast.LENGTH_LONG).show();
+
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -704,7 +697,7 @@ public class  OrderCanteen extends AppCompatActivity {
                 }
             }
             else {
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +"+91 85030 86929"));
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +isMobile));
                 startActivity(intent);
             }
         }

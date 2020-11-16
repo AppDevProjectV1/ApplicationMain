@@ -1,9 +1,11 @@
 package com.example.appdevproject.nav2activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,24 +24,30 @@ public class AboutIITR extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_i_i_t_r);
 
+        //  use the actionbar here for go to previous activity
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         one=findViewById(R.id.building);
-        two=findViewById(R.id.dean);
+
         three=findViewById(R.id.departments);
         four=findViewById(R.id.hostels);
         five=findViewById(R.id.library);
         six=findViewById(R.id.clubs);
-        back=findViewById(R.id.back);
+
 
 
 
         one.setOnClickListener(this);
-        two.setOnClickListener(this);
+
         three.setOnClickListener(this);
         four.setOnClickListener(this);
         five.setOnClickListener(this);
         six.setOnClickListener(this);
-        back.setOnClickListener(this);
+
 
 
 
@@ -64,10 +72,16 @@ public class AboutIITR extends AppCompatActivity implements View.OnClickListener
             case R.id.clubs:
                 startActivity(new Intent(getApplicationContext(),Clubs.class));
                 break;
-            case R.id.back:
-                startActivity(new Intent(getApplicationContext(), CareerInterest.class));
-                break;
+
 
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

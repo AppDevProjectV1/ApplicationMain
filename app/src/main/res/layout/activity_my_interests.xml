@@ -6,20 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MyInterests">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/mytool"
-        android:background="@color/heading"
-        app:titleTextColor="@color/white"
-        >
 
-    </androidx.appcompat.widget.Toolbar>
 
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/mytool"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/interests">

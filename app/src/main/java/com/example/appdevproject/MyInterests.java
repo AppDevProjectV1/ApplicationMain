@@ -1,6 +1,7 @@
 package com.example.appdevproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -37,14 +38,13 @@ public class MyInterests extends AppCompatActivity {
         setContentView(R.layout.activity_my_interests);
 
 
+        //  use the actionbar here for go to previous activity
+        ActionBar actionBar = getSupportActionBar();
 
-        toolbar=(Toolbar)findViewById(R.id.mytool);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("My Interests");
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
-        toolbar.inflateMenu(R.menu.myinterestmenu);
+
 
         selections = new ArrayList<>();
 
@@ -90,6 +90,9 @@ public class MyInterests extends AppCompatActivity {
                 editor.commit();
 
                 startActivity(new Intent(getApplicationContext(),CareerInterest.class));
+            case android.R.id.home:
+                finish();
+                return true;
 
         }
 

@@ -11,7 +11,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:id="@+id/profre">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -122,7 +123,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
-                            android:text="---"
+                            android:text="."
                             android:textColor="@color/black"
                             android:textSize="25sp" />
 
@@ -130,7 +131,7 @@
                             android:id="@+id/email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="---"
+                            android:text="."
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -138,7 +139,7 @@
                             android:id="@+id/dept"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="---"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -146,7 +147,7 @@
                             android:id="@+id/year"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="---"
+                            android:text="."
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -154,7 +155,7 @@
                             android:id="@+id/hostel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="---"
+                            android:text="."
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -366,14 +367,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:orientation="horizontal"
             android:id="@+id/topnav"
             android:layout_below="@+id/toolbar">
             <ImageView
                 android:id="@+id/profiletab"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="34dp"
                 android:text="Profile"
                 android:src="@drawable/admi"
                 android:background="@drawable/custom_nav_tile"
@@ -385,7 +386,7 @@
                 android:id="@+id/feedstab"
                 android:layout_toRightOf="@id/profiletab"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="34dp"
                 android:text="Feeds"
                 android:src="@mipmap/interestsicon"
                 android:background="@drawable/custom_nav_tile"
@@ -397,7 +398,7 @@
                 android:layout_toRightOf="@id/feedstab"
                 android:src="@mipmap/groupchats"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="34dp"
                 android:text="Inbox"
                 android:background="@drawable/custom_nav_tile"
                 android:textColor="@color/white"
@@ -413,6 +414,16 @@
 <!--            android:layout_centerInParent="true"-->
 <!--            android:textStyle="bold"-->
 <!--            android:textAppearance="?android:textAppearanceMedium"/>-->
-    </RelativeLayout>
 
+
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/progressbar"
+       android:layout_gravity="center"
+        android:max="100"
+        android:progress="0"
+        android:indeterminateTint="@color/splashcolor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/profre"/>
 </FrameLayout>

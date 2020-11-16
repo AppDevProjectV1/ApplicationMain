@@ -1,10 +1,12 @@
 package com.example.appdevproject.nav2activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.appdevproject.R;
 
@@ -17,7 +19,12 @@ public class Departments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_departments);
+        //  use the actionbar here for go to previous activity
+        ActionBar actionBar = getSupportActionBar();
 
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
 
         String[] deptnames={"Computer Science",
@@ -46,9 +53,9 @@ public class Departments extends AppCompatActivity {
                 R.drawable.mechnical,
                 R.drawable.pandi,
                 R.drawable.meta,
-                R.drawable.physics,
-                R.drawable.electri,
-                R.drawable.electri,
+                R.drawable.phys ,
+                R.drawable.phys ,
+                R.drawable.phys ,
                 R.drawable.chemistry,
                 R.drawable.archti,
                 R.drawable.gt,
@@ -180,7 +187,15 @@ public class Departments extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(new NavDeptAdapter(deptnames,deptimages,deptinfo));
+        recyclerView.setNestedScrollingEnabled(false);
 
-
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,10 +1,12 @@
 package com.example.appdevproject.nav2activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.appdevproject.R;
 
@@ -18,7 +20,12 @@ public class Hostels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hostels);
 
+        //  use the actionbar here for go to previous activity
+        ActionBar actionBar = getSupportActionBar();
 
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         String[] hostelnames={"Azad Bhawan" ,
                 "Cautley Bhawan" ,
@@ -35,12 +42,12 @@ public class Hostels extends AppCompatActivity {
         };
 
         Integer[] hostelimages={ R.drawable.azad,
-                R.drawable.cautley,
+                R.drawable.cautlay,
                 R.drawable.ganga,
                 R.drawable.govind,
                 R.drawable.jawahar,
-                R.drawable.rkb,
-                R.drawable.rjb,
+                R.drawable.radakrishna,
+                R.drawable.rajendra,
                 R.drawable.rajiv,
                 R.drawable.ravindra,
                 R.drawable.malviya,
@@ -100,7 +107,15 @@ public class Hostels extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(new NavDeptAdapter(hostelnames,hostelimages,hostelinfo));
+        recyclerView.setNestedScrollingEnabled(false);
 
-
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

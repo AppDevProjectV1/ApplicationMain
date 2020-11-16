@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.text.Html;
@@ -25,7 +28,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.appdevproject.nav2activities.AboutIITR;
@@ -78,6 +83,7 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
     public static final String  Registered="registered";
     public static final String  mobnore="phono";
     public  String ismobile;
+    ProgressBar mProgressBar;
     androidx.appcompat.app.ActionBarDrawerToggle mDrawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +93,35 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
 
 
 
+        mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
+        if(isNetworkAvailable(getApplicationContext())) {
+            Runnable job = new Runnable() {
+                @Override
+                public void run() {
+
+
+                    mProgressBar.setVisibility(View.GONE);
+                    mProgressBar.postDelayed(this, 2200);
+
+                }
+            };
+
+            mProgressBar.postDelayed(job, 2200);
+        }
+        else{
+            Runnable job = new Runnable() {
+                @Override
+                public void run() {
+
+
+                    mProgressBar.setVisibility(View.GONE);
+                    mProgressBar.postDelayed(this, 220000);
+
+                }
+            };
+
+            mProgressBar.postDelayed(job, 2200000);
+        }
 //        selections=getIntent().getStringArrayListExtra("selectedOpts");
 
 
@@ -213,8 +248,8 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
                     feedstab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_info_tile) );
                     profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
                     inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
-
-
+//                    Toast.makeText(this,"",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Interest Sources", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(getApplicationContext(),StudentFeeds.class);
                     startActivity(intent);
                     finish();
@@ -232,17 +267,17 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
         mDrawerLayout.closeDrawers();
 
 //make an array of custom class object and Assign final because it is used in the other method also
-        final DrawerModel[] drawerItem = new DrawerModel[10];
+        final DrawerModel[] drawerItem = new DrawerModel[9];
         drawerItem[0] = new DrawerModel(R.drawable.aboutiitrr, "About IITR");
         drawerItem[1] = new DrawerModel(R.drawable.group, "About Groups");
         drawerItem[2] = new DrawerModel(R.drawable.map, "Campus Map");
         drawerItem[3] = new DrawerModel(R.drawable.fests, "Campus Fest");
         drawerItem[4] = new DrawerModel(R.drawable.ic_baseline_sports_handball_24, "Sports");
         drawerItem[5] = new DrawerModel(R.drawable.activity, "Activities");
-        drawerItem[6] = new DrawerModel(R.drawable.interests, "My Interests");
-        drawerItem[7] = new DrawerModel(R.drawable.ordercan, "Canteen Order");
-        drawerItem[8] = new DrawerModel(R.drawable.videocampus, "Campus Videos");
-        drawerItem[9] = new DrawerModel( R.drawable.logout, "Log Out");
+
+        drawerItem[6] = new DrawerModel(R.drawable.ordercan, "Canteen Order");
+        drawerItem[7] = new DrawerModel(R.drawable.videocampus, "Campus Videos");
+        drawerItem[8] = new DrawerModel( R.drawable.logout, "Log Out");
 
         //define the custom class adapter called DrawerItemCustomadapter
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_item_nav,drawerItem);
@@ -289,24 +324,20 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
                         intent=new Intent(getApplicationContext(),CampusActivity.class);
                         startActivity(intent);
                         break;
+
+
+
+
+
                     case 6:
-                        intent=new Intent(getApplicationContext(),MyInterests.class);
-                        intent.putStringArrayListExtra("selectedOpts",selections);
-                        startActivity(intent);
-                        break;
-
-                    case 8:
-                        intent=new Intent(getApplicationContext(), CampusVideos.class);
-                        startActivity(intent);
-                        break;
-
-
-                    case 7:
                         intent=new Intent(getApplicationContext(), CanteenOrderActivity.class);
                         startActivity(intent);
                         break;
-
-                    case 9:
+                    case 7:
+                        intent=new Intent(getApplicationContext(), CampusVideos.class);
+                        startActivity(intent);
+                        break;
+                    case 8:
                         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                         saveData();
                         saveData2();
@@ -368,6 +399,11 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 
     @Override

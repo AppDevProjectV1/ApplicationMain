@@ -10,6 +10,7 @@ import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ public class CampusGroupActivity extends AppCompatActivity  {
        ListView  listgroups=(ListView)findViewById(R.id.grouplist);
 
         final ArrayList<ModelClass> groupslists=new ArrayList<ModelClass>();
+        groupslists.add(new ModelClass(R.drawable.quantumcomputing,"Quantum Computing Group", "This is a new group in iitr for quantum computing field.Student can explore the new field which is based on quantum theory with the help of this group.","https://www.facebook.com/qcgiitr/"));
+
         groupslists.add(new ModelClass(R.drawable.dsg,"Data Science Group, IITR", "We are Data Science Group, IIT Roorkee. A student organizaton, part of the umbrella organization Software Development Section. We aim to work on innovative open source projects in the domain of Machine Learning, Deep Learning & Reinforcement Learning, bridging the gap between research and industry. In the process, we fullfil our mission of cultivating and evolving the technical community at IIT Roorkee by organizing lectures, workshops, hackathons spanning the field of Data Science and AI.","https://www.facebook.com/dsgiitr/"));
         groupslists.add(new ModelClass(R.drawable.sds ,"SDSLabs","SDSLabs or Software Development Section Laboratories is a student-run technical group at IIT Roorkee, which aims to encourage the development of technology and innovation in the campus and beyond. We believe in learning and sharing knowledge; collaboration and experimentation; and human interaction that matters the most.\n" +
                 "\n" +

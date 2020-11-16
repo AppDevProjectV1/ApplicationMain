@@ -22,7 +22,7 @@
         android:layout_marginStart="5dp"
         android:layout_below="@+id/hostelname"
         android:layout_marginTop="10dp"
-        android:src="@drawable/cautley"
+        android:src="@drawable/cautlay"
         android:layout_marginLeft="5dp" />
     <TextView
         android:id="@+id/hostelinfo"

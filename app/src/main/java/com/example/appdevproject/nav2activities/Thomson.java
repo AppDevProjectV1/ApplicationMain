@@ -1,8 +1,10 @@
 package com.example.appdevproject.nav2activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.appdevproject.R;
@@ -15,7 +17,12 @@ public class Thomson extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thomson);
+        //  use the actionbar here for go to previous activity
+        ActionBar actionBar = getSupportActionBar();
 
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Tinfo=findViewById(R.id.Tinfo);
 
@@ -26,5 +33,13 @@ public class Thomson extends AppCompatActivity {
 
 
         Tinfo.setText(Binfo);
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
