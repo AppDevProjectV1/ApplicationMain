@@ -338,7 +338,9 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
                         startActivity(intent);
                         break;
                     case 8:
-                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                        Intent intent1=new Intent(getApplicationContext(),LoginActivity.class) ;
+                        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent1);
                         saveData();
                         saveData2();
                         break;

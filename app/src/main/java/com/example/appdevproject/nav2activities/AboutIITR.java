@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.appdevproject.CareerInterest;
+ 
 import com.example.appdevproject.R;
 
 public class AboutIITR extends AppCompatActivity implements View.OnClickListener {
