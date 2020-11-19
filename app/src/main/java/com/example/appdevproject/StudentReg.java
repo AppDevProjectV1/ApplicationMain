@@ -148,21 +148,21 @@ public class StudentReg extends AppCompatActivity {
                     Toast.makeText(StudentReg.this, "Password contain atleast 8 characters", Toast.LENGTH_SHORT).show();
                      return;
                 }
-                if(TextUtils.isEmpty(Achievements)){
-                    Toast.makeText(StudentReg.this, "Please Enter Achievements or No", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(Groups)){
-                    Toast.makeText(
-                            StudentReg.this, "Please Enter Groups or No", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(Skills)){
-                    Toast.makeText(
-                            StudentReg.this, "Please Enter Skills or No", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-//                  progressBar.setVisibility(View.VISIBLE);
+//                if(TextUtils.isEmpty(Achievements)){
+//                    Toast.makeText(StudentReg.this, "Please Enter Achievements or No", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if(TextUtils.isEmpty(Groups)){
+//                    Toast.makeText(
+//                            StudentReg.this, "Please Enter Groups or No", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if(TextUtils.isEmpty(Skills)){
+//                    Toast.makeText(
+//                            StudentReg.this, "Please Enter Skills or No", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+                 progressBar.setVisibility(View.VISIBLE);
                 if(Pass.equals(Cpass) && isNetworkAvailable(getApplicationContext())){
                     firebaseAuth.createUserWithEmailAndPassword(Email,Pass)
                             .addOnCompleteListener(StudentReg.this, new OnCompleteListener<AuthResult>() {

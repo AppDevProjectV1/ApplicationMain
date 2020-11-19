@@ -73,7 +73,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:ems="10"
-                    android:hint="Achievements" />
+                    android:hint="Achievements(Optional*)" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +97,7 @@
                     android:layout_centerVertical="true"
 
 
-                    android:hint="Groups" />
+                    android:hint="Groups(Optional*)" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,7 +120,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
 
-                    android:hint="Skills"
+                    android:hint="Skills(Optional*)"
                   />
 
 

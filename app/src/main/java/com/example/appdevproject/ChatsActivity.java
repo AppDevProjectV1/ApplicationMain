@@ -55,17 +55,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatsActivity extends AppCompatActivity {
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
-        TextView messageTextView;
+        TextView messageTextView,mobile1,mobile2;
         ImageView messageImageView;
-        TextView messengerTextView;
-        CircleImageView messengerImageView;
+
+
 
         public MessageViewHolder(View v) {
             super(v);
             messageTextView = (TextView) itemView.findViewById(R.id.messageTextView);
             messageImageView = (ImageView) itemView.findViewById(R.id.messageImageView);
-            messengerTextView = (TextView) itemView.findViewById(R.id.messengerTextView);
-            messengerImageView = (CircleImageView) itemView.findViewById(R.id.messengerImageView);
+
+             mobile2 = (TextView) itemView.findViewById(R.id.usermobileid2);
+
         }
     }
 
@@ -219,10 +220,20 @@ public class ChatsActivity extends AppCompatActivity {
                                             FriendlyMessage friendlyMessage) {
                 mProgressBar.setVisibility(ProgressBar.INVISIBLE);
                 if (friendlyMessage.getText() != null) {
-                    viewHolder.messageTextView.setText(friendlyMessage.getText());
+                    String SHARED_PREFS="sharedPrefs";
+                    String  mobnore="phono";
+                    SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                    String  ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
+
+                    viewHolder.messageTextView.setText(ismobile+"\n"+friendlyMessage.getText());
                     viewHolder.messageTextView.setVisibility(TextView.VISIBLE);
                     viewHolder.messageImageView.setVisibility(ImageView.GONE);
                 } else if (friendlyMessage.getImageUrl() != null) {
+                    String SHARED_PREFS="sharedPrefs";
+                    String  mobnore="phono";
+                    SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                    String  ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
+                    viewHolder.mobile2.setText(ismobile);
                     String imageUrl = friendlyMessage.getImageUrl();
                     if (imageUrl.startsWith("gs://")) {
                         StorageReference storageReference = FirebaseStorage.getInstance()
@@ -232,6 +243,7 @@ public class ChatsActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         if (task.isSuccessful()) {
+
                                             String downloadUrl = task.getResult().toString();
                                             Glide.with(viewHolder.messageImageView.getContext())
                                                     .load(downloadUrl)
@@ -252,14 +264,7 @@ public class ChatsActivity extends AppCompatActivity {
                 }
 
 
-                viewHolder.messengerTextView.setText(friendlyMessage.getName());
-                if (friendlyMessage.getPhotoUrl() == null) {
-                    viewHolder.messengerImageView.setImageDrawable(ContextCompat.getDrawable(ChatsActivity.this,R.drawable.rounded_corner3));
-                } else {
-                    Glide.with(ChatsActivity.this)
-                            .load(friendlyMessage.getPhotoUrl())
-                            .into(viewHolder.messengerImageView);
-                }
+
 
             }
         };
