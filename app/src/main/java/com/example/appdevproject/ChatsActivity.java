@@ -66,7 +66,7 @@ public class ChatsActivity extends AppCompatActivity {
             messageImageView = (ImageView) itemView.findViewById(R.id.messageImageView);
 
              mobile2 = (TextView) itemView.findViewById(R.id.usermobileid2);
-            mobile1 = (TextView) itemView.findViewById(R.id.usermobileid1);
+             mobile1 = (TextView) itemView.findViewById(R.id.usermobileid1);
         }
     }
 

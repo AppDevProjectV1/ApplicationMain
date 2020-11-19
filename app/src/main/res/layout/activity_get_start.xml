@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_anim"
+
     android:id="@+id/f"
     >
     <FrameLayout
@@ -17,12 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_marginTop="175dp"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="255dp"
+                android:layout_height="226dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@mipmap/iitriconmy" />
+                android:layout_marginTop="100dp"
+                android:src="@drawable/applogo6" />
+
             <Button
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
@@ -48,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sign In"
+                android:textStyle="bold"
                 android:textColor="#311B92"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"

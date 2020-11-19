@@ -30,10 +30,10 @@ public class GetStartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_start);
 
         ScrollView parent  =findViewById(R.id.f);
-        AnimationDrawable gradientAnimator = (AnimationDrawable) parent.getBackground();
-        gradientAnimator.setEnterFadeDuration(500);
-        gradientAnimator.setExitFadeDuration(500);
-        gradientAnimator.start();
+//        AnimationDrawable gradientAnimator = (AnimationDrawable) parent.getBackground();
+//        gradientAnimator.setEnterFadeDuration(500);
+//        gradientAnimator.setExitFadeDuration(500);
+//        gradientAnimator.start();
 
         getStarted=findViewById(R.id.getstarted);
         getStarted.setOnClickListener(new View.OnClickListener() {

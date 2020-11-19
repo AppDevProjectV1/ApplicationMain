@@ -15,7 +15,7 @@
         android:textColor="#0E75D3"
         android:id="@+id/receivedTxt"
         android:textSize="16sp"
-        android:background="@drawable/rounded_corner4"
+        android:background="@drawable/rounded_corners"
         android:text="Hello this is a sample message" />
 
 

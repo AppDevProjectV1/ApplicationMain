@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutApp"
-    android:background="@drawable/gradient1">
+    >
 
     <LinearLayout
         android:id="@+id/appinfo"
@@ -19,11 +19,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Campist"
+            android:text="Campus Compass"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textSize="30sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/heading"/>
         <TextView
             android:id="@+id/version"
             android:layout_width="wrap_content"
@@ -38,13 +38,15 @@
 
 
     <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/appinfo"
-        android:layout_width="210dp"
-        android:layout_height="210dp"
-        android:src="@drawable/add_button"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginTop="33dp"
-        android:layout_centerVertical="true"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/applogo5new"
         android:layout_centerHorizontal="true"/>
 
 
