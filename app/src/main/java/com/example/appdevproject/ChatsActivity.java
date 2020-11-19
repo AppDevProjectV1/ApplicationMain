@@ -66,7 +66,7 @@ public class ChatsActivity extends AppCompatActivity {
             messageImageView = (ImageView) itemView.findViewById(R.id.messageImageView);
 
              mobile2 = (TextView) itemView.findViewById(R.id.usermobileid2);
-
+            mobile1 = (TextView) itemView.findViewById(R.id.usermobileid1);
         }
     }
 
@@ -220,20 +220,17 @@ public class ChatsActivity extends AppCompatActivity {
                                             FriendlyMessage friendlyMessage) {
                 mProgressBar.setVisibility(ProgressBar.INVISIBLE);
                 if (friendlyMessage.getText() != null) {
-                    String SHARED_PREFS="sharedPrefs";
-                    String  mobnore="phono";
-                    SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-                    String  ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
 
-                    viewHolder.messageTextView.setText(ismobile+"\n"+friendlyMessage.getText());
+                    viewHolder.mobile1.setText(friendlyMessage.getName());
+                    viewHolder.mobile1.setVisibility(TextView.VISIBLE);
+                    viewHolder.messageTextView.setText(friendlyMessage.getText());
                     viewHolder.messageTextView.setVisibility(TextView.VISIBLE);
+                    viewHolder.mobile2.setVisibility(TextView.GONE);
                     viewHolder.messageImageView.setVisibility(ImageView.GONE);
                 } else if (friendlyMessage.getImageUrl() != null) {
-                    String SHARED_PREFS="sharedPrefs";
-                    String  mobnore="phono";
-                    SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-                    String  ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
-                    viewHolder.mobile2.setText(ismobile);
+                        viewHolder.mobile2.setText(friendlyMessage.getName());
+                    viewHolder.mobile2.setVisibility(TextView.VISIBLE);
+                    viewHolder.mobile1.setVisibility(TextView.GONE);
                     String imageUrl = friendlyMessage.getImageUrl();
                     if (imageUrl.startsWith("gs://")) {
                         StorageReference storageReference = FirebaseStorage.getInstance()
@@ -248,12 +245,15 @@ public class ChatsActivity extends AppCompatActivity {
                                             Glide.with(viewHolder.messageImageView.getContext())
                                                     .load(downloadUrl)
                                                     .into(viewHolder.messageImageView);
+
                                         } else {
                                             Log.w(TAG, "Getting download url was not successful.",
                                                     task.getException());
                                         }
                                     }
                                 });
+
+
                     } else {
                         Glide.with(viewHolder.messageImageView.getContext())
                                 .load(friendlyMessage.getImageUrl())
@@ -313,10 +313,13 @@ public class ChatsActivity extends AppCompatActivity {
         mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserHelperClass userhelper=new UserHelperClass();
+                String SHARED_PREFS="sharedPrefs";
+                String  mobnore="phono";
+                SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                String  ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
                 FriendlyMessage friendlyMessage = new
                         FriendlyMessage(mMessageEditText.getText().toString(),
-                       userhelper.getUsername(),
+                     ismobile,
                         mPhotoUrl,
                         null /* no image */);
                 mFirebaseDatabaseReference.child(MESSAGES_CHILD)
@@ -438,8 +441,12 @@ public class ChatsActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Uri> task) {
                                                     if (task.isSuccessful()) {
+                                                        String SHARED_PREFS="sharedPrefs";
+                                                        String  mobnore="phono";
+                                                        SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                                                        String  ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
                                                         FriendlyMessage friendlyMessage =
-                                                                new FriendlyMessage(null, mUsername, mPhotoUrl,
+                                                                new FriendlyMessage(null,ismobile, mPhotoUrl,
                                                                         task.getResult().toString());
                                                         mFirebaseDatabaseReference.child(MESSAGES_CHILD).child(key)
                                                                 .setValue(friendlyMessage);
