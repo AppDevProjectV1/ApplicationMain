@@ -143,7 +143,7 @@
         <activity
             android:name=".StudentFeeds"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="  Interests Sources"
+            android:label="  Career Options"
             android:theme="@style/Other" />
         <activity
             android:name=".LoginActivity"

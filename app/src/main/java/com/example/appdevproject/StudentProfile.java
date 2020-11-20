@@ -249,7 +249,7 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
                     profiletab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
                     inboxtab.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_nav_tile) );
 //                    Toast.makeText(this,"",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(), "Interest Sources", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Career Options", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(getApplicationContext(),StudentFeeds.class);
                     startActivity(intent);
                     finish();
