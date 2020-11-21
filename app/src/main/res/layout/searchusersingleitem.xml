@@ -30,7 +30,7 @@
             android:id="@+id/nametext"
             android:text="Unknown User"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="#000"
             android:layout_toRightOf="@id/userppp"
             android:layout_marginLeft="10dp"/>

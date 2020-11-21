@@ -43,9 +43,9 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 //         ImageView imagenotification=(ImageView) findViewById(R.id.notification );
 //         ImageView  imagehelp=(ImageView) findViewById(R.id.help);
 
-        ImageView  imageshare=(ImageView) findViewById(R.id.shareapp);
-
-        ImageView deleteacc=(ImageView) findViewById(R.id.deleteaccount);
+        View imageshare=findViewById(R.id.ifriend);
+        View deleteacc=findViewById(R.id.daccount);
+        View aboutapp=findViewById(R.id.aapp);
 //        TextView textprivacy=(TextView)findViewById(R.id.privacysetting);
 //        TextView textnotification=(TextView)findViewById(R.id.notificationsetting);
 //        TextView texthelp=(TextView)findViewById(R.id.helpsetting);
@@ -58,7 +58,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String mimeType = "text/plain";
-                String title = "Example title";
+                String title = "Hey!join the Campus Compass network, download the app from playstore";
 
                 Intent shareIntent =   ShareCompat.IntentBuilder.from(ProfileSettingsActivity.this)
                         .setType(mimeType)
@@ -69,10 +69,18 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                 }
             }
         });
-     deleteacc.setOnClickListener(new View.OnClickListener() {
+        deleteacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "It will be updated soon.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        aboutapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),AboutApp.class));
             }
         });
 

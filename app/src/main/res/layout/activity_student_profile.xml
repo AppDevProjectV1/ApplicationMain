@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentProfile"
-    android:background="#ffffff"
+    android:background="#EEEEEE"
     android:layoutDirection="ltr">
 
     <RelativeLayout
@@ -40,8 +40,8 @@
                     android:textSize="20sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_toLeftOf="@id/profiletoggle"
                     android:src="@mipmap/searchusersimages"
                     android:id="@+id/action_hamara_users"
@@ -76,7 +76,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="140dp"
                     android:src="@drawable/backgroundprofilesearch"
                     android:scaleType="centerCrop"/>
                 <ImageView
@@ -94,15 +94,16 @@
                         android:src="@mipmap/iitrstudentprofile"
                         app:civ_border_color="#000000"
                         app:civ_border_width="2dp"
-                        android:layout_margin ="10dp"
+                        android:layout_marginLeft ="10dp"
                         app:civ_shadow_radius="10dp"
                         app:civ_shadow_color="#FFFEF2"
-                      android:layout_marginTop="100dp"
+                        android:layout_marginTop="16dp"
                         android:id="@+id/profileimageview"/>
 
 
 
-                <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <androidx.cardview.widget.CardView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="5dp"
@@ -122,7 +123,7 @@
                             android:id="@+id/name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:textStyle="bold"
                             android:text=""
                             android:textColor="@color/black"
                             android:textSize="25sp" />
@@ -186,10 +187,10 @@
                             android:id="@+id/Achievement"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:textStyle="bold"
                             android:text="Achievements"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
+                            android:textSize="20sp"
 
                             />
 
@@ -198,9 +199,8 @@
                             android:id="@+id/AchievementStudent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:text="No"
-                            android:textColor="@color/black"
+                            android:textColor="@color/profiletext"
                             android:textSize="16sp"
                             />
 
@@ -227,10 +227,10 @@
                             android:id="@+id/Groups"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:textStyle="bold"
                             android:text="Groups"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
+                            android:textSize="20sp"
                             />
 
 
@@ -238,9 +238,8 @@
                             android:id="@+id/groupsStudent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:text="No"
-                            android:textColor="@color/black"
+                            android:textColor="@color/profiletext"
                             android:textSize="16sp"
 
                             />
@@ -267,10 +266,10 @@
                             android:id="@+id/Skills"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:textStyle="bold"
                             android:text="Skills"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
+                            android:textSize="20sp"
 
                             />
 
@@ -280,7 +279,7 @@
                             android:layout_height="wrap_content"
 
                             android:text="No"
-                            android:textColor="@color/black"
+                            android:textColor="@color/profiletext"
                             android:textSize="16sp"
                             />
 

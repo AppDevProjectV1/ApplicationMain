@@ -71,6 +71,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
             >
             <EditText
                 android:id="@+id/messageEdit"
@@ -79,7 +80,7 @@
                 android:layout_height="45dp"
                 android:background="@layout/edit_text"
                 android:hint="Type something..."
-                android:textColorHint="#000000"
+                android:textColorHint="#757575"
                 android:textSize="15sp"
                 android:layout_centerVertical="true"
                 />
@@ -95,12 +96,12 @@
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
             <ImageView
-            android:id="@+id/photoPickerButton"
-
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/add_button"
-            android:enabled="false"
+                android:id="@+id/photoPickerButton"
+                android:src="@drawable/send_image"
+                android:layout_width="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="35dp"
+                android:enabled="false"
             />
 
     </LinearLayout>
