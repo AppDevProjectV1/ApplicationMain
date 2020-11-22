@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText name, email, pass, cpass;
+    private EditText phone, email, pass, cpass;
     private Button login;
     private FirebaseAuth firebaseAuth;
 
@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth=FirebaseAuth.getInstance();
 
+        phone=(EditText)findViewById(R.id.phone);
         email = (EditText)findViewById(R.id.emailpass);
         pass= (EditText)findViewById(R.id.loginpass);
 
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String Email=email.getText().toString().trim();
                 String Pass=pass.getText().toString().trim();
+                String Number="+91"+phone.getText().toString().trim();
 
                 if(TextUtils.isEmpty(Email)){
                     Toast.makeText(LoginActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
@@ -66,12 +68,13 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-                                    startActivity(intent);
                                     saveData();
-                                    Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_LONG).show();
+                                    Intent intent1=new Intent(getApplicationContext(),StudentProfile.class);
+//                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent1.putExtra("phonenumber",Number);
+                                    startActivity(intent1);
+
 
                                 }
                                 else if(isNetworkAvailable(getApplicationContext())){
@@ -99,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putBoolean(loggedin,true);
-
         editor.apply();
     }
 

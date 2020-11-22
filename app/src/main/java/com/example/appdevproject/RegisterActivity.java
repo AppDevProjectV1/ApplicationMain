@@ -15,9 +15,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String SHARED_PREFS="sharedPrefs";
+    public static final String  mobno="phono";
     private Spinner spinner;
     private EditText editText;
-    public static final String  mobno="phono";
+
     String phonenumber;
 
     @Override

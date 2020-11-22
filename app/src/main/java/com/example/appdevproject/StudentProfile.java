@@ -36,6 +36,7 @@ import com.bumptech.glide.Glide;
 import com.example.appdevproject.nav2activities.AboutIITR;
 import com.example.appdevproject.nav2activities.FestsList;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,6 +59,7 @@ public class StudentProfile extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
 
+    public static final String semail="Email";
     private  ImageView profiletab,feedstab,inboxtab;
     private ImageView img,imagesearchView,editprofilebutton;
     private String[] mNavigationDrawerItemTitles;
@@ -67,9 +69,11 @@ public class StudentProfile extends AppCompatActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     public int b=1;
+
+    private String intentEmail;
     String Nameji ;
     String emailji ;
-    String  yeraji ;
+    String yeraji ;
     String deptji ;
     String skillji ;
     String acheivementsji ;
@@ -77,7 +81,7 @@ public class StudentProfile extends AppCompatActivity {
     String hostalji ;
     String imageji;
     public ArrayList<String> selections;
-public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachievements,userskills,usergroups;
+    public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachievements,userskills,usergroups;
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String loggedin="loggedin";
     public static final String  Registered="registered";
@@ -126,14 +130,13 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
 
 
         SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        ismobile = sharedPreferences.getString(mobnore,"mobilenumber");
-
+        ismobile = getIntent().getStringExtra("phonenumber");
 
         profiletab=findViewById(R.id.profiletab);
         feedstab=findViewById(R.id.feedstab);
         inboxtab=findViewById(R.id.inboxtab);
         editprofilebutton=findViewById(R.id.editprofilebtn);
-         imagesearchView=findViewById(R.id.action_hamara_users);
+        imagesearchView=findViewById(R.id.action_hamara_users);
         profileImageView = findViewById(R.id.profileimageview);
         userterenaam=findViewById(R.id.name);
         useremail=findViewById(R.id.email);
@@ -145,26 +148,29 @@ public  TextView   userterenaam,useremail,useryear,userdept,userhostal,userachie
         usergroups=findViewById(R.id.groupsStudent);
 
         databaseReferenceall=FirebaseDatabase.getInstance().getReference("Usersdata").child(ismobile);
+        Toast.makeText(getApplicationContext(),intentEmail,Toast.LENGTH_LONG).show();
         databaseReferenceall.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                  Nameji=dataSnapshot.child("username").getValue().toString();
                  emailji=dataSnapshot.child("email").getValue().toString();
                  yeraji=dataSnapshot.child("year").getValue().toString();
                  deptji=dataSnapshot.child("dept").getValue().toString();
-                skillji=dataSnapshot.child("mskills").getValue().toString();
+                 skillji=dataSnapshot.child("mskills").getValue().toString();
                  acheivementsji=dataSnapshot.child("machievements").getValue().toString();
                  groupji=dataSnapshot.child("mgroups").getValue().toString();
-                hostalji=dataSnapshot.child("mbahawan").getValue().toString();
+                 hostalji=dataSnapshot.child("mbahawan").getValue().toString();
                  imageji=dataSnapshot.child("imageUrl").getValue().toString();
-                userterenaam.setText(Nameji);
-                useremail.setText(emailji);
-                userdept.setText(deptji);
-                useryear.setText(yeraji+" year");
-                userhostal.setText(hostalji);
-                userachievements.setText(acheivementsji);
-                usergroups.setText(groupji);
-                userskills.setText(skillji);
+                 userterenaam.setText(Nameji);
+                 useremail.setText(emailji);
+                 userdept.setText(deptji);
+                 useryear.setText(yeraji+" year");
+                 userhostal.setText(hostalji);
+                 userachievements.setText(acheivementsji);
+                 usergroups.setText(groupji);
+                 userskills.setText(skillji);
                 Glide.with(getApplicationContext()).load(imageji).into(profileImageView);
             }
 

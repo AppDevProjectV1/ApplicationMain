@@ -15,15 +15,16 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class GetStartActivity extends AppCompatActivity {
+    public static final String SHARED_PREFS="sharedPrefs";
     public static final String  GetStart="getstart";
-    public boolean isGet;
     public static final String  Registered="registered";
+    public boolean isGet;
     public boolean isRegistered;
     public  String isMobileno;
     private Button getStarted;
     private TextView signin;
     private TextView regGuide;
-    public static final String SHARED_PREFS="sharedPrefs";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +46,10 @@ public class GetStartActivity extends AppCompatActivity {
                     Toast.makeText(GetStartActivity.this, "Already have an account please sign in", Toast.LENGTH_SHORT).show();
 
                 }
-               else{ Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
-                startActivity(intent);}
+               else{
+                   Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
+                   startActivity(intent);
+               }
             }
         });
 
