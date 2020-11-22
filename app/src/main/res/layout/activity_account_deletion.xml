@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountDeletion"
+    android:background="#EEEEEE">
+
+
+    <TextView
+        android:id="@+id/delhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Please email any of the developers for account deletion.Your request will be processed within 2 days."
+        android:textColor="@color/heading"
+        />
+
+    <TextView
+        android:id="@+id/brack"
+        android:layout_below="@id/delhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="(Just click on any of the mentioned email ids.)"
+        android:textColor="@color/profiletext"
+        />
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/brack"
+       android:id="@+id/mayank"
+       android:layout_marginTop="30dp"
+       android:layout_centerHorizontal="true"
+       android:elevation="5dp"
+       app:cardCornerRadius="5dp">
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:padding="5dp"
+           android:gravity="center_vertical"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textStyle="bold"
+               android:textSize="15sp"
+               android:textColor="@color/black"
+               android:text="Mayank Patidar : "
+               android:layout_marginLeft="10dp"
+               android:paddingVertical="15dp"/>
+
+           <TextView
+               android:id="@+id/memail"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textStyle="bold"
+               android:textSize="14sp"
+               android:textColor="@color/profiletext"
+               android:text="mayankpatidar19082001@gmail.com"
+               android:layout_gravity="center_vertical"
+               />
+
+       </LinearLayout>
+   </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mayank"
+        android:id="@+id/jatin"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Jatin Ramchandani : "
+                android:layout_marginLeft="10dp"
+                android:paddingVertical="15dp"/>
+
+            <TextView
+                android:id="@+id/jemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/profiletext"
+                android:text="jatinramchandani307@gmail.com"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

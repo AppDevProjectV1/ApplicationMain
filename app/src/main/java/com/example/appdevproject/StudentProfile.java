@@ -85,7 +85,7 @@ public class StudentProfile extends AppCompatActivity {
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String loggedin="loggedin";
     public static final String  Registered="registered";
-    public static final String  mobnore="phono";
+    public static final String  MOB_NO="phono";
     public  String ismobile;
     ProgressBar mProgressBar;
     androidx.appcompat.app.ActionBarDrawerToggle mDrawerToggle;
@@ -130,7 +130,7 @@ public class StudentProfile extends AppCompatActivity {
 
 
         SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        ismobile = getIntent().getStringExtra("phonenumber");
+        ismobile = sharedPreferences.getString(MOB_NO,"");
 
         profiletab=findViewById(R.id.profiletab);
         feedstab=findViewById(R.id.feedstab);
@@ -148,7 +148,6 @@ public class StudentProfile extends AppCompatActivity {
         usergroups=findViewById(R.id.groupsStudent);
 
         databaseReferenceall=FirebaseDatabase.getInstance().getReference("Usersdata").child(ismobile);
-        Toast.makeText(getApplicationContext(),intentEmail,Toast.LENGTH_LONG).show();
         databaseReferenceall.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -347,8 +346,15 @@ public class StudentProfile extends AppCompatActivity {
                         Intent intent1=new Intent(getApplicationContext(),LoginActivity.class) ;
                         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
-                        saveData();
-                        saveData2();
+
+                        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+                        editor.clear();
+                        editor.commit();
+
+//                        saveData();
+//                        saveData2();
                         break;
                     default:
                         break;

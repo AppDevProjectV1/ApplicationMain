@@ -1,10 +1,12 @@
 package com.example.appdevproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +19,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.w3c.dom.Text;
@@ -24,6 +32,13 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class ProfileSettingsActivity extends AppCompatActivity {
+
+    private DatabaseReference databaseReferenceall ;
+
+    public static final String SHARED_PREFS="sharedPrefs";
+    public static final String  MOB_NO="phono";
+
+    public  String ismobile;
 
     CircularImageView circularImageView;
     private static final int PICK_IMAGE = 100;
@@ -72,7 +87,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         deleteacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "It will be updated soon.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(),AccountDeletion.class));
             }
         });
 

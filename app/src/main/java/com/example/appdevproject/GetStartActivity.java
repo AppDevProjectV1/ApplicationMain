@@ -41,15 +41,15 @@ public class GetStartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (FirebaseAuth.getInstance().getCurrentUser() != null && isGetStart()) {
-
-                    Toast.makeText(GetStartActivity.this, "Already have an account please sign in", Toast.LENGTH_SHORT).show();
-
-                }
-               else{
+//                if (FirebaseAuth.getInstance().getCurrentUser() != null && isGetStart()) {
+//
+//                    Toast.makeText(GetStartActivity.this, "Already have an account please sign in", Toast.LENGTH_SHORT).show();
+//
+//                }
+//               else{
                    Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
                    startActivity(intent);
-               }
+//               }
             }
         });
 
@@ -69,6 +69,7 @@ public class GetStartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

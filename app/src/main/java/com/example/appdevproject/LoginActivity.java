@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String loggedin="loggedin";
+    public static final String MOB_NO="phono";
     public static final String  Registered="";
   //  private ProgressBar progressBar;
     @Override
@@ -74,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     intent1.putExtra("phonenumber",Number);
                                     startActivity(intent1);
-
+                                    finish();
 
                                 }
                                 else if(isNetworkAvailable(getApplicationContext())){
@@ -102,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putBoolean(loggedin,true);
+        editor.putString(MOB_NO,"+91"+phone.getText().toString().trim());
         editor.apply();
     }
 

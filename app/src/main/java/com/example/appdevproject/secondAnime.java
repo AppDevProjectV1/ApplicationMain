@@ -15,7 +15,6 @@ public class secondAnime extends AppCompatActivity {
     private Timer timer;
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String loggedin="loggedin";
-
     public static final String  Registered="registered";
     public boolean isLogged;
      public boolean isRegistered;
