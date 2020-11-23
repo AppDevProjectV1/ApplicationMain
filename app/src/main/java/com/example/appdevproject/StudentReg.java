@@ -449,8 +449,6 @@ public class StudentReg extends AppCompatActivity {
     private void Storeuserdata() {
 
         userHelperClass=new UserHelperClass(Name,isMobile,Email,Achievements,Groups,Skills,Studentyear,StudentDepartment,Bahawan,newUri);
-
-
         reference.setValue(userHelperClass);
     }
     public int getB(){
