@@ -91,7 +91,7 @@
                     <com.mikhaellopez.circularimageview.CircularImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@mipmap/iitrstudentprofile"
+                        android:src="@drawable/default_profile_picture"
                         app:civ_border_color="#000000"
                         app:civ_border_width="2dp"
                         android:layout_marginLeft ="10dp"
@@ -110,14 +110,16 @@
                     app:cardCornerRadius="5dp"
                     app:cardUseCompatPadding="true"
                     android:layout_below="@+id/profileimageview"
-                    android:id="@+id/cardforinfo">
+                    android:id="@+id/cardforinfo"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:paddingVertical="24dp"
+                        android:paddingHorizontal="15dp"
+                        >
 
                         <TextView
                             android:id="@+id/name"
@@ -133,6 +135,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text=""
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -165,23 +168,24 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <androidx.cardview.widget.CardView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="5dp"
                     app:cardCornerRadius="5dp"
 
-                android:id="@+id/Achievementcard"
+                    android:id="@+id/Achievementcard"
 
-                app:cardUseCompatPadding="true"
+                    app:cardUseCompatPadding="true"
                     android:layout_below="@+id/cardforinfo">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:paddingVertical="24dp"
+                        android:paddingHorizontal="15dp">
 
                         <TextView
                             android:id="@+id/Achievement"
@@ -200,6 +204,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="No"
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/profiletext"
                             android:textSize="16sp"
                             />
@@ -219,9 +224,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:paddingVertical="24dp"
+                        android:paddingHorizontal="15dp">
 
                         <TextView
                             android:id="@+id/Groups"
@@ -239,6 +244,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="No"
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/profiletext"
                             android:textSize="16sp"
 
@@ -258,9 +264,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:paddingVertical="24dp"
+                        android:paddingHorizontal="15dp">
 
                         <TextView
                             android:id="@+id/Skills"
@@ -277,8 +283,8 @@
                             android:id="@+id/SkillsStudent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:text="No"
+                            android:layout_marginTop="3dp"
                             android:textColor="@color/profiletext"
                             android:textSize="16sp"
                             />

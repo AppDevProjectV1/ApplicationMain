@@ -177,7 +177,7 @@ public class StudentReg extends AppCompatActivity {
                                         Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
-                                        Toast.makeText(StudentReg.this, "Select Your Interest", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(StudentReg.this, "Registered successfully", Toast.LENGTH_SHORT).show();
 
                                     } else {
                                         Toast.makeText(StudentReg.this, "Email Already Exist or wrong", Toast.LENGTH_SHORT).show();

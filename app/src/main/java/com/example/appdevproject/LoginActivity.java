@@ -21,8 +21,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
+
+
+    private DatabaseReference databaseReferenceall;
+    private String checkEmail;
+
 
     private EditText phone, email, pass, cpass;
     private Button login;
@@ -54,6 +64,11 @@ public class LoginActivity extends AppCompatActivity {
                 String Pass=pass.getText().toString().trim();
                 String Number="+91"+phone.getText().toString().trim();
 
+
+                if(TextUtils.isEmpty(phone.getText().toString().trim())){
+                    Toast.makeText(LoginActivity.this, "Please Enter Number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(TextUtils.isEmpty(Email)){
                     Toast.makeText(LoginActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
                     return;
@@ -64,33 +79,54 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-               firebaseAuth.signInWithEmailAndPassword(Email,Pass)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    saveData();
-                                    Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_LONG).show();
-                                    Intent intent1=new Intent(getApplicationContext(),StudentProfile.class);
+                databaseReferenceall= FirebaseDatabase.getInstance().getReference("Usersdata").child(Number);
+                databaseReferenceall.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        checkEmail=dataSnapshot.child("email").getValue().toString();
+//                        Toast.makeText(getApplicationContext(),checkEmail, Toast.LENGTH_SHORT).show();
+                        if(email.getText().toString().equals(checkEmail)){
+                            firebaseAuth.signInWithEmailAndPassword(Email,Pass)
+                                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                saveData();
+                                                Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_LONG).show();
+                                                Intent intent1=new Intent(getApplicationContext(),StudentProfile.class);
 //                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    intent1.putExtra("phonenumber",Number);
-                                    startActivity(intent1);
-                                    finish();
+                                                intent1.putExtra("phonenumber",Number);
+                                                startActivity(intent1);
+                                                finish();
 
-                                }
-                                else if(isNetworkAvailable(getApplicationContext())){
-                                    Toast.makeText(LoginActivity.this, "Wrong Email or Password",
-                                            Toast.LENGTH_SHORT).show();
+                                            }
+                                            else if(isNetworkAvailable(getApplicationContext())){
+                                                Toast.makeText(LoginActivity.this, "Wrong Email or Password",
+                                                        Toast.LENGTH_SHORT).show();
 
-                                }
-                                else{
-                                    Toast.makeText(LoginActivity.this, "no Internet Connection",
-                                            Toast.LENGTH_SHORT).show();
-                                }
+                                            }
+                                            else{
+                                                Toast.makeText(LoginActivity.this, "no Internet Connection",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
 
-                                // ...
-                            }
-                        });
+                                            // ...
+                                        }
+                                    });
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
             }
         });
     }
@@ -106,5 +142,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString(MOB_NO,"+91"+phone.getText().toString().trim());
         editor.apply();
     }
+
+
 
 }

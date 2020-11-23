@@ -28,7 +28,7 @@ public class CanteenOrderActivity extends AppCompatActivity {
         }
         ListView canteenbahwan=(ListView)findViewById(R.id.canteenlist);
 
-ArrayList<CanteenClass> mcanteenlist= new ArrayList<CanteenClass>();
+        ArrayList<CanteenClass> mcanteenlist= new ArrayList<CanteenClass>();
 
         mcanteenlist.add(new CanteenClass("Azad Bhawan Canteen",  R.drawable.canteenimg));
         mcanteenlist.add(new CanteenClass( "Cautley Bhawan Canteen",  R.drawable.canteenimg));

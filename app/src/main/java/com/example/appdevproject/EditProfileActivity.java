@@ -131,7 +131,7 @@ public class EditProfileActivity extends AppCompatActivity {
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                openfilechooser();
+                openfilechooser();
                 Toast.makeText(getApplicationContext(), "It will be updated soon.", Toast.LENGTH_LONG).show();
             }
         });
