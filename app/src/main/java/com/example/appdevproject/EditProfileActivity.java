@@ -112,6 +112,7 @@ public class EditProfileActivity extends AppCompatActivity {
         stuyear.setText(getIntent().getStringExtra("year"));
         studept.setText(getIntent().getStringExtra("dept"));
         addprofileImageView = findViewById(R.id.addprofilephotoid1);
+        isEmail=getIntent().getStringExtra("email");
         imgji=getIntent().getStringExtra("imageurl");
         Glide.with(getApplicationContext()).load(imgji).into(addprofileImageView);
         Name =name.getText().toString().trim();
@@ -123,7 +124,7 @@ public class EditProfileActivity extends AppCompatActivity {
         mobilenumber= getIntent().getStringExtra("mobile_number");
         SharedPreferences sharedPreferences =getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         isMobile = sharedPreferences.getString(mobno,"mobilenumber");
-        isEmail = sharedPreferences.getString(Email,"mayankjatindonokaapp@gmail.com");
+
         storageReference= FirebaseStorage.getInstance().getReference().child(isMobile);
         reference= FirebaseDatabase.getInstance().getReference("Usersdata").child(isMobile);
         // progressBar=(ProgressBar)findViewById(R.id.studentprogress);

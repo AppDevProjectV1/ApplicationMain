@@ -83,6 +83,12 @@ public class LoginActivity extends AppCompatActivity {
                 databaseReferenceall.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.exists()){
+                            Toast.makeText(getApplicationContext(), "This number does not exist", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+
+
                         checkEmail=dataSnapshot.child("email").getValue().toString();
 //                        Toast.makeText(getApplicationContext(),checkEmail, Toast.LENGTH_SHORT).show();
                         if(email.getText().toString().equals(checkEmail)){
@@ -116,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
-                        }
+                        }}
                     }
 
                     @Override
@@ -127,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-            }
+                }
         });
     }
     public boolean isNetworkAvailable(Context context) {

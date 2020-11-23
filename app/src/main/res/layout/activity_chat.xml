@@ -98,7 +98,7 @@
         </RelativeLayout>
             <ImageView
                 android:id="@+id/photoPickerButton"
-                android:src="@drawable/send_image"
+                android:src="@mipmap/galleryiconji"
                 android:layout_width="35dp"
                 android:layout_gravity="center_vertical"
                 android:layout_height="35dp"

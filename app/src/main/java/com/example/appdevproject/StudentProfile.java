@@ -309,6 +309,7 @@ public class StudentProfile extends AppCompatActivity {
                         break;
                     case 1:
                         intent=new Intent(getApplicationContext(),CampusGroupActivity.class);
+                        Toast.makeText(getApplicationContext(), "you can directly go to their facebook pages when you will click on any group item", Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         break;
                     case 2:
@@ -322,11 +323,15 @@ public class StudentProfile extends AppCompatActivity {
 
                     case 4:
                         intent=new Intent(getApplicationContext(),SportsActivity.class);
+                        Toast.makeText(getApplicationContext(), "you can directly go to their facebook pages when you will click on any sports item", Toast.LENGTH_LONG).show();
+
                         startActivity(intent);
                         break;
 
                     case 5:
                         intent=new Intent(getApplicationContext(),CampusActivity.class);
+                        Toast.makeText(getApplicationContext(), "you can directly go to their facebook pages when you will click on any activity item", Toast.LENGTH_LONG).show();
+
                         startActivity(intent);
                         break;
 
