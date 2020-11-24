@@ -132,7 +132,7 @@ public class EditProfileActivity extends AppCompatActivity {
         addprofileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openfilechooser();
+//                openfilechooser();
                 Toast.makeText(getApplicationContext(), "It will be updated soon.", Toast.LENGTH_LONG).show();
             }
         });
@@ -185,60 +185,60 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
     }
-
-    private void openfilechooser() {
-        Intent gallery =new Intent();
-        gallery.setType("image/*");
-        gallery.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(gallery,PICK_IMAGE);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE  && resultCode == RESULT_OK && data !=null &&
-                data.getData()!=null){
-            imageUri = data.getData();
-            // start cropping activity for pre-acquired image saved on the device
-            CropImage.activity(imageUri)
-                    .start(this);
-
-
-
-        }
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                Glide.with(getApplicationContext()).load(resultUri).into(addprofileImageView);
-                storageReference.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>(){
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        task.getResult().getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-
-
-                                newUri=uri.toString();
-
-
-
-
-                            }
-                        });
-                    }
-                });
-            }
-
-
-            else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
-        }
-
-    }
+//
+//    private void openfilechooser() {
+//        Intent gallery =new Intent();
+//        gallery.setType("image/*");
+//        gallery.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(gallery,PICK_IMAGE);
+//    }
+//
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == PICK_IMAGE  && resultCode == RESULT_OK && data !=null &&
+//                data.getData()!=null){
+//            imageUri = data.getData();
+//            // start cropping activity for pre-acquired image saved on the device
+//            CropImage.activity(imageUri)
+//                    .start(this);
+//
+//
+//
+//        }
+//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+//            if (resultCode == RESULT_OK) {
+//                Uri resultUri = result.getUri();
+//                Glide.with(getApplicationContext()).load(resultUri).into(addprofileImageView);
+//                storageReference.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>(){
+//                    @Override
+//                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                        task.getResult().getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                            @Override
+//                            public void onSuccess(Uri uri) {
+//
+//
+//                                newUri=uri.toString();
+//
+//
+//
+//
+//                            }
+//                        });
+//                    }
+//                });
+//            }
+//
+//
+//            else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+//                Exception error = result.getError();
+//            }
+//        }
+//
+//    }
 
     /* */
 
