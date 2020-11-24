@@ -172,8 +172,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 if(isNetworkAvailable(getApplicationContext())){
                     Storeuserdata();
 
-                    Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent(getApplicationContext(),StudentProfile.class);
+//                    startActivity(intent);
                     Toast.makeText(EditProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
                 }
                 else{

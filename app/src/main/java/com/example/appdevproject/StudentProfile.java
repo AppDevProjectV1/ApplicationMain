@@ -189,9 +189,8 @@ public class StudentProfile extends AppCompatActivity {
             intent.putExtra( "achi",acheivementsji );
             intent.putExtra("groups" , groupji);
             intent.putExtra("skills" ,skillji );
-          intent.putExtra("imageurl",imageji);
+            intent.putExtra("imageurl",imageji);
             startActivity(intent);
-            finish();
         });
         imagesearchView.setOnClickListener(new View.OnClickListener() {
             @Override
