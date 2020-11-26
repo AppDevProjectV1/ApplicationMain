@@ -21,100 +21,100 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PrivacyPolicy"></activity>
-        <activity android:name=".AccountDeletion" />
+        <activity android:name="com.campuscompass.appdevproject.PrivacyPolicy"></activity>
+        <activity android:name="com.campuscompass.appdevproject.AccountDeletion" />
         <activity android:name=".FullImageActivity" />
-        <activity android:name=".InterestsClass" />
+        <activity android:name="com.campuscompass.appdevproject.InterestsClass" />
         <activity android:name=".StudentFeedsAdapter" />
-        <activity android:name=".IndividualUserProfile" />
-        <activity android:name=".FriendlyMessage" />
+        <activity android:name="com.campuscompass.appdevproject.IndividualUserProfile" />
+        <activity android:name="com.campuscompass.appdevproject.FriendlyMessage" />
         <activity android:name=".ProfileAdapter" />
-        <activity android:name=".EditProfileActivity" />
+        <activity android:name="com.campuscompass.appdevproject.EditProfileActivity" />
         <activity android:name=".SearchuserAdapter" />
         <activity
-            android:name=".SearchUsersActivity"
+            android:name="com.campuscompass.appdevproject.SearchUsersActivity"
             android:label="           Search Users"
             android:theme="@style/Other" />
-        <activity android:name=".UserHelperClass" />
-        <activity android:name=".CampusVideoAdapter" />
-        <activity android:name=".CampusVideoClass" />
+        <activity android:name="com.campuscompass.appdevproject.UserHelperClass" />
+        <activity android:name="com.campuscompass.appdevproject.CampusVideoAdapter" />
+        <activity android:name="com.campuscompass.appdevproject.CampusVideoClass" />
         <activity
-            android:name=".CampusVideos"
+            android:name="com.campuscompass.appdevproject.CampusVideos"
             android:label="       Campus Videos"
             android:theme="@style/Other" />
-        <activity android:name=".CountryData" />
-        <activity android:name=".OtpActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name="com.campuscompass.appdevproject.CountryData" />
+        <activity android:name="com.campuscompass.appdevproject.OtpActivity" />
+        <activity android:name="com.campuscompass.appdevproject.RegisterActivity" />
         <activity
-            android:name=".OrderCanteen"
+            android:name="com.campuscompass.appdevproject.OrderCanteen"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="           Canteen Menu"
             android:theme="@style/Other" />
-        <activity android:name=".RegGuide" />
+        <activity android:name="com.campuscompass.appdevproject.RegGuide" />
         <activity
-            android:name=".ProfileSettingsActivity"
+            android:name="com.campuscompass.appdevproject.ProfileSettingsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="                 Settings"
             android:theme="@style/Other" />
-        <activity android:name=".CanteenAdapter" />
-        <activity android:name=".CanteenClass" />
+        <activity android:name="com.campuscompass.appdevproject.CanteenAdapter" />
+        <activity android:name="com.campuscompass.appdevproject.CanteenClass" />
         <activity
-            android:name=".nav2activities.FestsList"
+            android:name="com.campuscompass.appdevproject.nav2activities.FestsList"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="      Fests And Exhibitions"
             android:theme="@style/Other" />
         <activity
-            android:name=".CanteenOrderActivity"
+            android:name="com.campuscompass.appdevproject.CanteenOrderActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="           Canteen Order"
             android:theme="@style/Other" />
-        <activity android:name=".AboutApp" />
-        <activity android:name=".Privacy" />
-        <activity android:name=".Notifications" />
+        <activity android:name="com.campuscompass.appdevproject.AboutApp" />
+        <activity android:name="com.campuscompass.appdevproject.Privacy" />
+        <activity android:name="com.campuscompass.appdevproject.Notifications" />
         <activity
-            android:name=".nav2activities.Thomson"
+            android:name="com.campuscompass.appdevproject.nav2activities.Thomson"
             android:label="      James Thomson Building"
             android:theme="@style/Other" />
         <activity
-            android:name=".nav2activities.Library"
+            android:name="com.campuscompass.appdevproject.nav2activities.Library"
             android:label="                Library"
             android:theme="@style/Other" />
         <activity
-            android:name=".nav2activities.Hostels"
+            android:name="com.campuscompass.appdevproject.nav2activities.Hostels"
             android:label="                 Hostels"
             android:theme="@style/Other" />
         <activity
-            android:name=".nav2activities.Departments"
+            android:name="com.campuscompass.appdevproject.nav2activities.Departments"
             android:label="            Departments"
             android:theme="@style/Other" />
         <activity
-            android:name=".nav2activities.Clubs"
+            android:name="com.campuscompass.appdevproject.nav2activities.Clubs"
             android:label="             Activity Clubs"
             android:theme="@style/Other" />
         <activity
-            android:name=".nav2activities.AboutIITR"
+            android:name="com.campuscompass.appdevproject.nav2activities.AboutIITR"
             android:label="          About IITR"
             android:theme="@style/Other" />
         <activity
-            android:name=".SportsActivity"
+            android:name="com.campuscompass.appdevproject.SportsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="                   Sports"
             android:theme="@style/Other" />
         <activity
-            android:name=".CampusActivity"
+            android:name="com.campuscompass.appdevproject.CampusActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="                 Activities"
             android:theme="@style/Other" />
-        <activity android:name=".groupinfo" />
-        <activity android:name=".GroupAdapter" />
-        <activity android:name=".ModelClass" />
+        <activity android:name="com.campuscompass.appdevproject.groupinfo" />
+        <activity android:name="com.campuscompass.appdevproject.GroupAdapter" />
+        <activity android:name="com.campuscompass.appdevproject.ModelClass" />
         <activity
-            android:name=".CampusGroupActivity"
+            android:name="com.campuscompass.appdevproject.CampusGroupActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="            About Groups"
             android:theme="@style/Other" />
         <activity
-            android:name=".StudentProfile"
+            android:name="com.campuscompass.appdevproject.StudentProfile"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Student Profile" />
         <activity android:name=".CareerInterest" /> <!-- <activity -->
@@ -123,7 +123,7 @@
         <!-- android:label="Others Profile" -->
         <!-- android:theme="@style/Other" /> -->
         <activity
-            android:name=".ChatsActivity"
+            android:name="com.campuscompass.appdevproject.ChatsActivity"
             android:label=" Student Query Section"
             android:theme="@style/Other" /> <!-- <activity -->
         <!-- android:name=".NoticeProfActivity" -->
@@ -143,20 +143,20 @@
         <!-- android:name=".FacultyRegistration" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" /> -->
         <activity
-            android:name=".StudentFeeds"
+            android:name="com.campuscompass.appdevproject.StudentFeeds"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="  Career Options"
             android:theme="@style/Other" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.campuscompass.appdevproject.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".GetStartActivity"
+            android:name="com.campuscompass.appdevproject.GetStartActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" /> <!-- <activity -->
         <!-- android:name=".OthersReg" -->
         <!-- android:configChanges="keyboardHidden|orientation|screenSize" /> -->
         <activity
-            android:name=".StudentReg"
+            android:name="com.campuscompass.appdevproject.StudentReg"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".MyInterests"
@@ -167,10 +167,10 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
-            android:name=".secondAnime"
+            android:name="com.campuscompass.appdevproject.secondAnime"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".Splash1Activity"
+            android:name="com.campuscompass.appdevproject.Splash1Activity"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

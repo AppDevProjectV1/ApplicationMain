@@ -1,0 +1,45 @@
+package com.campuscompass.appdevproject;
+
+import androidx.annotation.NonNull;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import com.example.appdevproject.R;
+import com.mikhaellopez.circularimageview.CircularImageView;
+
+import java.util.ArrayList;
+
+
+public class CanteenAdapter extends ArrayAdapter<CanteenClass> {
+    //define these variable customadapter constructor
+
+
+    public CanteenAdapter(@NonNull Context context, ArrayList<CanteenClass> data) {
+        super(context,0,data);
+    }
+
+    //this method is used to set the value to listview item wih the corrosponding position and return the listviewitem
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        View listItem = convertView;
+
+
+        if(listItem==null){
+            listItem= LayoutInflater.from(getContext()).inflate(R.layout.canteen_list_item, parent, false);
+        }
+
+       CircularImageView imageViewIcon = (CircularImageView) listItem.findViewById(R.id.canteenimage);
+        TextView textViewName = (TextView) listItem.findViewById(R.id.canteentext);
+
+       CanteenClass folder = getItem(position);
+        imageViewIcon.setImageResource(folder.getMimagecanteen());
+        textViewName.setText(folder.getMnamecanteen());
+        return listItem;
+    }
+}

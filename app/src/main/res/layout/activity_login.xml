@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetStartActivity"
+    tools:context="com.campuscompass.appdevproject.GetStartActivity"
     android:background="#FFFFFF"
     >
     <LinearLayout

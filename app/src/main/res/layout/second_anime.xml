@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".secondAnime"
+    tools:context="com.campuscompass.appdevproject.secondAnime"
     android:background="@drawable/gradient2">
 
 
