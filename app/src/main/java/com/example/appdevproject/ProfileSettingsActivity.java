@@ -61,6 +61,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         View imageshare=findViewById(R.id.ifriend);
         View deleteacc=findViewById(R.id.daccount);
         View aboutapp=findViewById(R.id.aapp);
+        View privacypolicy=findViewById(R.id.policy);
 //        TextView textprivacy=(TextView)findViewById(R.id.privacysetting);
 //        TextView textnotification=(TextView)findViewById(R.id.notificationsetting);
 //        TextView texthelp=(TextView)findViewById(R.id.helpsetting);
@@ -96,6 +97,13 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),AboutApp.class));
+            }
+        });
+
+        privacypolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),PrivacyPolicy.class));
             }
         });
 
